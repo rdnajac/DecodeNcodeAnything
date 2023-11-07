@@ -13,11 +13,11 @@ Therefore, each character is encoded as a sequence of 4 DNA bases. For decoding,
 
 # Usage
 Upon running the program, users will be prompted to choose one of the following options:
+- Convert DNA sequences back to text (Option 1)
+- Convert textual sequences to DNA (Option 2)
+- Quit the program (Q)
+To convert text to DNA, simply enter the text when prompted. To convert DNA back to text, enter the DNA sequence, ensuring it only contains the characters A, G, T, and C. If an invalid DNA sequence is entered, the program will prompt for re-entry. Users can quit the program at any time by pressing 'Q'.
 
-Convert textual sequences to DNA (Option 1)
-Convert DNA sequences back to text (Option 2)
-Quit the program (Q)
-To convert text to DNA, simply enter the text when prompted. To convert DNA back to text, enter the DNA sequence, ensuring it only contains the characters A, G, T, and C. If an invalid DNA sequence is entered, the program will prompt for re-entry.
+# Example
 
-Users can quit the program at any time by pressing 'Q' or 'q'.
 <img width="496" alt="image" src="https://github.com/Synthia-Li/Decode-encode-Anything/assets/143859275/897a4bd6-e664-4e69-b8d7-cdbc0105a00b">
