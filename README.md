@@ -20,3 +20,4 @@ Quit the program (Q)
 To convert text to DNA, simply enter the text when prompted. To convert DNA back to text, enter the DNA sequence, ensuring it only contains the characters A, G, T, and C. If an invalid DNA sequence is entered, the program will prompt for re-entry.
 
 Users can quit the program at any time by pressing 'Q' or 'q'.
+<img width="496" alt="image" src="https://github.com/Synthia-Li/Decode-encode-Anything/assets/143859275/897a4bd6-e664-4e69-b8d7-cdbc0105a00b">
