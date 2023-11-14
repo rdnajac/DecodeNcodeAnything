@@ -4,6 +4,7 @@
 #include <vector>
 
 //#include "../convert/convert.hpp"
+// Function to convert a character to its DNA representation
 std::string charToDNA(char ch)
 {
 	std::string binary = "";
@@ -24,13 +25,12 @@ std::string charToDNA(char ch)
 	}
 	return dna;
 }
-
 using namespace std;
 
 /*
  * @brief dump oligo conversion like hexdump
  */
-void oligodump(const void *data, size_t size, const string &filename) {
+void oligodump(const void *data, size_t size)
 {
 	const unsigned char *buffer = static_cast<const unsigned char *>(data);
 

@@ -1,5 +1,5 @@
 CC := g++
-CFLAGS := -Wall -std=c++20 -O2 
+CFLAGS := -Wall -std=c++20 -O2
 LDFLAGS :=
 
 
