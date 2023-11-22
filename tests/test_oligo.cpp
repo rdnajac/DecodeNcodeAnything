@@ -18,10 +18,10 @@ std::string generateRandomString(int length) {
 }
 
 // TODO fix this
-//Oligo* generateRandomOligo(int length) {
-//    std::string sequence = generateRandomString(length);
-//    return (generator() % 3 == 0) ? Oligo::newOligo(sequence.length()) : Oligo::val(sequence.length(), 0);
-//}
+Oligo* generateRandomOligo(int length) {
+    std::string sequence = generateRandomString(length);
+    return (generator() % 3 == 0) ? Oligo::newOligo(sequence.length()) : Oligo::val(sequence.length(), 0);
+}
 
 
 template <typename Func>

@@ -62,6 +62,13 @@ double calculateGCContent(const std::string& sequence);
 int calculateMaxHomopolymerLen(const std::string& sequence);
 
 /**
+ * @brief Generates the reverse complement of a DNA sequence.
+ * @param dna The input DNA sequence.
+ * @return The reverse complement of the input DNA sequence.
+ */
+std::string revcom(const std::string& dna);
+
+/**
  * @brief Calculates the Levenshtein distance between two strings.
  * @param str1 The first string.
  * @param str2 The second string.

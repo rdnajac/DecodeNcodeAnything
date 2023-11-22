@@ -5,8 +5,7 @@
 #include <vector>
 #include <tuple>
 #include <cassert>
-#include "../oligo/utils.cpp"
-#include "../revcom/revcom.cpp"
+#include "utils.hpp"
 
 void test_revcom(const std::vector<std::pair<std::string, std::string>>& test_cases);
 void test_lev_distance(const std::vector<std::tuple<std::string, std::string, int>>& test_cases);

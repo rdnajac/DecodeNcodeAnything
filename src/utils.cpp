@@ -47,6 +47,29 @@ int calculateMaxHomopolymerLen(const std::string& sequence) {
     return std::max(maxhp, n);
 }
 
+std::string revcom(const std::string& dna) {
+    std::string oligo = dna;
+
+    // Lambda function for nucleotide replacement
+    auto complement = [](char base) {
+        switch (base) {
+            case 'A': return 'T';
+            case 'T': return 'A';
+            case 'C': return 'G';
+            case 'G': return 'C';
+            default:  return base; // Handle other characters as-is
+        }
+    };
+
+    // Use std::transform for element-wise transformation
+    std::transform(oligo.begin(), oligo.end(), oligo.begin(), complement);
+
+    // Reverse the modified sequence
+    std::reverse(oligo.begin(), oligo.end());
+
+    return oligo;
+}
+
 int levenshtein_distance(const std::string& str1, const std::string& str2) {
     int len1 = str1.length();
     int len2 = str2.length();
