@@ -92,15 +92,15 @@ bool Oligo::append(const Oligo& other) {
     return true;
 }
 
-uint64_t Oligo::uint64() {
+uint64_t Oligo::uint64() const {
     return data_block;
 }
 
 std::string Oligo::seq() const {
     std::string result;
-    result.reserve(length);
+    result.reserve(length/2);
 
-    for (size_t i = 0; i < length; ++i) {
+    for (size_t i = 0; i < length/2; ++i) {
         int nt = static_cast<int>((data_block >> (2 * (length - i - 1))) & 0x3);
         result += nt2string(nt);
     }

@@ -1,14 +1,19 @@
 # CMakeLists.txt in the tests directory
 
-# Add the test executables
-add_executable(test_oligo test_oligo.cpp)
-add_executable(test_utils test_utils.cpp)
+# List of test source files in the tests directory
+set(TEST_FILES
+    test_io.cpp
+    test_oligo.cpp
+    test_utils.cpp
+)
 
-# Link against the library
-target_link_libraries(test_oligo PRIVATE mylib)
-target_link_libraries(test_utils PRIVATE mylib)
+# Create a test executable for each test file
+foreach(TEST_FILE ${TEST_FILES})
+    get_filename_component(TEST_NAME ${TEST_FILE} NAME_WE)
+    add_executable(${TEST_NAME} ${TEST_FILE})
+    target_link_libraries(${TEST_NAME} my_library)  # Link with the library
 
-# Include the include directory for header files
-target_include_directories(test_oligo PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
-target_include_directories(test_utils PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+    # Add include directories
+    target_include_directories(${TEST_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+endforeach()
 

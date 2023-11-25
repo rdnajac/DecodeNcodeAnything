@@ -172,7 +172,7 @@ public:
      * @brief Get the uint64_t representation of the oligo.
      * @return The uint64_t representation of the oligo.
      */
-    uint64_t uint64();
+    uint64_t uint64() const;
 };
 
 #endif // _OLIGO_HPP
