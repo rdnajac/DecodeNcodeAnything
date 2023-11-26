@@ -19,7 +19,8 @@ A refactoring of the [Adaptive DNA Storage Codec (ADS Codex)](https://github.com
 
 - **CMake for Building:** You can download CMake from [cmake.org](https://cmake.org/) or with your package manager.
 
-- **Doxygen for Documentation:** used for automatically generating documentation from source code comments. More information about Doxygen can be found [here](https://www.doxygen.nl/). Note that the Doxygen documentation for this project adheres to the style guide available [here](https://micro-os-plus.github.io/develop/doxygen-style-guide/).
+- **Doxygen for Documentation:** used for automatically generating documentation from source code comments. More information about Doxygen can be found [here](https://www.doxygen.nl/).
+> Note that the Doxygen documentation for this project adheres to the style guide available [here](https://micro-os-plus.github.io/develop/doxygen-style-guide/).
 
 ## Installation
 
@@ -95,27 +96,27 @@ To generate documentation using Doxygen, follow these steps:
 
     Open the `index.html` file in a web browser to explore the generated documentation.
 
-	## TODO
+## TODO
 
 ### Implement C++20 Features
 
 1. **Concepts:**
    Express constraints on template parameters, improving template code readability.
-     ```
+     ```cpp
      template <typename T> concept Integral = std::is_integral_v<T>;
      void function(Integral auto value) { /* Implementation */ }
      ```
 
 2. **Ranges:**
    Library for range-based algorithms and views, simplifying the manipulation of sequences of values.
-     ```
+     ```cpp
      std::vector<int> numbers = {1, 2, 3, 4, 5};
      auto evenNumbers = numbers | std::views::filter([](int n) { return n % 2 == 0; });
      ```
 
 3. **Coroutines:**
    More efficient and readable asynchronous code.
-     ```
+     ```cpp
      #include <iostream>
      #include <coroutine>
      generator<int> generateNumbers(int start, int end) {
@@ -131,21 +132,17 @@ To generate documentation using Doxygen, follow these steps:
 
 4. **Three-Way Comparison Operator (`<=>`):**
    The spaceship operator simplifies the implementation of comparison operations.
-     ```
+     ```cpp
      struct Person {
          std::string name;
          int age;
          auto operator<=>(const Person& other) const = default;
      };
-     // Usage:
-     Person p1{"Alice", 25};
-     Person p2{"Bob", 30};
-     if (p1 < p2) { /* Comparison using the spaceship operator */ }
      ```
 
 5. **Calendar and Timezone Library:**
    Enhanced `<chrono>` library for working with calendars and time zones.
-     ```
+     ```cpp
      #include <chrono>
      #include <iostream>
      auto currentTime = std::chrono::system_clock::now();
@@ -154,7 +151,7 @@ To generate documentation using Doxygen, follow these steps:
 
 6. **Improvements to `std::span`:**
    Class template for non-owning references to contiguous sequences.
-     ```
+     ```cpp
      #include <span>
      #include <iostream>
      std::array<int, 5> data = {1, 2, 3, 4, 5};
@@ -163,7 +160,7 @@ To generate documentation using Doxygen, follow these steps:
 
 7. **Modules:**
    Improve the modularity of C++ code and reduce compilation times.
-     ```
+     ```cpp
      import std.core; // hypothetical module import syntax
      int main() {
          std::cout << "Hello, Modules!\n";
@@ -172,7 +169,7 @@ To generate documentation using Doxygen, follow these steps:
 
 8. **Improved `constexpr` Support:**
    Allows for more complex computations at compile-time.
-     ```
+     ```cpp
      constexpr int fibonacci(int n) {
          return (n <= 1) ? n : (fibonacci(n - 1) + fibonacci(n - 2));
      }
@@ -181,19 +178,19 @@ To generate documentation using Doxygen, follow these steps:
 
 
 9. **Changes to `std::string`:**
-- **`starts_with` and `ends_with` Member Functions:** Check whether a string starts or ends with a specified substring.
+    - **`starts_with` and `ends_with` Member Functions:** Check whether a string starts or ends with a specified substring.
        ```cpp
        std::string myString = "Hello, World!";
        if (myString.starts_with("Hello")) {
            // Code to handle the case where the string starts with "Hello"
        }
        ```
-- **`reserve` Function for Capacity Management:** Preallocate memory for a specified number of characters, helping to manage the capacity of the string more efficiently.
+       - **`reserve` Function for Capacity Management:** Preallocate memory for a specified number of characters, helping to manage the capacity of the string more efficiently.
        ```cpp
        std::string myString;
        myString.reserve(420); // Reserve space for 420 characters
        ```
-- **`erase` for Removing Elements:** A more flexible idiom for removing elements from a string at specific positions or ranges.
+       - **`erase` for Removing Elements:** A more flexible idiom for removing elements from a string at specific positions or ranges.
        ```cpp
        std::string myString = "Hello, World!";
        myString.erase(myString.begin() + 7); // Erase the character at position 7
@@ -262,5 +259,5 @@ If you have specific features or improvements you would like to see in future re
 - [Illumina](https://www.illumina.com/): For contributions to DNA sequencing technology.
 - [Oxford Nanopore Technology](https://nanoporetech.com/): For advancements in nanopore sequencing.
 - [Kilobaser](https://kilobaser.com/): For innovations in DNA synthesis technology.
-- [Bjarne Stroustrup](http://www.stroustrup.com/): The creator of C++, for his foundational contributions to the language, and guidance in this project.
+- [Bjarne Stroustrup](http://www.stroustrup.com/): For his foundational contributions to C++ and for his guidance in this project.
 
