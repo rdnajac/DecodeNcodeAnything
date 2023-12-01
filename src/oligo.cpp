@@ -1,110 +1,139 @@
-#include "oligo.hpp"
-#include "utils.hpp"
+#include <string>
+#include <cstdint>
 #include <algorithm>
+#include "utils.hpp"
 
-Oligo::Oligo() : length(0), data_block(0) {}
+/**
+ * @brief Maximum number of base pairs allowed for an oligonucleotide.
+ */
+const size_t MAX_BP = 32;
 
-Oligo::Oligo(size_t len, uint64_t val) : length(len), data_block(val) {}
+/**
+ * @brief Represents an oligonucleotide (DNA sequence).
+ */
+class Oligo {
+private:
+    /**
+     * @brief Number of base pairs in the oligonucleotide (limited to MAX_BP).
+     */
+    size_t basepairs;
 
-Oligo::Oligo(const std::string& s) {
-    data_block = 0;
+    /**
+     * @brief Data block storing the binary representation of the oligonucleotide.
+     */
+    uint64_t data_block;
 
-    if (s.length() > 32) {
-        length = 0;
-        return;
-    }
-    length = s.length();
+public:
+    /**
+     * @brief Default constructor.
+     */
+    Oligo() : basepairs(0), data_block(0) {}
 
-    for (char c : s)
-        data_block = (data_block << 2) | char2nt(c);
-}
+    /**
+     * @brief Parameterized constructor.
+     * @param bp The number of base pairs in the oligonucleotide (limited to MAX_BP).
+     * @param val The value of the oligonucleotide.
+     */
+    Oligo(size_t bp, uint64_t val) : basepairs(std::min(bp, MAX_BP)), data_block(val) {}
 
-Oligo::~Oligo() {}
-
-size_t Oligo::len() const {
-    return length;
-}
-
-uint64_t Oligo::getDataBlock() const {
-    return data_block;
-}
-
-Oligo* Oligo::newOligo(size_t olen) {
-    return (olen > 32) ? nullptr : new Oligo(olen, 0);
-}
-
-Oligo* Oligo::val(size_t olen, uint64_t val) {
-    return (olen > 32) ? nullptr : new Oligo(olen, val);
-}
-
-std::pair<Oligo*, bool> Oligo::copy(const Oligo& o) {
-    uint64_t v = 0;
-    if (o.len() > 32) { return {nullptr, false}; }
-    for (size_t i = 0; i < o.len(); ++i) { v = (v << 2) | static_cast<uint64_t>(o[i]); }
-    return {val(o.len(), v), true};
-}
-
-int Oligo::cmp(const Oligo& other) const {
-    if (len() < other.len()) { return -1; } else if (len() > other.len()) { return 1; }
-    if (data_block < other.getDataBlock()) { return -1; } else if (data_block > other.getDataBlock()) { return 1; }
-    return 0;
-}
-
-bool Oligo::operator==(const Oligo& other) const { return cmp(other) == 0; }
-bool Oligo::operator<(const Oligo& other) const { return cmp(other) < 0; }
-bool Oligo::operator>(const Oligo& other) const { return cmp(other) > 0; }
-bool Oligo::operator<=(const Oligo& other) const { return cmp(other) <= 0; }
-bool Oligo::operator>=(const Oligo& other) const { return cmp(other) >= 0; }
-bool Oligo::operator!=(const Oligo& other) const { return cmp(other) != 0; }
-
-Oligo& Oligo::operator++() {
-    uint64_t max = (1ULL << (2 * len())) - 1;
-    if (len() != 32 && data_block != max) { ++data_block; }
-    return *this;
-}
-
-Oligo Oligo::operator++(int) {
-    Oligo tmp(*this);
-    operator++();
-    return tmp;
-}
-
-int Oligo::operator[](size_t idx) const {
-    return static_cast<int>((data_block >> (2 * (len() - idx - 1))) & 0x3);
-}
-
-Oligo* Oligo::slice(int start, int end) {
-    if (end <= 0) { end = len() - end; }
-    if (end > len()) { end = len(); } else if (end < 0) { end = 0; }
-    if (start < 0 || start > len() || start > end) { return nullptr; }
-    int olen = end - start;
-    uint64_t omask = (1ULL << (2 * olen)) - 1;
-    return val(olen, (data_block >> (2 * (len() - end))) & omask);
-}
-
-Oligo* Oligo::clone() {
-    return new Oligo(len(), data_block);
-}
-
-bool Oligo::append(const Oligo& other) {
-    if (len() + other.len() > 32) { return false; }
-    for (size_t i = 0; i < other.len(); ++i) { int nt = other[i]; data_block = (data_block << 2) | static_cast<uint64_t>(nt); }
-    return true;
-}
-
-uint64_t Oligo::uint64() const {
-    return data_block;
-}
-
-std::string Oligo::seq() const {
-    std::string result;
-    result.reserve(length/2);
-
-    for (size_t i = 0; i < length/2; ++i) {
-        int nt = static_cast<int>((data_block >> (2 * (length - i - 1))) & 0x3);
-        result += nt2string(nt);
+    /**
+     * @brief Constructor from string.
+     * @param s The string representation of the oligonucleotide.
+     */
+    Oligo(const std::string& s) : basepairs(s.length() > MAX_BP ? 0 : s.length()), data_block(0) {
+        for (char c : s)
+            data_block = (data_block << 2) | (s.length() > MAX_BP ? 0 : char2nt(c));
     }
 
-    return result;
-}
+    /**
+     * @brief Get the number of base pairs in the oligonucleotide.
+     * @return The number of base pairs.
+     */
+    size_t bp() const { return basepairs; }
+
+    /**
+     * @brief Get the data block of the oligonucleotide.
+     * @return The data block.
+     */
+    uint64_t data() const { return data_block; }
+
+    /**
+     * @brief Get the string representation of the data_block.
+     * @return The string representation of the data_block.
+     */
+    std::string seq() const {
+        std::string result;
+        result.reserve(basepairs);
+
+        for (size_t i = 0; i < std::min(basepairs, MAX_BP); ++i) {
+            int nt = static_cast<int>((data_block >> (2 * (basepairs - i - 1))) & 0x3);
+            result += nt2string(nt);
+        }
+
+        return result;
+    }
+
+    /**
+     * @brief Compare the oligo with another oligo.
+     * @param other The other oligo to compare.
+     * @return -1 if the oligo is less than the other, 0 if equal, and 1 if greater.
+     */
+    int cmp(const Oligo& other) const {
+        int bpComparison = std::minmax(bp(), other.bp()).first;
+        if (bpComparison != 0) return bpComparison;
+
+        int dataComparison = std::minmax(data_block, other.data()).first;
+        return dataComparison;
+    }
+
+    bool operator==(const Oligo& other) const { return cmp(other) == 0; }
+    bool operator!=(const Oligo& other) const { return cmp(other) != 0; }
+    bool operator<(const Oligo& other) const { return cmp(other) < 0; }
+    bool operator<=(const Oligo& other) const { return cmp(other) <= 0; }
+    bool operator>(const Oligo& other) const { return cmp(other) > 0; }
+    bool operator>=(const Oligo& other) const { return cmp(other) >= 0; }
+
+    /**
+     * @brief Subscript operator.
+     * @param idx The index of the character.
+     * @return The character at the specified index or '\0' if out of range.
+     */
+    int operator[](size_t idx) const {
+        return static_cast<int>((data_block >> (2 * (bp() - idx - 1))) & 0x3);
+    }
+
+    /**
+     * @brief Create a new oligo by slicing the current oligo.
+     * @param start The starting index of the slice.
+     * @param end The ending index of the slice.
+     * @return A new Oligo object or Oligo() if the slice is invalid.
+     */
+    Oligo slice(size_t start, size_t end) const {
+        end = (end <= 0) ? bp() - end : std::min(end, bp());
+        end = (end < 0) ? 0 : end;
+        start = (start > bp() || start > end) ? 0 : start;
+
+        auto new_bp = end - start;
+        uint64_t omask = (1ULL << (2 * new_bp)) - 1;
+
+        return Oligo(new_bp, (data_block >> (2 * (bp() - end))) & omask);
+    }
+
+    /**
+     * @brief Append another oligo to the current oligo.
+     * @param other The other oligo to append.
+     * @return True if the append operation was successful, false otherwise.
+     */
+    bool append(const Oligo& other) {
+        if (bp() + other.bp() > MAX_BP)
+            return false;
+
+        for (size_t i = 0; i < other.bp(); ++i) {
+            int nt = other[i];
+            data_block = (data_block << 2) | static_cast<uint64_t>(nt);
+        }
+        basepairs += other.bp();
+        return true;
+    }
+};
 

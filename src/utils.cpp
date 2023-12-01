@@ -1,10 +1,12 @@
 #include "utils.hpp"
 
-std::string nt2string(int nt) {
+std::string nt2string(int nt)
+{
     return (nt >= 0 && nt < nucleotideStr.size()) ? std::string(1, nucleotideStr[nt]) : "?";
 }
 
-int char2nt(char nt) {
+int char2nt(char nt)
+{
     switch (nt) {
         case 'A': return static_cast<int>(Nucleotide::A);
         case 'T': return static_cast<int>(Nucleotide::T);
@@ -14,11 +16,13 @@ int char2nt(char nt) {
     }
 }
 
-int string2nt(const std::string& nt) {
+int string2nt(const std::string& nt)
+{
     return (nt.size() == 1) ? char2nt(nt[0]) : -1;
 }
 
-double calculateGCContent(const std::string& sequence) {
+double calculateGCContent(const std::string& sequence)
+{
     int n = 0;
 
     for (char nucleotide : sequence)
@@ -28,7 +32,8 @@ double calculateGCContent(const std::string& sequence) {
     return (sequence.length() > 0) ? static_cast<double>(n) / sequence.length() : 0.0;
 }
 
-int calculateMaxHomopolymerLen(const std::string& sequence) {
+int calculateMaxHomopolymerLen(const std::string& sequence)
+{
     int maxhp = 0;
     int n = 1;
 
@@ -47,7 +52,8 @@ int calculateMaxHomopolymerLen(const std::string& sequence) {
     return std::max(maxhp, n);
 }
 
-std::string revcom(const std::string& dna) {
+std::string revcom(const std::string& dna)
+{
     std::string oligo = dna;
 
     // Lambda function for nucleotide replacement
@@ -57,20 +63,18 @@ std::string revcom(const std::string& dna) {
             case 'T': return 'A';
             case 'C': return 'G';
             case 'G': return 'C';
-            default:  return base; // Handle other characters as-is
+            default:  return base;
         }
     };
-
-    // Use std::transform for element-wise transformation
     std::transform(oligo.begin(), oligo.end(), oligo.begin(), complement);
 
-    // Reverse the modified sequence
     std::reverse(oligo.begin(), oligo.end());
 
     return oligo;
 }
 
-int levenshtein_distance(const std::string& str1, const std::string& str2) {
+int levenshtein_distance(const std::string& str1, const std::string& str2)
+{
     int len1 = str1.length();
     int len2 = str2.length();
 
@@ -86,18 +90,17 @@ int levenshtein_distance(const std::string& str1, const std::string& str2) {
                 matrix[i][j] = 0;
         }
     }
-
     for (int i = 1; i <= len1; ++i) {
         for (int j = 1; j <= len2; ++j) {
             int cost = (str1[i - 1] != str2[j - 1]);
             matrix[i][j] = std::min({matrix[i - 1][j] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j - 1] + cost});
         }
     }
-
     return matrix[len1][len2];
 }
 
-bool Match(const std::string& p, const std::string& q, int maxdist) {
+bool Match(const std::string& p, const std::string& q, int maxdist)
+{
     std::vector<int> f(p.size() + 1, 0);
 
     for (int n = 0; n < q.size(); ++n) {
@@ -116,11 +119,13 @@ bool Match(const std::string& p, const std::string& q, int maxdist) {
     return f.back() <= maxdist;
 }
 
-std::pair<int, int> min2(int a, int b, int aa, int bb) {
+std::pair<int, int> min2(int a, int b, int aa, int bb)
+{
     return (a <= b) ? std::make_pair(a, aa) : std::make_pair(b, bb);
 }
 
-void updateDistances(int& fj1, int& lj1, int cbMismatch, int& mdist, int& mn, int& ln) {
+void update_distances(int& fj1, int& lj1, int cbMismatch, int& mdist, int& mn, int& ln)
+{
     mn = std::min({mn, fj1 + 1, ln, lj1 + cbMismatch});
     fj1 = ln;
     lj1 = mn;
@@ -129,7 +134,8 @@ void updateDistances(int& fj1, int& lj1, int cbMismatch, int& mdist, int& mn, in
         mdist = ln;
 }
 
-bool Find(const std::string& s, const std::string& subseq, int maxdist, int& pos, int& length) {
+bool Find(const std::string& s, const std::string& subseq, int maxdist, int& pos, int& length)
+{
     int slen = s.length();
     int sslen = subseq.length();
 
@@ -146,11 +152,10 @@ bool Find(const std::string& s, const std::string& subseq, int maxdist, int& pos
 
         for (int m = 0; m < slen; ++m) {
             char cb = s[m];
-
             int cbMismatch = (cb != cq) ? 1 : 0;
             auto [mn, ln] = min2(f[m + 1] + 1, f[m] + 1, l[m + 1] - 1, l[m] + 1); // delete & insert
 
-            updateDistances(fj1, lj1, cbMismatch, mdist, mn, ln); // change or matched
+            update_distances(fj1, lj1, cbMismatch, mdist, mn, ln); // change or matched
             f[m + 1] = mn;
             l[m + 1] = ln;
         }
@@ -183,14 +188,13 @@ bool Find(const std::string& s, const std::string& subseq, int maxdist, int& pos
     return true;
 }
 
-std::pair<int, int> FindPrefix(const std::string& s, const std::string& prefix, int maxdist) {
+std::pair<int, int> FindPrefix(const std::string& s, const std::string& prefix, int maxdist)
+{
     int pos, length;
-    if (Find(s, prefix, maxdist, pos, length)) {
-        return {pos, length};
-    } else {
-        return {-1, 0};
-    }
+
+    return Find(s, prefix, maxdist, pos, length) ? std::make_pair(pos, length) : std::make_pair(-1, 0);
 }
+
 
 std::pair<int, int> FindSuffix(const std::string& s, const std::string& suffix, int maxdist) {
     std::string reversedS(s.rbegin(), s.rend());
@@ -205,7 +209,8 @@ std::pair<int, int> FindSuffix(const std::string& s, const std::string& suffix, 
     }
 }
 
-std::pair<int, std::string> Diff(const std::string& from, const std::string& to) {
+std::pair<int, std::string> Diff(const std::string& from, const std::string& to)
+{
     int m = from.size();
     int n = to.size();
 
@@ -234,9 +239,8 @@ std::pair<int, std::string> Diff(const std::string& from, const std::string& to)
 
             b[i + 1][j + 1] = "R";
 
-            if (from[i] != to[j]) {
+            if (from[i] != to[j])
                 substitutionCost++;
-            }
 
             int mincost = substitutionCost;
 
@@ -244,12 +248,10 @@ std::pair<int, std::string> Diff(const std::string& from, const std::string& to)
                 mincost = insertionCost;
                 b[i + 1][j + 1] = "I";
             }
-
             if (mincost > deletionCost) {
                 mincost = deletionCost;
                 b[i + 1][j + 1] = "D";
             }
-
             v[i + 1][j + 1] = mincost;
         }
     }
@@ -265,11 +267,10 @@ std::pair<int, std::string> Diff(const std::string& from, const std::string& to)
                 break;
 
             case 'R':
-                if (i > 0 && j > 0 && v[i - 1][j - 1] != v[i][j]) {
+                if (i > 0 && j > 0 && v[i - 1][j - 1] != v[i][j])
                     diff = "R" + diff;
-                } else {
+                else
                     diff = "-" + diff;
-                }
                 i--;
                 j--;
                 break;

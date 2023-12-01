@@ -104,7 +104,7 @@ std::pair<int, int> min2(int a, int b, int aa, int bb);
  * @param mn Current minimum value.
  * @param ln Current length.
  */
-void updateDistances(int& fj1, int& lj1, int cbMismatch, int& mdist, int& mn, int& ln);
+void update_distances(int& fj1, int& lj1, int cbMismatch, int& mdist, int& mn, int& ln);
 
 /**
  * @brief Finds a substring in a string with up to maxdist errors allowed.
