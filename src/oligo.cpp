@@ -172,13 +172,13 @@ public:
      * @brief Function to encode an Oligo using libfec Reed-Solomon Error Corretion
      * @param oligo The oligo to be encoded
      */
-    void encode(const Oligo& oligo) const {
-        unsigned char data[MAX_BP];    // Data to be encoded
-        unsigned char parity[MAX_BP];  // Parity data after encoding
+    void encode() const {
+        unsigned char data[8];    // Data to be encoded
+        unsigned char parity[8];  // Parity data after encoding
 
         // Convert the oligo into an appropriate format for encoding
-        for (size_t i = 0; i < oligo.bp(); ++i)
-            data[i] = static_cast<unsigned char>((oligo.data() >> (2 * (oligo.bp() - i - 1))) & 0x3);
+        for (int i = 0; i < 8; i++)
+            data[i] = static_cast<char>((data_block >> (i * 8)) & 0xFF);
 
         // Perform encoding using libfec
         encode_rs_char(init_rs_char(8, 0x187, 0, 1, 32, 0), data, parity);
@@ -186,23 +186,22 @@ public:
         // TODO: Handle the encoded data (e.g., storing it or transmitting)
         // For now, let's print the encoded data for demonstration purposes
         std::cout << "Encoded data: ";
-        for (size_t i = 0; i < oligo.bp(); ++i)
+        for (size_t i = 0; i < 8; i++)
             std::cout << static_cast<int>(parity[i]) << " ";
         std::cout << std::endl;
     }
 
     /**
      * @brief Function to decode an Oligo using libfec
-     * @param oligo The oligo to be encoded
      */
-    void decode(const Oligo& oligo) const {
+    void decode() const {
         unsigned char receivedData[MAX_BP];  // Received data to be decoded
         int erasures[MAX_BP];                // Array to store erasure positions (if any)
 
         // Simulating received data (encoded data from transmission)
         // Replace this with the actual received data
-        for (size_t i = 0; i < oligo.bp(); ++i)
-            receivedData[i] = static_cast<unsigned char>((oligo.data() >> (2 * (oligo.bp() - i - 1))) & 0x3);
+        for (size_t i = 0; i < basepairs; ++i)
+            receivedData[i] = static_cast<unsigned char>((data_block >> (2 * (basepairs - i - 1))) & 0x3);
 
         // Simulating erasures (missing/corrupted positions)
         // Replace this with the actual erasure positions
@@ -215,7 +214,7 @@ public:
         // Check the decode result
         if (decodeResult < 0) {
             std::cout << "Decoded data: ";
-            for (size_t i = 0; i < oligo.bp(); ++i)
+            for (size_t i = 0; i < basepairs; ++i)
                 std::cout << static_cast<int>(receivedData[i]) << " ";
             std::cout << std::endl;
         }

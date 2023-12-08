@@ -6,6 +6,7 @@ set(TEST_FILES
     test_oligo.cpp
     test_utils.cpp
     simulate_encoded_fastq.cpp
+    test_r-s.cpp
 )
 
 # Create a test executable for each test file
