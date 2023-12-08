@@ -5,6 +5,7 @@ set(TEST_FILES
     test_io.cpp
     test_oligo.cpp
     test_utils.cpp
+    test_encode-decode.cpp
 )
 
 # Create a test executable for each test file

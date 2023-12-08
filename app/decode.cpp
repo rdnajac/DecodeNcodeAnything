@@ -9,9 +9,8 @@ int main(int argc, char* argv[]) {
 
     const std::string filename = argv[1];
     Codec codec(filename);
-
     codec.print_info();
-    codec.encode();
+    codec.decode();
     codec.oligodump();
 
     return 0;
