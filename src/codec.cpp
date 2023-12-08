@@ -16,6 +16,8 @@ private:
     std::streampos filesize; ///< Size of the file.
     std::ifstream file; ///< Input file stream.
     std::vector<std::pair<Oligo, Oligo*>> oligo_duplex;
+    std::vector<std::pair<Oligo, Oligo>> decode_duplex;
+    std::vector<Oligo*> decode_vec; ///< Vector to store Oligo objects.
 
 public:
     /**
@@ -178,51 +180,42 @@ public:
         oligo_vec.clear();
         oligo_duplex.clear();
         size_t line_number = 0;
-        size_t index = 0;
 
         for (std::string line; std::getline(file, line); line_number++) {
             if (line_number % 4 == 1 && line.size() == 64) {
                 Oligo index_oligo(line.substr(0, 32));
                 Oligo data_oligo(line.substr(32, 32));
-
-                // Emplace the data_oligo into oligo_vec
-                oligo_vec.emplace_back(std::move(data_oligo));
-
-                // Emplace a pair into oligo_duplex (data_oligo, &oligo_vec oligo)
-                oligo_duplex.emplace_back(oligo_vec.back(), &oligo_vec[index++]);
+                decode_duplex.emplace_back(index_oligo, data_oligo);
             }
         }
 
-    // Sort the oligo_duplex based on the index_oligo.data()
-    std::sort(oligo_duplex.begin(), oligo_duplex.end(), [](const auto& a, const auto& b) {
-            return a.first.data() < b.first.data();
-            });
+        //Sort the decode_duplex based on the index_oligo.data()
+        std::sort(decode_duplex.begin(), decode_duplex.end(), [](const auto& a, const auto& b) { return a.first.data() < b.first.data(); });
 
-    // Write data_oligo.data() values to <filename>.decoded as binary
-    std::ofstream output_file(get_filename() + ".decoded", std::ios::binary);
-    if (!output_file.is_open()) {
-        std::cerr << "Error opening output file: " << get_filename() + ".decoded" << std::endl;
-        oligo_vec.clear();
-        oligo_duplex.clear();
-        return;
+
+        //std::ofstream output_file(get_filename() + ".decoded", std::ios::binary);
+        std::ofstream output_file(get_filename() + ".decoded");
+        if (!output_file.is_open()) {
+            std::cerr << "Error opening output file: " << get_filename() + ".decoded" << std::endl;
+            oligo_vec.clear();
+            decode_duplex.clear();
+            return;
+        }
+        for (auto &o : decode_duplex) {
+            uint64_t data = o.second.data();
+            char ch = (static_cast<char>(data));
+            output_file << ch;
+        }
+        output_file.close();
     }
+    // Uncomment the following lines when Criteria class is finished
+    /*
+    // Function to get criteria
+    Criteria get_criteria() const;
 
-    std::for_each(oligo_duplex.begin(), oligo_duplex.end(),
-            [&](const auto& pair) {
-            output_file.write(reinterpret_cast<const char*>(pair.second->data()), sizeof(uint64_t));
-            });
-
-    output_file.close();
-}
-
-// Uncomment the following lines when Criteria class is finished
-/*
-// Function to get criteria
-Criteria get_criteria() const;
-
-// Function to set criteria
-void set_criteria(const Criteria& new_criteria);
-*/
+    // Function to set criteria
+    void set_criteria(const Criteria& new_criteria);
+    */
 };
 
 // Implementation of other member functions
