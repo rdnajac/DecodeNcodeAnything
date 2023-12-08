@@ -23,7 +23,6 @@ private:
     /**
      * @brief Data block storing the binary representation of the oligonucleotide.
      */
-    
     uint64_t data_block;
 
 public:
@@ -81,7 +80,6 @@ public:
             int nt = static_cast<int>((data_block >> (2 * (basepairs - i - 1))) & 0x3);
             result += nt2string(nt);
         }
-
         return result;
     }
 
@@ -90,37 +88,30 @@ public:
      * @param other The other oligo to compare.
      * @return -1 if the oligo is less than the other, 0 if equal, and 1 if greater.
      */
-   /* int cmp(const Oligo& other) const {
-        int bpComparison = std::minmax(bp(), other.bp()).first;
-        if (bpComparison != 0) return bpComparison;
-
-        int dataComparison = std::minmax(data_block, other.data()).first;
-        return dataComparison;
-    }*/
     int cmp(const Oligo& other) const {
         // Compare lengths of sequences
-        if (bp() != other.bp()) {
+        if (bp() != other.bp())
             return (bp() < other.bp()) ? -1 : 1;
-        }
 
         // Compare sequences character by character
         for (size_t i = 0; i < bp(); ++i) {
             int nt1 = (*this)[i];
             int nt2 = other[i];
 
-            if (nt1 != nt2) {
+            if (nt1 != nt2)
                 return (nt1 < nt2) ? -1 : 1;
-            }
         }
-
         return 0;  // Sequences are identical
     }
+
     bool operator==(const Oligo& other) const { return cmp(other) == 0; }
     bool operator!=(const Oligo& other) const { return cmp(other) != 0; }
     bool operator<(const Oligo& other) const { return cmp(other) < 0; }
     bool operator<=(const Oligo& other) const { return cmp(other) <= 0; }
     bool operator>(const Oligo& other) const { return cmp(other) > 0; }
     bool operator>=(const Oligo& other) const { return cmp(other) >= 0; }
+
+    //TODO implement spaceship (<=>) operator
 
     /**
      * @brief Subscript operator.
@@ -135,34 +126,20 @@ public:
      * @brief Create a new oligo by slicing the current oligo.
      * @param start The starting index of the slice.
      * @param end The ending index of the slice.
-     * @return A new Oligo object or Oligo() if the slice is invalid.
+     * @return An Oligo object
      */
- /*   Oligo slice(size_t start, size_t end) const {
-        end = (end <= 0) ? bp() - end : std::min(end, bp());
-        end = (end < 0) ? 0 : end;
-        start = (start > bp() || start > end) ? 0 : start;
-
-        auto new_bp = end - start;
-        uint64_t omask = (1ULL << (2 * new_bp)) - 1;
-
-        return Oligo(new_bp, (data_block >> (2 * (bp() - end))) & omask);
-    }*/
-
     Oligo slice(size_t start, size_t end) const {
-        // Handle negative indices
-        if (start < 0) start = 0;
-        if (end < 0) end = 0;
-
-        // Adjust indices within valid range
-        if (start >= bp()) start = bp() - 1;
-        if (end >= bp()) end = bp() - 1;
-        if (end < start) end = start;
+        // Ensure valid indices
+        start = std::min(start, bp() - 1);
+        end = std::min(end, bp() - 1);
+        end = std::max(start, end);
 
         auto new_bp = end - start + 1;
         uint64_t omask = (1ULL << (2 * new_bp)) - 1;
 
-        return Oligo(new_bp, (data_block >> (2 * (bp() - end - 1))) & omask);
+        return Oligo(new_bp, (data_block >> (2 * (bp() - 1 - end))) & omask);
     }
+
     /**
      * @brief Append another oligo to the current oligo.
      * @param other The other oligo to append.
@@ -180,7 +157,10 @@ public:
         return true;
     }
 
-    // given an of stream, write binary
+    /**
+     * @brief Write binary data to file
+     * @param of the ofstream (input file) to write to
+     */
     void write_bin(std::ofstream &of) {
         char arr[8];
         for (int i = 0; i < 8; i++)
@@ -188,15 +168,17 @@ public:
         of.write(arr, sizeof(uint64_t));
     }
 
-    // Function to encode an Oligo using libfec
-    void encode(const Oligo& other) const {
-        unsigned char data[MAX_BP];  // Data to be encoded
+    /**
+     * @brief Function to encode an Oligo using libfec Reed-Solomon Error Corretion
+     * @param oligo The oligo to be encoded
+     */
+    void encode(const Oligo& oligo) const {
+        unsigned char data[MAX_BP];    // Data to be encoded
         unsigned char parity[MAX_BP];  // Parity data after encoding
 
-        // Convert the 'other' Oligo into an appropriate format for encoding
-        for (size_t i = 0; i < other.bp(); ++i) {
-            data[i] = static_cast<unsigned char>((other.data() >> (2 * (other.bp() - i - 1))) & 0x3);
-        }
+        // Convert the oligo into an appropriate format for encoding
+        for (size_t i = 0; i < oligo.bp(); ++i)
+            data[i] = static_cast<unsigned char>((oligo.data() >> (2 * (oligo.bp() - i - 1))) & 0x3);
 
         // Perform encoding using libfec
         encode_rs_char(init_rs_char(8, 0x187, 0, 1, 32, 0), data, parity);
@@ -204,21 +186,23 @@ public:
         // TODO: Handle the encoded data (e.g., storing it or transmitting)
         // For now, let's print the encoded data for demonstration purposes
         std::cout << "Encoded data: ";
-        for (size_t i = 0; i < other.bp(); ++i) {
+        for (size_t i = 0; i < oligo.bp(); ++i)
             std::cout << static_cast<int>(parity[i]) << " ";
-        }
         std::cout << std::endl;
     }
-    // Function to decode an Oligo using libfec
-    void decode(const Oligo& other) const {
+
+    /**
+     * @brief Function to decode an Oligo using libfec
+     * @param oligo The oligo to be encoded
+     */
+    void decode(const Oligo& oligo) const {
         unsigned char receivedData[MAX_BP];  // Received data to be decoded
-        int erasures[MAX_BP];  // Array to store erasure positions (if any)
+        int erasures[MAX_BP];                // Array to store erasure positions (if any)
 
         // Simulating received data (encoded data from transmission)
         // Replace this with the actual received data
-        for (size_t i = 0; i < other.bp(); ++i) {
-            receivedData[i] = static_cast<unsigned char>((other.data() >> (2 * (other.bp() - i - 1))) & 0x3);
-        }
+        for (size_t i = 0; i < oligo.bp(); ++i)
+            receivedData[i] = static_cast<unsigned char>((oligo.data() >> (2 * (oligo.bp() - i - 1))) & 0x3);
 
         // Simulating erasures (missing/corrupted positions)
         // Replace this with the actual erasure positions
@@ -229,19 +213,15 @@ public:
         int decodeResult = decode_rs_char(init_rs_char(8, 0x187, 0, 1, 32, 0), receivedData, erasures, numErasures);
 
         // Check the decode result
-        if (decodeResult >= 0) {
-            // Decoding successful
+        if (decodeResult < 0) {
             std::cout << "Decoded data: ";
-            for (size_t i = 0; i < other.bp(); ++i) {
+            for (size_t i = 0; i < oligo.bp(); ++i)
                 std::cout << static_cast<int>(receivedData[i]) << " ";
-            }
             std::cout << std::endl;
         }
         else {
-            // Decoding failed
             std::cout << "Decoding failed." << std::endl;
         }
     }
-
 };
 

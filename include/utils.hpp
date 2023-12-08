@@ -20,15 +20,15 @@
  */
 enum class Nucleotide {
     A = 0, /**< Adenine */
-    T = 1, /**< Thymine */
-    C = 2, /**< Cytosine*/
-    G = 3  /**< Guanine */
+    C = 1, /**< Cytosine*/
+    G = 2, /**< Guanine */
+    T = 3  /**< Thymine */
 };
 
 /**
  * @brief String representation of nucleotides for conversion.
  */
-const std::string nucleotideStr = "ATCG";
+const std::string nucleotideStr = "ACGT";
 
 /**
  * @brief Convert numeric value of a nucleotide (nt) to its string value.

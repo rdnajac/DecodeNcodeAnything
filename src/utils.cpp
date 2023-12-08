@@ -9,24 +9,23 @@ std::string nt2string(int nt) {
         return "?";
     }
 }
-/*
-    Using std::optional as the return type makes it clearer that this function might not find a corresponding value for the given character.
-    Using std::unordered_map to map characters to integer values provides a more concise representation of this mapping relationship.
+
+/**
+ * Using std::optional as the return type makes it clearer that this function might not find a corresponding value for the given character.
+ * Using std::unordered_map to map characters to integer values provides a more concise representation of this mapping relationship.
  */
 std::optional<int> char2nt(char nt) {
-    static const std::unordered_map<char, int> nucleotideMap{
+    static const std::unordered_map<char, int> nucleotideMap {
         {'A', static_cast<int>(Nucleotide::A)},
         {'T', static_cast<int>(Nucleotide::T)},
         {'C', static_cast<int>(Nucleotide::C)},
         {'G', static_cast<int>(Nucleotide::G)}
     };
 
-    if (auto it = nucleotideMap.find(nt); it != nucleotideMap.end()) {
+    if (auto it = nucleotideMap.find(nt); it != nucleotideMap.end())
         return it->second;
-    }
-    else {
+    else
         return std::nullopt; // Indicates when the corresponding value is not found.
-    }
 }
 
 int string2nt(const std::string& nt) {
@@ -45,13 +44,14 @@ double calculateGCContent(const std::string& sequence) {
 
     int gcCount = 0;
     for (char nucleotide : sequence | std::views::filter([](char nt) {
-        return nt == 'C' || nt == 'G';
-        })) {
+                return nt == 'C' || nt == 'G';
+                })) {
         ++gcCount;
     }
 
     return static_cast<double>(gcCount) / sequence.length();
 }
+
 // Using iterators instead of a range-based for loop.
 int calculateMaxHomopolymerLen(const std::string& sequence) {
     int maxhp = 0;
@@ -68,21 +68,22 @@ int calculateMaxHomopolymerLen(const std::string& sequence) {
 
     return maxhp;
 }
-/*
-    Replaced std::transform with std::ranges::transform
-    and std::reverse with std::ranges::reverse.
-    These functions handle ranges more directly.
-*/
+
+/**
+ * Replaced std::transform with std::ranges::transform
+ * and std::reverse with std::ranges::reverse.
+ * These functions handle ranges more directly.
+ */
 std::string revcom(const std::string& dna) {
     auto complement = [](char base) {
         switch (base) {
-        case 'A': return 'T';
-        case 'T': return 'A';
-        case 'C': return 'G';
-        case 'G': return 'C';
-        default:  return base;
+            case 'A': return 'T';
+            case 'T': return 'A';
+            case 'C': return 'G';
+            case 'G': return 'C';
+            default:  return base;
         }
-        };
+    };
 
     std::string oligo = dna;
     std::ranges::transform(oligo, oligo.begin(), complement);
@@ -90,11 +91,11 @@ std::string revcom(const std::string& dna) {
 
     return oligo;
 }
-/*
-Using initializer lists for std::vector and range-based for loops introduced in C++20.
-Also leveraging some newly introduced algorithm functions from the library like std::ranges::views::iota
-and std::ranges::for_each.
-*/
+
+/**
+ * Using initializer lists for std::vector and range-based for loops introduced in C++20. Also leveraging some
+ * newly introduced algorithm functions from the library like std::ranges::views::iota and std::ranges::for_each.
+ */
 int levenshtein_distance(const std::string& str1, const std::string& str2) {
     int len1 = str1.length();
     int len2 = str2.length();
@@ -102,25 +103,25 @@ int levenshtein_distance(const std::string& str1, const std::string& str2) {
     std::vector<std::vector<int>> matrix(len1 + 1, std::vector<int>(len2 + 1));
 
     std::ranges::for_each(std::ranges::views::iota(0, len1 + 1), [&](int i) {
-        std::ranges::for_each(std::ranges::views::iota(0, len2 + 1), [&](int j) {
-            matrix[i][j] = (i == 0) ? j : ((j == 0) ? i : 0);
+            std::ranges::for_each(std::ranges::views::iota(0, len2 + 1), [&](int j) {
+                    matrix[i][j] = (i == 0) ? j : ((j == 0) ? i : 0);
+                    });
             });
-        });
 
     std::ranges::for_each(std::ranges::views::iota(1, len1 + 1), [&](int i) {
-        std::ranges::for_each(std::ranges::views::iota(1, len2 + 1), [&](int j) {
-            int cost = (str1[i - 1] != str2[j - 1]);
-            matrix[i][j] = std::min({ matrix[i - 1][j] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j - 1] + cost });
+            std::ranges::for_each(std::ranges::views::iota(1, len2 + 1), [&](int j) {
+                    int cost = (str1[i - 1] != str2[j - 1]);
+                    matrix[i][j] = std::min({ matrix[i - 1][j] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j - 1] + cost });
+                    });
             });
-        });
 
     return matrix[len1][len2];
 }
 
 /**
-  *Employing range-based for loops, introducing std::transform, and utilizing lambda expressions.
-  *Used for transforming and updating operations on sequences.
-  */
+ *Employing range-based for loops, introducing std::transform, and utilizing lambda expressions.
+ *Used for transforming and updating operations on sequences.
+ */
 bool Match(const std::string& p, const std::string& q, int maxdist) {
     std::vector<std::vector<int>> dp(p.size() + 1, std::vector<int>(q.size() + 1, 0));
 
@@ -146,16 +147,17 @@ bool Match(const std::string& p, const std::string& q, int maxdist) {
 
     return dp[p.size()][q.size()] <= maxdist;
 }
+
 /**
-  *Using std::min along with a custom comparison function,
-  *comparing two std::pair<int, int>. std::tie is used to create tuples for comparison,
-  *which compares individual members of the tuples.
-  */
+ *Using std::min along with a custom comparison function, comparing two std::pair<int, int>.
+ std::tie is used to create tuples for comparison, which compares individual members of the tuples.
+ */
 std::pair<int, int> min2(int a, int b, int aa, int bb) {
     return std::min(std::make_pair(a, aa), std::make_pair(b, bb), [](const auto& lhs, const auto& rhs) {
-        return std::tie(lhs.first, lhs.second) < std::tie(rhs.first, rhs.second);
-        });
+            return std::tie(lhs.first, lhs.second) < std::tie(rhs.first, rhs.second);
+            });
 }
+
 // Simplifying using fold expressions.
 void update_distances(int& fj1, int& lj1, int cbMismatch, int& mdist, int& mn, int& ln) {
     mn = std::min({ mn, fj1 + 1, ln, lj1 + cbMismatch });
@@ -164,6 +166,7 @@ void update_distances(int& fj1, int& lj1, int cbMismatch, int& mdist, int& mn, i
 
     mdist = std::min({ mdist, ln }); 
 }
+
 // Utilizing std::min_element function to find the minimum distance, combined with some algorithm functions for a more concise code.
 bool Find(const std::string& s, const std::string& subseq, int maxdist, int& pos, int& length) {
     int slen = s.length();
@@ -171,13 +174,11 @@ bool Find(const std::string& s, const std::string& subseq, int maxdist, int& pos
 
     std::vector<std::vector<int>> distances(sslen + 1, std::vector<int>(slen + 1, 0));
 
-    for (int n = 1; n <= sslen; ++n) {
+    for (int n = 1; n <= sslen; ++n)
         distances[n][0] = n;
-    }
 
-    for (int m = 1; m <= slen; ++m) {
+    for (int m = 1; m <= slen; ++m)
         distances[0][m] = m;
-    }
 
     for (int n = 1; n <= sslen; ++n) {
         for (int m = 1; m <= slen; ++m) {
@@ -236,11 +237,12 @@ std::pair<int, int> FindSuffix(const std::string& s, const std::string& suffix, 
         return { -1, 0 };
     }
 }
+
 /**
-  *Using 'using' to alias types for improved clarity and readability.
-  *The return value remains unchanged, still returning a std::pair<int, std::string>,
-  *which includes the minimum edit distance and the string describing the edit operations.
-  */
+ *Using 'using' to alias types for improved clarity and readability.
+ *The return value remains unchanged, still returning a std::pair<int, std::string>,
+ *which includes the minimum edit distance and the string describing the edit operations.
+ */
 using Matrix = std::vector<std::vector<int>>;
 using ActionMatrix = std::vector<std::vector<std::string>>;
 std::pair<int, std::string> Diff(const std::string& from, const std::string& to) {
@@ -288,21 +290,22 @@ std::pair<int, std::string> Diff(const std::string& from, const std::string& to)
     std::string diff = "";
     for (int i = m, j = n; i > 0 || j > 0;) {
         switch (b[i][j][0]) {
-        case 'D':
-            diff = "D" + diff;
-            i--;
-            break;
-        case 'R':
-            diff = (from[i - 1] != to[j - 1]) ? "R" + diff : "-" + diff;
-            i--;
-            j--;
-            break;
-        case 'I':
-            diff = "I" + diff;
-            j--;
-            break;
+            case 'D':
+                diff = "D" + diff;
+                i--;
+                break;
+            case 'R':
+                diff = (from[i - 1] != to[j - 1]) ? "R" + diff : "-" + diff;
+                i--;
+                j--;
+                break;
+            case 'I':
+                diff = "I" + diff;
+                j--;
+                break;
         }
     }
 
     return { v[m][n], diff };
 }
+

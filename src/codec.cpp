@@ -38,8 +38,7 @@ public:
     }
 
     /**
-     * @brief Destructor.
-     * Closes the file if it's open.
+     * @brief Destructor. Closes the file if it's open.
      */
     ~Codec() {
         if (file.is_open())
@@ -130,6 +129,7 @@ public:
             oligo_duplex.emplace_back(Oligo(64, i), &oligo_vec.back());
         }
 
+        //TODO FIX BUG!
         // Handle the remaining bytes using a single buffer
         //if (remaining_bytes > 0) {
         //    uint64_t data_block;
@@ -143,6 +143,7 @@ public:
         //    oligo_duplex.emplace_back(Oligo(remaining_bytes * 8, num_blocks), &oligo_vec.back());
         //}
     }
+
     /**
      * @brief Function to dump Oligo information from duplex to the console.
      */
@@ -182,6 +183,9 @@ public:
         std::cout << "Duplex information written to file: " << get_filename() + ".encode" << std::endl;
     }
 
+    /**
+     * @brief Function to encode the file data into Oligo objects.
+     */
     void decode() {
 
         if (get_filetype() != ".fastq") {
@@ -202,8 +206,9 @@ public:
         }
 
         //Sort the decode_duplex based on the index_oligo.data()
-        std::sort(decode_duplex.begin(), decode_duplex.end(), [](const auto& a, const auto& b) { return a.first.data() < b.first.data(); });
-
+        std::sort(decode_duplex.begin(), decode_duplex.end(), [](const auto& a, const auto& b) {
+                return a.first.data() < b.first.data(); 
+                });
 
         std::ofstream output_file(get_filename() + ".decoded", std::ios::binary);
         if (!output_file.is_open()) {
@@ -219,7 +224,7 @@ public:
         output_file.close();
     }
 
-    // Uncomment the following lines when Criteria class is finished
+    //Uncomment the following lines when Criteria class is finished
     //Criteria get_criteria() const;
     //void set_criteria(const Criteria& new_criteria);
 };
