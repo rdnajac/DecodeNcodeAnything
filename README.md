@@ -249,7 +249,6 @@ These plans are subject to change based on community feedback and project priori
 
 If you have specific features or improvements you would like to see in future releases, feel free to contribute to the discussion on our [GitHub repository](https://github.com/rdnajac/DecodeNcodeAnything) or open a new issue.
 
-
 ## Acknowledgments
 
 - [Adaptive DNA Storage Codec (ADS Codex)](https://github.com/lanl/adscodex): The foundation for this project.
