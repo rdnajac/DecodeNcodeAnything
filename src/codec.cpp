@@ -180,11 +180,10 @@ public:
         size_t line_number = 0;
         size_t index = 0;
 
-        for (std::string line; std::getline(file, line); ++line_number) {
-            if (line_number % 4 == 1 && line.size() == 128) {
-                Oligo index_oligo(line.substr(0, 64));
-                Oligo data_oligo(line.substr(64, 64));
-                std::cout << index_oligo.seq();
+        for (std::string line; std::getline(file, line); line_number++) {
+            if (line_number % 4 == 1 && line.size() == 64) {
+                Oligo index_oligo(line.substr(0, 32));
+                Oligo data_oligo(line.substr(32, 32));
 
                 // Emplace the data_oligo into oligo_vec
                 oligo_vec.emplace_back(std::move(data_oligo));
