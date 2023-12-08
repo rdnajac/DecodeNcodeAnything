@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <filesystem>
+#include <ostream>
 #include "io.hpp"
 #include "oligo.cpp"
 
@@ -142,7 +143,6 @@ public:
         //    oligo_duplex.emplace_back(Oligo(remaining_bytes * 8, num_blocks), &oligo_vec.back());
         //}
     }
-
     /**
      * @brief Function to dump Oligo information from duplex to the console.
      */
@@ -193,19 +193,16 @@ public:
         std::sort(decode_duplex.begin(), decode_duplex.end(), [](const auto& a, const auto& b) { return a.first.data() < b.first.data(); });
 
 
-        //std::ofstream output_file(get_filename() + ".decoded", std::ios::binary);
-        std::ofstream output_file(get_filename() + ".decoded");
+        std::ofstream output_file(get_filename() + ".decoded", std::ios::binary);
         if (!output_file.is_open()) {
             std::cerr << "Error opening output file: " << get_filename() + ".decoded" << std::endl;
             oligo_vec.clear();
             decode_duplex.clear();
             return;
         }
-        for (auto &o : decode_duplex) {
-            uint64_t data = o.second.data();
-            char ch = (static_cast<char>(data));
-            output_file << ch;
-        }
+        for (auto &o : decode_duplex)
+            o.second.write_bin(output_file);
+
         output_file.close();
     }
     // Uncomment the following lines when Criteria class is finished

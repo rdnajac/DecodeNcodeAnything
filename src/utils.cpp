@@ -36,7 +36,7 @@ int string2nt(const std::string& nt) {
             return result.value(); // Retrieve the value from std::optional<int>.
         }
     }
-    return -1; 
+    return -1;
 }
 
 // Using a range-based for loop combined with std::views::filter view applies the filtering condition directly to the range.
@@ -125,8 +125,8 @@ bool Match(const std::string& p, const std::string& q, int maxdist) {
     std::vector<std::vector<int>> dp(p.size() + 1, std::vector<int>(q.size() + 1, 0));
 
     // Initialize the dynamic programming matrix:
-    for (int i = 0; i <= p.size(); ++i) {
-        for (int j = 0; j <= q.size(); ++j) {
+    for (size_t i = 0; i <= p.size(); ++i) {
+        for (size_t j = 0; j <= q.size(); ++j) {
             if (i == 0)
                 dp[i][j] = j;
             else if (j == 0)
@@ -137,8 +137,8 @@ bool Match(const std::string& p, const std::string& q, int maxdist) {
     }
 
     //Fill in the dynamic programming matrix:
-    for (int i = 1; i <= p.size(); ++i) {
-        for (int j = 1; j <= q.size(); ++j) {
+    for (size_t i = 1; i <= p.size(); ++i) {
+        for (size_t j = 1; j <= q.size(); ++j) {
             int cost = (p[i - 1] == q[j - 1]) ? 0 : 1;
             dp[i][j] = std::min({ dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost });
         }

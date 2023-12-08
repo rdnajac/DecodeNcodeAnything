@@ -1,8 +1,10 @@
 #include <string>
 #include <cstdint>
 #include <algorithm>
+#include <iostream>
+#include <fstream>
 #include "utils.hpp"
-#include "../libfec-master/fec.h"
+#include "../extern/libfec/fec.h"
 /**
  * @brief Maximum number of base pairs allowed for an oligonucleotide.
  */
@@ -177,6 +179,15 @@ public:
         basepairs += other.bp();
         return true;
     }
+
+    // given an of stream, write binary
+    void write_bin(std::ofstream &of) {
+        char arr[8];
+        for (int i = 0; i < 8; i++)
+            arr[i] = static_cast<char>((data() >> (i * 8)) & 0xFF);
+        of.write(arr, sizeof(uint64_t));
+    }
+
     // Function to encode an Oligo using libfec
     void encode(const Oligo& other) const {
         unsigned char data[MAX_BP];  // Data to be encoded
@@ -212,9 +223,9 @@ public:
         // Simulating erasures (missing/corrupted positions)
         // Replace this with the actual erasure positions
         int numErasures = 0;  // Number of erasures
-        // ...
+                              // ...
 
-        // Perform decoding using libfec
+                              // Perform decoding using libfec
         int decodeResult = decode_rs_char(init_rs_char(8, 0x187, 0, 1, 32, 0), receivedData, erasures, numErasures);
 
         // Check the decode result

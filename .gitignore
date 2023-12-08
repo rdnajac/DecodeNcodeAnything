@@ -40,3 +40,4 @@
 # Ignore hidden files
 .*
 
+/extern/libfec
