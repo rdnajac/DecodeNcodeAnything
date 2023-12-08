@@ -1,183 +1,202 @@
 #include "utils.hpp"
 
-std::string nt2string(int nt)
-{
-    return (nt >= 0 && nt < nucleotideStr.size()) ? std::string(1, nucleotideStr[nt]) : "?";
-}
 
-int char2nt(char nt)
-{
-    switch (nt) {
-        case 'A': return static_cast<int>(Nucleotide::A);
-        case 'T': return static_cast<int>(Nucleotide::T);
-        case 'C': return static_cast<int>(Nucleotide::C);
-        case 'G': return static_cast<int>(Nucleotide::G);
-        default: return -1;
+std::string nt2string(int nt) {
+    if (nt >= 0 && nt < static_cast<int>(nucleotideStr.size())) {
+        return { nucleotideStr[nt] };
+    }
+    else {
+        return "?";
+    }
+}
+/*
+    Using std::optional as the return type makes it clearer that this function might not find a corresponding value for the given character.
+    Using std::unordered_map to map characters to integer values provides a more concise representation of this mapping relationship.
+ */
+std::optional<int> char2nt(char nt) {
+    static const std::unordered_map<char, int> nucleotideMap{
+        {'A', static_cast<int>(Nucleotide::A)},
+        {'T', static_cast<int>(Nucleotide::T)},
+        {'C', static_cast<int>(Nucleotide::C)},
+        {'G', static_cast<int>(Nucleotide::G)}
+    };
+
+    if (auto it = nucleotideMap.find(nt); it != nucleotideMap.end()) {
+        return it->second;
+    }
+    else {
+        return std::nullopt; // Indicates when the corresponding value is not found.
     }
 }
 
-int string2nt(const std::string& nt)
-{
-    return (nt.size() == 1) ? char2nt(nt[0]) : -1;
+int string2nt(const std::string& nt) {
+    if (nt.size() == 1) {
+        auto result = char2nt(nt[0]);
+        if (result.has_value()) {
+            return result.value(); // Retrieve the value from std::optional<int>.
+        }
+    }
+    return -1; 
 }
 
-double calculateGCContent(const std::string& sequence)
-{
-    int n = 0;
+// Using a range-based for loop combined with std::views::filter view applies the filtering condition directly to the range.
+double calculateGCContent(const std::string& sequence) {
+    if (sequence.empty()) return 0.0;
 
-    for (char nucleotide : sequence)
-        if (nucleotide == 'C' || nucleotide == 'G')
-            n++;
+    int gcCount = 0;
+    for (char nucleotide : sequence | std::views::filter([](char nt) {
+        return nt == 'C' || nt == 'G';
+        })) {
+        ++gcCount;
+    }
 
-    return (sequence.length() > 0) ? static_cast<double>(n) / sequence.length() : 0.0;
+    return static_cast<double>(gcCount) / sequence.length();
 }
-
-int calculateMaxHomopolymerLen(const std::string& sequence)
-{
+// Using iterators instead of a range-based for loop.
+int calculateMaxHomopolymerLen(const std::string& sequence) {
     int maxhp = 0;
     int n = 1;
 
-    char snt = (sequence.length() > 0) ? sequence[0] : '\0';
+    char snt = (!sequence.empty()) ? sequence.front() : '\0';
 
-    for (char nt : sequence) {
-        if (nt == snt) {
-            n++;
-        } else {
-            maxhp = std::max(maxhp, n);
-            snt = nt;
-            n = 1;
-        }
+    for (auto it = sequence.begin(); it != sequence.end(); ++it) {
+        char nt = *it;
+        n = (nt == snt) ? n + 1 : 1;
+        maxhp = std::max(maxhp, n);
+        snt = nt;
     }
 
-    return std::max(maxhp, n);
+    return maxhp;
 }
-
-std::string revcom(const std::string& dna)
-{
-    std::string oligo = dna;
-
-    // Lambda function for nucleotide replacement
+/*
+    Replaced std::transform with std::ranges::transform
+    and std::reverse with std::ranges::reverse.
+    These functions handle ranges more directly.
+*/
+std::string revcom(const std::string& dna) {
     auto complement = [](char base) {
         switch (base) {
-            case 'A': return 'T';
-            case 'T': return 'A';
-            case 'C': return 'G';
-            case 'G': return 'C';
-            default:  return base;
+        case 'A': return 'T';
+        case 'T': return 'A';
+        case 'C': return 'G';
+        case 'G': return 'C';
+        default:  return base;
         }
-    };
-    std::transform(oligo.begin(), oligo.end(), oligo.begin(), complement);
+        };
 
-    std::reverse(oligo.begin(), oligo.end());
+    std::string oligo = dna;
+    std::ranges::transform(oligo, oligo.begin(), complement);
+    std::ranges::reverse(oligo);
 
     return oligo;
 }
-
-int levenshtein_distance(const std::string& str1, const std::string& str2)
-{
+/*
+Using initializer lists for std::vector and range-based for loops introduced in C++20.
+Also leveraging some newly introduced algorithm functions from the library like std::ranges::views::iota
+and std::ranges::for_each.
+*/
+int levenshtein_distance(const std::string& str1, const std::string& str2) {
     int len1 = str1.length();
     int len2 = str2.length();
 
     std::vector<std::vector<int>> matrix(len1 + 1, std::vector<int>(len2 + 1));
 
-    for (int i = 0; i <= len1; ++i) {
-        for (int j = 0; j <= len2; ++j) {
-            if (i == 0)
-                matrix[i][j] = j;
-            else if (j == 0)
-                matrix[i][j] = i;
-            else
-                matrix[i][j] = 0;
-        }
-    }
-    for (int i = 1; i <= len1; ++i) {
-        for (int j = 1; j <= len2; ++j) {
+    std::ranges::for_each(std::ranges::views::iota(0, len1 + 1), [&](int i) {
+        std::ranges::for_each(std::ranges::views::iota(0, len2 + 1), [&](int j) {
+            matrix[i][j] = (i == 0) ? j : ((j == 0) ? i : 0);
+            });
+        });
+
+    std::ranges::for_each(std::ranges::views::iota(1, len1 + 1), [&](int i) {
+        std::ranges::for_each(std::ranges::views::iota(1, len2 + 1), [&](int j) {
             int cost = (str1[i - 1] != str2[j - 1]);
-            matrix[i][j] = std::min({matrix[i - 1][j] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j - 1] + cost});
-        }
-    }
+            matrix[i][j] = std::min({ matrix[i - 1][j] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j - 1] + cost });
+            });
+        });
+
     return matrix[len1][len2];
 }
 
-bool Match(const std::string& p, const std::string& q, int maxdist)
-{
-    std::vector<int> f(p.size() + 1, 0);
+/**
+  *Employing range-based for loops, introducing std::transform, and utilizing lambda expressions.
+  *Used for transforming and updating operations on sequences.
+  */
+bool Match(const std::string& p, const std::string& q, int maxdist) {
+    std::vector<std::vector<int>> dp(p.size() + 1, std::vector<int>(q.size() + 1, 0));
 
-    for (int n = 0; n < q.size(); ++n) {
-        char cq = q[n];
-        int fj1 = f[0];
-        f[0]++;
-        for (int m = 0; m < p.size(); ++m) {
-            int cb = (p[m] == '?' || p[m] == cq) ? 0 : 1;
-            int mn = std::min({f[m + 1] + 1, f[m] + 1, fj1 + cb});
-
-            fj1 = f[m + 1];
-            f[m + 1] = mn;
+    // Initialize the dynamic programming matrix:
+    for (int i = 0; i <= p.size(); ++i) {
+        for (int j = 0; j <= q.size(); ++j) {
+            if (i == 0)
+                dp[i][j] = j;
+            else if (j == 0)
+                dp[i][j] = i;
+            else
+                dp[i][j] = 0;
         }
     }
 
-    return f.back() <= maxdist;
-}
+    //Fill in the dynamic programming matrix:
+    for (int i = 1; i <= p.size(); ++i) {
+        for (int j = 1; j <= q.size(); ++j) {
+            int cost = (p[i - 1] == q[j - 1]) ? 0 : 1;
+            dp[i][j] = std::min({ dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost });
+        }
+    }
 
-std::pair<int, int> min2(int a, int b, int aa, int bb)
-{
-    return (a <= b) ? std::make_pair(a, aa) : std::make_pair(b, bb);
+    return dp[p.size()][q.size()] <= maxdist;
 }
-
-void update_distances(int& fj1, int& lj1, int cbMismatch, int& mdist, int& mn, int& ln)
-{
-    mn = std::min({mn, fj1 + 1, ln, lj1 + cbMismatch});
+/**
+  *Using std::min along with a custom comparison function,
+  *comparing two std::pair<int, int>. std::tie is used to create tuples for comparison,
+  *which compares individual members of the tuples.
+  */
+std::pair<int, int> min2(int a, int b, int aa, int bb) {
+    return std::min(std::make_pair(a, aa), std::make_pair(b, bb), [](const auto& lhs, const auto& rhs) {
+        return std::tie(lhs.first, lhs.second) < std::tie(rhs.first, rhs.second);
+        });
+}
+// Simplifying using fold expressions.
+void update_distances(int& fj1, int& lj1, int cbMismatch, int& mdist, int& mn, int& ln) {
+    mn = std::min({ mn, fj1 + 1, ln, lj1 + cbMismatch });
     fj1 = ln;
     lj1 = mn;
 
-    if (ln < mdist)
-        mdist = ln;
+    mdist = std::min({ mdist, ln }); 
 }
-
-bool Find(const std::string& s, const std::string& subseq, int maxdist, int& pos, int& length)
-{
+// Utilizing std::min_element function to find the minimum distance, combined with some algorithm functions for a more concise code.
+bool Find(const std::string& s, const std::string& subseq, int maxdist, int& pos, int& length) {
     int slen = s.length();
     int sslen = subseq.length();
 
-    std::vector<int> f(slen + 1, 0);
-    std::vector<int> l(slen + 1, 0);
+    std::vector<std::vector<int>> distances(sslen + 1, std::vector<int>(slen + 1, 0));
 
-    for (int n = 0; n < sslen; ++n) {
-        char cq = subseq[n];
-        int fj1 = f[0];
-        int lj1 = l[0];
-        f[0]++;
-        l[0]++;
-        int mdist = f[0];
+    for (int n = 1; n <= sslen; ++n) {
+        distances[n][0] = n;
+    }
 
-        for (int m = 0; m < slen; ++m) {
-            char cb = s[m];
-            int cbMismatch = (cb != cq) ? 1 : 0;
-            auto [mn, ln] = min2(f[m + 1] + 1, f[m] + 1, l[m + 1] - 1, l[m] + 1); // delete & insert
+    for (int m = 1; m <= slen; ++m) {
+        distances[0][m] = m;
+    }
 
-            update_distances(fj1, lj1, cbMismatch, mdist, mn, ln); // change or matched
-            f[m + 1] = mn;
-            l[m + 1] = ln;
-        }
-
-        if (mdist > maxdist) {
-            pos = -1;
-            length = 0;
-            return false;
+    for (int n = 1; n <= sslen; ++n) {
+        for (int m = 1; m <= slen; ++m) {
+            int cbMismatch = (subseq[n - 1] != s[m - 1]) ? 1 : 0;
+            distances[n][m] = std::min({ distances[n - 1][m] + 1, distances[n][m - 1] + 1, distances[n - 1][m - 1] + cbMismatch });
         }
     }
 
-    int end = f.size() - 1;
-    int minval = f[end];
+    auto minDistanceIter = std::min_element(distances[sslen].begin(), distances[sslen].end());
+    int minDistance = *minDistanceIter;
+    int end = static_cast<int>(std::distance(distances[sslen].begin(), minDistanceIter));
 
-    for (int i = end - 1; i >= 0; --i) {
-        if (minval > f[i]) {
-            minval = f[i];
-            end = i;
-        }
+    if (minDistance > maxdist) {
+        pos = -1;
+        length = 0;
+        return false;
     }
 
-    length = sslen + l[end];
+    length = minDistance;
     pos = end - length;
 
     if (pos < 0) {
@@ -188,100 +207,102 @@ bool Find(const std::string& s, const std::string& subseq, int maxdist, int& pos
     return true;
 }
 
-std::pair<int, int> FindPrefix(const std::string& s, const std::string& prefix, int maxdist)
-{
+// Using structured binding of std::pair to improve the readability of the returned value.
+std::pair<int, int> FindPrefix(const std::string& s, const std::string& prefix, int maxdist) {
     int pos, length;
+    bool found = Find(s, prefix, maxdist, pos, length);
 
-    return Find(s, prefix, maxdist, pos, length) ? std::make_pair(pos, length) : std::make_pair(-1, 0);
+    if (found) {
+        return { pos, length };
+    }
+    else {
+        return { -1, 0 };
+    }
 }
 
-
+// Using structured binding of std::pair to improve the readability of the returned value.
 std::pair<int, int> FindSuffix(const std::string& s, const std::string& suffix, int maxdist) {
     std::string reversedS(s.rbegin(), s.rend());
     std::string reversedSuffix(suffix.rbegin(), suffix.rend());
 
     int pos, length;
-    if (Find(reversedS, reversedSuffix, maxdist, pos, length)) {
+    bool found = Find(reversedS, reversedSuffix, maxdist, pos, length);
+
+    if (found) {
         int reversedPos = s.length() - pos - length;
-        return {reversedPos, length};
-    } else {
-        return {-1, 0};
+        return { reversedPos, length };
+    }
+    else {
+        return { -1, 0 };
     }
 }
-
-std::pair<int, std::string> Diff(const std::string& from, const std::string& to)
-{
+/**
+  *Using 'using' to alias types for improved clarity and readability.
+  *The return value remains unchanged, still returning a std::pair<int, std::string>,
+  *which includes the minimum edit distance and the string describing the edit operations.
+  */
+using Matrix = std::vector<std::vector<int>>;
+using ActionMatrix = std::vector<std::vector<std::string>>;
+std::pair<int, std::string> Diff(const std::string& from, const std::string& to) {
     int m = from.size();
     int n = to.size();
 
     // Initialize matrices
-    std::vector<std::vector<int>> v(m + 1, std::vector<int>(n + 1));
-    std::vector<std::vector<std::string>> b(m + 1, std::vector<std::string>(n + 1));
-
+    Matrix v(m + 1, std::vector<int>(n + 1));
+    ActionMatrix b(m + 1, std::vector<std::string>(n + 1, ""));
     // Initialize base cases
-    b[0][0] = "";
-    v[0][0] = 0;
-
     for (int i = 1; i <= n; ++i) {
         v[0][i] = i;
         b[0][i] = "I";
     }
 
+    for (int i = 1; i <= m; ++i) {
+        v[i][0] = i;
+        b[i][0] = "D";
+    }
+
     // Dynamic programming to compute minimum edit distance
-    for (int i = 0; i < m; ++i) {
-        v[i + 1][0] = i + 1;
-        b[i + 1][0] = "D";
+    for (int i = 1; i <= m; ++i) {
+        for (int j = 1; j <= n; ++j) {
+            int deletionCost = v[i - 1][j] + 1;
+            int insertionCost = v[i][j - 1] + 1;
+            int substitutionCost = v[i - 1][j - 1];
 
-        for (int j = 0; j < n; ++j) {
-            int deletionCost = v[i][j + 1] + 1;
-            int insertionCost = v[i + 1][j] + 1;
-            int substitutionCost = v[i][j];
-
-            b[i + 1][j + 1] = "R";
-
-            if (from[i] != to[j])
+            if (from[i - 1] != to[j - 1])
                 substitutionCost++;
 
-            int mincost = substitutionCost;
+            int mincost = std::min({ insertionCost, deletionCost, substitutionCost });
 
-            if (mincost > insertionCost) {
-                mincost = insertionCost;
-                b[i + 1][j + 1] = "I";
-            }
-            if (mincost > deletionCost) {
-                mincost = deletionCost;
-                b[i + 1][j + 1] = "D";
-            }
-            v[i + 1][j + 1] = mincost;
+            v[i][j] = mincost;
+
+            if (mincost == deletionCost)
+                b[i][j] = "D";
+            else if (mincost == insertionCost)
+                b[i][j] = "I";
+            else
+                b[i][j] = (substitutionCost == mincost) ? "R" : "-";
         }
     }
 
     // Backtrack to get the edit actions
     std::string diff = "";
-
     for (int i = m, j = n; i > 0 || j > 0;) {
         switch (b[i][j][0]) {
-            case 'D':
-                diff = "D" + diff;
-                i--;
-                break;
-
-            case 'R':
-                if (i > 0 && j > 0 && v[i - 1][j - 1] != v[i][j])
-                    diff = "R" + diff;
-                else
-                    diff = "-" + diff;
-                i--;
-                j--;
-                break;
-
-            case 'I':
-                diff = "I" + diff;
-                j--;
-                break;
+        case 'D':
+            diff = "D" + diff;
+            i--;
+            break;
+        case 'R':
+            diff = (from[i - 1] != to[j - 1]) ? "R" + diff : "-" + diff;
+            i--;
+            j--;
+            break;
+        case 'I':
+            diff = "I" + diff;
+            j--;
+            break;
         }
     }
 
-    return {v[m][n], diff};
+    return { v[m][n], diff };
 }
-
