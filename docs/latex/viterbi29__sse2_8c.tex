@@ -1,0 +1,88 @@
+\hypertarget{viterbi29__sse2_8c}{}\doxysection{libfec-\/master/viterbi29\+\_\+sse2.c File Reference}
+\label{viterbi29__sse2_8c}\index{libfec-\/master/viterbi29\_sse2.c@{libfec-\/master/viterbi29\_sse2.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include $<$emmintrin.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fec.\+h\char`\"{}}\newline
+Include dependency graph for viterbi29\+\_\+sse2.\+c\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionmetric__t}{metric\+\_\+t}}
+\item 
+union \mbox{\hyperlink{uniondecision__t}{decision\+\_\+t}}
+\item 
+union \mbox{\hyperlink{unionbranchtab29}{branchtab29}}
+\item 
+struct \mbox{\hyperlink{structv29}{v29}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{viterbi29__sse2_8c_acb101f2c1d2e1c0393e2b75b9aaa2b4b}{init\+\_\+viterbi29\+\_\+sse2}} (void $\ast$p, int starting\+\_\+state)
+\item 
+void \mbox{\hyperlink{viterbi29__sse2_8c_aeb3fa0713b04506a486d4827de3a1645}{set\+\_\+viterbi29\+\_\+polynomial\+\_\+sse2}} (int polys\mbox{[}2\mbox{]})
+\item 
+void $\ast$ \mbox{\hyperlink{viterbi29__sse2_8c_a809f1d29292b6d11d860c91af4450712}{create\+\_\+viterbi29\+\_\+sse2}} (int len)
+\item 
+int \mbox{\hyperlink{viterbi29__sse2_8c_a166a7622984e2d46a38368faf99cfebc}{chainback\+\_\+viterbi29\+\_\+sse2}} (void $\ast$p, unsigned char $\ast$data, unsigned int nbits, unsigned int endstate)
+\item 
+void \mbox{\hyperlink{viterbi29__sse2_8c_a0d60240497a07dfad119266336f869dd}{delete\+\_\+viterbi29\+\_\+sse2}} (void $\ast$p)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionbranchtab29}{branchtab29}} \mbox{\hyperlink{viterbi29__sse2_8c_af5567a3992f9be8f2c75657203faa73c}{Branchtab29\+\_\+sse2}} \mbox{[}2\mbox{]}
+\item 
+static int \mbox{\hyperlink{viterbi29__sse2_8c_a53784da1eac04d4534802b28233ab7d7}{Init}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{viterbi29__sse2_8c_a166a7622984e2d46a38368faf99cfebc}\label{viterbi29__sse2_8c_a166a7622984e2d46a38368faf99cfebc}} 
+\index{viterbi29\_sse2.c@{viterbi29\_sse2.c}!chainback\_viterbi29\_sse2@{chainback\_viterbi29\_sse2}}
+\index{chainback\_viterbi29\_sse2@{chainback\_viterbi29\_sse2}!viterbi29\_sse2.c@{viterbi29\_sse2.c}}
+\doxysubsubsection{\texorpdfstring{chainback\_viterbi29\_sse2()}{chainback\_viterbi29\_sse2()}}
+{\footnotesize\ttfamily int chainback\+\_\+viterbi29\+\_\+sse2 (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{unsigned char $\ast$}]{data,  }\item[{unsigned int}]{nbits,  }\item[{unsigned int}]{endstate }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi29__sse2_8c_a809f1d29292b6d11d860c91af4450712}\label{viterbi29__sse2_8c_a809f1d29292b6d11d860c91af4450712}} 
+\index{viterbi29\_sse2.c@{viterbi29\_sse2.c}!create\_viterbi29\_sse2@{create\_viterbi29\_sse2}}
+\index{create\_viterbi29\_sse2@{create\_viterbi29\_sse2}!viterbi29\_sse2.c@{viterbi29\_sse2.c}}
+\doxysubsubsection{\texorpdfstring{create\_viterbi29\_sse2()}{create\_viterbi29\_sse2()}}
+{\footnotesize\ttfamily void$\ast$ create\+\_\+viterbi29\+\_\+sse2 (\begin{DoxyParamCaption}\item[{int}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi29__sse2_8c_a0d60240497a07dfad119266336f869dd}\label{viterbi29__sse2_8c_a0d60240497a07dfad119266336f869dd}} 
+\index{viterbi29\_sse2.c@{viterbi29\_sse2.c}!delete\_viterbi29\_sse2@{delete\_viterbi29\_sse2}}
+\index{delete\_viterbi29\_sse2@{delete\_viterbi29\_sse2}!viterbi29\_sse2.c@{viterbi29\_sse2.c}}
+\doxysubsubsection{\texorpdfstring{delete\_viterbi29\_sse2()}{delete\_viterbi29\_sse2()}}
+{\footnotesize\ttfamily void delete\+\_\+viterbi29\+\_\+sse2 (\begin{DoxyParamCaption}\item[{void $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi29__sse2_8c_acb101f2c1d2e1c0393e2b75b9aaa2b4b}\label{viterbi29__sse2_8c_acb101f2c1d2e1c0393e2b75b9aaa2b4b}} 
+\index{viterbi29\_sse2.c@{viterbi29\_sse2.c}!init\_viterbi29\_sse2@{init\_viterbi29\_sse2}}
+\index{init\_viterbi29\_sse2@{init\_viterbi29\_sse2}!viterbi29\_sse2.c@{viterbi29\_sse2.c}}
+\doxysubsubsection{\texorpdfstring{init\_viterbi29\_sse2()}{init\_viterbi29\_sse2()}}
+{\footnotesize\ttfamily int init\+\_\+viterbi29\+\_\+sse2 (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{int}]{starting\+\_\+state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi29__sse2_8c_aeb3fa0713b04506a486d4827de3a1645}\label{viterbi29__sse2_8c_aeb3fa0713b04506a486d4827de3a1645}} 
+\index{viterbi29\_sse2.c@{viterbi29\_sse2.c}!set\_viterbi29\_polynomial\_sse2@{set\_viterbi29\_polynomial\_sse2}}
+\index{set\_viterbi29\_polynomial\_sse2@{set\_viterbi29\_polynomial\_sse2}!viterbi29\_sse2.c@{viterbi29\_sse2.c}}
+\doxysubsubsection{\texorpdfstring{set\_viterbi29\_polynomial\_sse2()}{set\_viterbi29\_polynomial\_sse2()}}
+{\footnotesize\ttfamily void set\+\_\+viterbi29\+\_\+polynomial\+\_\+sse2 (\begin{DoxyParamCaption}\item[{int}]{polys\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{viterbi29__sse2_8c_af5567a3992f9be8f2c75657203faa73c}\label{viterbi29__sse2_8c_af5567a3992f9be8f2c75657203faa73c}} 
+\index{viterbi29\_sse2.c@{viterbi29\_sse2.c}!Branchtab29\_sse2@{Branchtab29\_sse2}}
+\index{Branchtab29\_sse2@{Branchtab29\_sse2}!viterbi29\_sse2.c@{viterbi29\_sse2.c}}
+\doxysubsubsection{\texorpdfstring{Branchtab29\_sse2}{Branchtab29\_sse2}}
+{\footnotesize\ttfamily union \mbox{\hyperlink{unionbranchtab29}{branchtab29}} Branchtab29\+\_\+sse2\mbox{[}2\mbox{]}}
+
+\mbox{\Hypertarget{viterbi29__sse2_8c_a53784da1eac04d4534802b28233ab7d7}\label{viterbi29__sse2_8c_a53784da1eac04d4534802b28233ab7d7}} 
+\index{viterbi29\_sse2.c@{viterbi29\_sse2.c}!Init@{Init}}
+\index{Init@{Init}!viterbi29\_sse2.c@{viterbi29\_sse2.c}}
+\doxysubsubsection{\texorpdfstring{Init}{Init}}
+{\footnotesize\ttfamily int Init = 0\hspace{0.3cm}{\ttfamily [static]}}
+

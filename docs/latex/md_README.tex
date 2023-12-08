@@ -1,0 +1,171 @@
+\hypertarget{md_README_autotoc_md1}{}\doxysubsection{Utilizing synthetic DNA 🧬 as a digital storage 💾 medium}\label{md_README_autotoc_md1}
+A refactoring of the \href{https://github.com/lanl/adscodex}{\texttt{ Adaptive DNA Storage Codec (ADS Codex)}} in \char`\"{}modern\char`\"{} C++.\hypertarget{md_README_autotoc_md2}{}\doxysection{Table of Contents}\label{md_README_autotoc_md2}
+
+\begin{DoxyItemize}
+\item \href{\#external-dependencies}{\texttt{ External Dependencies}}
+\item \href{\#installation}{\texttt{ Installation}}
+\item \href{\#documentation}{\texttt{ Documentation}}
+\item \href{\#todo}{\texttt{ TODO}}
+\begin{DoxyItemize}
+\item \href{\#implement-c20-features}{\texttt{ Implement C++20 Features}}
+\item \href{\#implement-reedsolomon-error-correction}{\texttt{ Implement Reed–\+Solomon Error Correction}}
+\item \href{\#implement-googles-testing-framework}{\texttt{ Implementing Google\textquotesingle{}s Testing Framework}}
+\end{DoxyItemize}
+\item \href{\#plans-for-future-releases}{\texttt{ Plans for Future Releases}}
+\item \href{\#acknowledgments}{\texttt{ Acknowledgments}}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md3}{}\doxysection{External Dependencies}\label{md_README_autotoc_md3}
+
+\begin{DoxyItemize}
+\item {\bfseries{zlib for C++\+:}} a library for handling .gz files, necessary to support direct reading of compressed\+FASTQs. More information about zlib \href{https://www.zlib.net/}{\texttt{ here}}.
+\item {\bfseries{CMake for Building\+:}} You can download CMake from \href{https://cmake.org/}{\texttt{ cmake.\+org}} or with your package manager.
+\item {\bfseries{Doxygen for Documentation\+:}} used for automatically generating documentation from source code comments. More information about Doxygen can be found \href{https://www.doxygen.nl/}{\texttt{ here}}. \begin{quote}
+Note that the Doxygen documentation for this project adheres to the style guide available \href{https://micro-os-plus.github.io/develop/doxygen-style-guide/}{\texttt{ here}}. \end{quote}
+
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md4}{}\doxysection{Installation}\label{md_README_autotoc_md4}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Clone the Decode\+Ncode\+Anything repository\+:}}
+
+\`{}\`{}\`{}bash git clone \href{https://github.com/rdnajac/DecodeNcodeAnything.git}{\texttt{ https\+://github.\+com/rdnajac/\+Decode\+Ncode\+Anything.\+git}} cd Decode\+Ncode\+Anything \`{}\`{}\`{}
+\item {\bfseries{Create a build directory\+:}}
+
+\`{}\`{}\`{}bash mkdir build cd build \`{}\`{}\`{}
+\item {\bfseries{Configure the project with CMake\+:}}
+
+\`{}\`{}\`{}bash cmake .. \`{}\`{}\`{}
+\item {\bfseries{Build the project\+:}}
+
+\`{}\`{}\`{}bash make \`{}\`{}\`{}
+\end{DoxyEnumerate}
+
+Adjust the build commands based on your specific build system or requirements. Alternatively, you can run the default installation script\+: {\ttfamily scripts/build.\+sh} from the repo\textquotesingle{}s top-\/level directory.\hypertarget{md_README_autotoc_md5}{}\doxysection{Documentation}\label{md_README_autotoc_md5}
+To generate documentation using Doxygen, follow these steps\+:
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Install Doxygen\+:}}
+
+Ensure that Doxygen is installed on your system. If it\textquotesingle{}s not installed, you can typically install it using your package manager. For example, on Debian-\/based systems\+:
+
+\`{}\`{}\`{}bash sudo apt-\/get install doxygen \`{}\`{}\`{}
+
+On Red Hat-\/based systems\+:
+
+\`{}\`{}\`{}bash sudo yum install doxygen \`{}\`{}\`{}
+
+Refer to the \href{https://www.doxygen.nl/manual/install.html}{\texttt{ Doxygen installation guide}} for more details.
+\item {\bfseries{Navigate to the project root\+:}}
+
+\`{}\`{}\`{}bash cd /path/to/\+Decode\+Ncode\+Anything \`{}\`{}\`{}
+\item {\bfseries{Run the documentation generation script\+:}}
+
+\`{}\`{}\`{}bash scripts/gen\+\_\+docs.\+sh \`{}\`{}\`{}
+
+This script generates a new Doxyfile, configures it, and runs Doxygen to generate documentation in the {\ttfamily ./docs} folder.
+\item {\bfseries{Access the documentation\+:}}
+
+Open the generated documentation by navigating to the specified output directory\+:
+
+\`{}\`{}\`{}bash cd /path/to/\+Decode\+Ncode\+Anything/docs \`{}\`{}\`{}
+
+Open the {\ttfamily index.\+html} file in a web browser to explore the generated documentation.
+\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md6}{}\doxysection{TODO}\label{md_README_autotoc_md6}
+\hypertarget{md_README_autotoc_md7}{}\doxysubsection{Implement C++20 Features}\label{md_README_autotoc_md7}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Concepts\+:}} Express constraints on template parameters, improving template code readability. \`{}\`{}\`{}cpp template $<$typename T$>$ concept Integral = std\+::is\+\_\+integral\+\_\+v$<$\+T$>$; void function(\+Integral auto value) \{ /$\ast$ Implementation $\ast$/ \} \`{}\`{}\`{}
+\item {\bfseries{Ranges\+:}} Library for range-\/based algorithms and views, simplifying the manipulation of sequences of values. \`{}\`{}\`{}cpp std\+::vector$<$int$>$ numbers = \{1, 2, 3, 4, 5\}; auto even\+Numbers = numbers $\vert$ std\+::views\+::filter(\mbox{[}\mbox{]}(int n) \{ return n \% 2 == 0; \}); \`{}\`{}\`{}
+\item {\bfseries{Coroutines\+:}} More efficient and readable asynchronous code. \`{}\`{}\`{}cpp \#include $<$iostream$>$ \#include $<$coroutine$>$ generator$<$int$>$ generate\+Numbers(int start, int end) \{ for (int i = start; i $<$= end; ++i) co\+\_\+yield i; \} // Usage\+: auto numbers = generate\+Numbers(1, 5); for (int num \+: numbers) \{ std\+::cout $<$$<$ num $<$$<$ \char`\"{} \char`\"{}; \} \`{}\`{}\`{}
+\item $\ast$$\ast$\+Three-\/\+Way Comparison Operator ({\ttfamily $<$=$>$})\+:$\ast$$\ast$ The spaceship operator simplifies the implementation of comparison operations. \`{}\`{}\`{}cpp struct Person \{ std\+::string name; int age; auto operator$<$=$>$(const Person\& other) const = default; \}; \`{}\`{}\`{}
+\item {\bfseries{Calendar and Timezone Library\+:}} Enhanced {\ttfamily $<$chrono$>$} library for working with calendars and time zones. \`{}\`{}\`{}cpp \#include $<$chrono$>$ \#include $<$iostream$>$ auto current\+Time = std\+::chrono\+::system\+\_\+clock\+::now(); auto time\+Point = std\+::chrono\+::floor$<$std\+::chrono\+::days$>$(current\+Time); \`{}\`{}\`{}
+\item {\bfseries{Improvements to {\ttfamily std\+::span}\+:}} Class template for non-\/owning references to contiguous sequences. \`{}\`{}\`{}cpp \#include  \#include $<$iostream$>$ std\+::array$<$int, 5$>$ data = \{1, 2, 3, 4, 5\}; std\+::span$<$int, 5$>$ data\+Span = data; \`{}\`{}\`{}
+\item {\bfseries{Modules\+:}} Improve the modularity of C++ code and reduce compilation times. \`{}\`{}\`{}cpp import std.\+core; // hypothetical module import syntax int \mbox{\hyperlink{CMakeCXXCompilerId_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main()}} \{ std\+::cout $<$$<$ \char`\"{}\+Hello, Modules!\textbackslash{}n\char`\"{}; \} \`{}\`{}\`{}
+\item {\bfseries{Improved {\ttfamily constexpr} Support\+:}} Allows for more complex computations at compile-\/time. \`{}\`{}\`{}cpp constexpr int fibonacci(int n) \{ return (n $<$= 1) ? n \+: (fibonacci(n -\/ 1) + fibonacci(n -\/ 2)); \} constexpr int result = fibonacci(5); \`{}\`{}\`{}
+\item {\bfseries{Changes to {\ttfamily std\+::string}\+:}}
+\begin{DoxyItemize}
+\item $\ast$$\ast${\ttfamily starts\+\_\+with} and {\ttfamily ends\+\_\+with} Member Functions\+:$\ast$$\ast$ Check whether a string starts or ends with a specified substring. \`{}\`{}\`{}cpp std\+::string my\+String = \char`\"{}\+Hello, World!\char`\"{}; if (my\+String.\+starts\+\_\+with(\char`\"{}\+Hello\char`\"{})) \{ // Code to handle the case where the string starts with \char`\"{}\+Hello\char`\"{} \} \`{}\`{}{\ttfamily 
+\begin{DoxyItemize}
+\item $\ast$$\ast$reserve{\ttfamily Function for Capacity Management\+:$\ast$$\ast$ Preallocate memory for a specified number of characters, helping to manage the capacity of the string more efficiently. }\`{}\`{}cpp std\+::string my\+String; my\+String.\+reserve(420); // Reserve space for 420 characters \`{}\`{}{\ttfamily }
+\item {\ttfamily $\ast$$\ast$}erase{\ttfamily for Removing Elements\+:$\ast$$\ast$ A more flexible idiom for removing elements from a string at specific positions or ranges. }\`{}\`{}cpp std\+::string my\+String = \char`\"{}\+Hello, World!\char`\"{}; my\+String.\+erase(my\+String.\+begin() + 7); // Erase the character at position 7 \`{}\`{}\`{}
+\end{DoxyItemize}}
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+{\ttfamily }\hypertarget{md_README_autotoc_md8}{}\doxysubsection{Implement Reed–\+Solomon Error Correction}\label{md_README_autotoc_md8}
+{\ttfamily  Existing C++ libraries for Reed–\+Solomon error correction to consider\+:
+\begin{DoxyItemize}
+\item \href{https://github.com/ArashPartow/schifra}{\texttt{ schifra}}\+: A C++ template library for Reed–\+Solomon error correction.
+\item \href{https://github.com/FluffyJay1/ReedSolomon}{\texttt{ Reed\+Solomon}}\+: A C++ implementation of Reed–\+Solomon codes.
+\item \href{https://www.kernel.org/doc/html/v4.18/core-api/librs.html}{\texttt{ librs}}\+: The Linux kernel\textquotesingle{}s Reed–\+Solomon library.
+\end{DoxyItemize}}
+
+{\ttfamily \begin{quote}
+Reed–\+Solomon Error Correction is a mathematical technique that allows the correction of errors in transmitted or stored data to enhance reliability and robustness. It is widely used in various applications, including data storage, QR codes, and digital communication. \end{quote}
+Resources for understanding Reed–\+Solomon error correction\+:
+\begin{DoxyItemize}
+\item \href{https://en.wikipedia.org/wiki/Reed\%E2\%80\%93Solomon_error_correction}{\texttt{ Reed–\+Solomon Codes on Wikipedia}}
+\item \href{https://www.cs.cmu.edu/~guyb/realworld/reedsolomon/reed_solomon_codes.html}{\texttt{ Introduction to Reed–\+Solomon Codes}}
+\end{DoxyItemize}}
+
+{\ttfamily }\hypertarget{md_README_autotoc_md9}{}\doxysubsection{Implement $<$a href=\char`\"{}https\+://github.\+com/google/googletest\char`\"{}$>$\+Google\textquotesingle{}s testing framework$<$/a$>$.}\label{md_README_autotoc_md9}
+{\ttfamily  Example\+:}
+
+{\ttfamily 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <gtest/gtest.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{TEST(ADSCodexTest, EncodingTest) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Test encoding functionality of the ADS Codex}}
+\DoxyCodeLine{    \textcolor{comment}{// ...}}
+\DoxyCodeLine{    ASSERT\_TRUE(\textcolor{comment}{/* Some condition indicating success */});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{TEST(ADSCodexTest, DecodingTest) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Test decoding functionality of the ADS Codex}}
+\DoxyCodeLine{    \textcolor{comment}{// ...}}
+\DoxyCodeLine{    ASSERT\_TRUE(\textcolor{comment}{/* Some condition indicating success */});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// Add more tests as needed...}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int} \mbox{\hyperlink{CMakeCXXCompilerId_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv) \{}
+\DoxyCodeLine{    ::testing::InitGoogleTest(\&argc, argv);}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} RUN\_ALL\_TESTS();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+}
+
+{\ttfamily }\hypertarget{md_README_autotoc_md10}{}\doxysection{Plans for Future Releases}\label{md_README_autotoc_md10}
+{\ttfamily 
+\begin{DoxyEnumerate}
+\item {\bfseries{Performance Optimization with Lookup Tables\+:}}
+\begin{DoxyItemize}
+\item Introduce and leverage lookup tables for performance optimization. Lookup tables can enhance the efficiency of certain operations, contributing to faster encoding and decoding processes.
+\end{DoxyItemize}
+\item {\bfseries{Abstract Interface for \mbox{\hyperlink{classOligo}{Oligo}} Viability Criteria (H4\+G2)\+:}}
+\begin{DoxyItemize}
+\item Introduce an abstract interface for evaluating the viability of oligonucleotides based on specific criteria. One such criteria, denoted as H4\+G2, prevents the inclusion of oligos with homopolymers longer than 4 nucleotides (for A, T, and C) or 2 nucleotides for G. Developers can extend this interface to implement custom viability criteria.
+\end{DoxyItemize}
+\item {\bfseries{Expanded Documentation\+:}}
+\begin{DoxyItemize}
+\item Enhance and expand the documentation to provide comprehensive guidance on usage and potential extensions.
+\end{DoxyItemize}
+\end{DoxyEnumerate}}
+
+{\ttfamily These plans are subject to change based on community feedback and project priorities. Stay tuned for updates and announcements related to future releases.}
+
+{\ttfamily If you have specific features or improvements you would like to see in future releases, feel free to contribute to the discussion on our \href{https://github.com/rdnajac/DecodeNcodeAnything}{\texttt{ Git\+Hub repository}} or open a new issue.}
+
+{\ttfamily }\hypertarget{md_README_autotoc_md11}{}\doxysection{Acknowledgments}\label{md_README_autotoc_md11}
+{\ttfamily 
+\begin{DoxyItemize}
+\item \href{https://github.com/lanl/adscodex}{\texttt{ Adaptive DNA Storage Codec (ADS Codex)}}\+: The foundation for this project.
+\item \href{https://github.com/google/googletest}{\texttt{ Google Test}}\+: For providing a robust testing framework.
+\item \href{https://cmake.org/}{\texttt{ CMake}}\+: Used for building the project.
+\item \href{https://www.doxygen.nl/}{\texttt{ Doxygen}}\+: Used for generating documentation from source code comments.
+\item \href{https://www.illumina.com/}{\texttt{ Illumina}}\+: For contributions to DNA sequencing technology.
+\item \href{https://nanoporetech.com/}{\texttt{ Oxford Nanopore Technology}}\+: For advancements in nanopore sequencing.
+\item \href{https://kilobaser.com/}{\texttt{ Kilobaser}}\+: For innovations in DNA synthesis technology.
+\item \href{http://www.stroustrup.com/}{\texttt{ Bjarne Stroustrup}}\+: For his foundational contributions to C++ and for his guidance in this project. 
+\end{DoxyItemize}}

@@ -1,0 +1,62 @@
+\hypertarget{ccsds_8h}{}\doxysection{libfec-\/master/ccsds.h File Reference}
+\label{ccsds_8h}\index{libfec-\/master/ccsds.h@{libfec-\/master/ccsds.h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ccsds_8h_a170755e30c36be4904106b7bb279b1ec}{NN}}~255
+\item 
+\#define \mbox{\hyperlink{ccsds_8h_a5f5b4d84f10e6a71bef7c65548a8e317}{NROOTS}}~32
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned char \mbox{\hyperlink{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}{data\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \mbox{\hyperlink{ccsds_8h_ac91ed521380923edb62c01a1ad650152}{Taltab}} \mbox{[}$\,$\mbox{]}
+\item 
+unsigned char \mbox{\hyperlink{ccsds_8h_afa58e689b97e42deb51097e890e44f1c}{Tal1tab}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{ccsds_8h_a170755e30c36be4904106b7bb279b1ec}\label{ccsds_8h_a170755e30c36be4904106b7bb279b1ec}} 
+\index{ccsds.h@{ccsds.h}!NN@{NN}}
+\index{NN@{NN}!ccsds.h@{ccsds.h}}
+\doxysubsubsection{\texorpdfstring{NN}{NN}}
+{\footnotesize\ttfamily \#define NN~255}
+
+\mbox{\Hypertarget{ccsds_8h_a5f5b4d84f10e6a71bef7c65548a8e317}\label{ccsds_8h_a5f5b4d84f10e6a71bef7c65548a8e317}} 
+\index{ccsds.h@{ccsds.h}!NROOTS@{NROOTS}}
+\index{NROOTS@{NROOTS}!ccsds.h@{ccsds.h}}
+\doxysubsubsection{\texorpdfstring{NROOTS}{NROOTS}}
+{\footnotesize\ttfamily \#define NROOTS~32}
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}\label{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}} 
+\index{ccsds.h@{ccsds.h}!data\_t@{data\_t}}
+\index{data\_t@{data\_t}!ccsds.h@{ccsds.h}}
+\doxysubsubsection{\texorpdfstring{data\_t}{data\_t}}
+{\footnotesize\ttfamily typedef unsigned char \mbox{\hyperlink{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}{data\+\_\+t}}}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{ccsds_8h_afa58e689b97e42deb51097e890e44f1c}\label{ccsds_8h_afa58e689b97e42deb51097e890e44f1c}} 
+\index{ccsds.h@{ccsds.h}!Tal1tab@{Tal1tab}}
+\index{Tal1tab@{Tal1tab}!ccsds.h@{ccsds.h}}
+\doxysubsubsection{\texorpdfstring{Tal1tab}{Tal1tab}}
+{\footnotesize\ttfamily unsigned char Tal1tab\mbox{[}$\,$\mbox{]}}
+
+\mbox{\Hypertarget{ccsds_8h_ac91ed521380923edb62c01a1ad650152}\label{ccsds_8h_ac91ed521380923edb62c01a1ad650152}} 
+\index{ccsds.h@{ccsds.h}!Taltab@{Taltab}}
+\index{Taltab@{Taltab}!ccsds.h@{ccsds.h}}
+\doxysubsubsection{\texorpdfstring{Taltab}{Taltab}}
+{\footnotesize\ttfamily unsigned char Taltab\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+

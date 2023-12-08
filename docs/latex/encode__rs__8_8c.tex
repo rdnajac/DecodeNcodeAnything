@@ -1,0 +1,89 @@
+\hypertarget{encode__rs__8_8c}{}\doxysection{libfec-\/master/encode\+\_\+rs\+\_\+8.c File Reference}
+\label{encode__rs__8_8c}\index{libfec-\/master/encode\_rs\_8.c@{libfec-\/master/encode\_rs\_8.c}}
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fixed.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}encode\+\_\+rs.\+h\char`\"{}}\newline
+Include dependency graph for encode\+\_\+rs\+\_\+8.\+c\+:
+% FIG 0
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \newline
+\mbox{\hyperlink{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba6ce26a62afab55d7606ad4e92428b30c}{UNKNOWN}} =0
+, \mbox{\hyperlink{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55baca3af98d4c9f6368a03b5a0e3fc16d92}{MMX}}
+, \mbox{\hyperlink{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba403b03371fd04961f31f99b254cf8e57}{SSE}}
+, \mbox{\hyperlink{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba8d896e4fb625a47eaa49059a390971df}{SSE2}}
+, \newline
+\mbox{\hyperlink{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55baeea66ae42c678f5f715cab106ddcd1cc}{ALTIVEC}}
+, \mbox{\hyperlink{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba8268527d969e4ef493d3f35844a0b841}{PORT}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{encode__rs__8_8c_a179ac6d4a995336caee4c90296bf6be6}{encode\+\_\+rs\+\_\+8\+\_\+c}} (\mbox{\hyperlink{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}{data\+\_\+t}} $\ast$data, \mbox{\hyperlink{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}{data\+\_\+t}} $\ast$\mbox{\hyperlink{fec_8h_a1b4b877dd9c858c9c0d6c4d7492fa443}{parity}}, int \mbox{\hyperlink{init__rs_8h_a270356b7bc46be2aef3f93d1b50334cf}{pad}})
+\item 
+void \mbox{\hyperlink{encode__rs__8_8c_a888ab25ac1f787cba08bfbf06b0cc22f}{encode\+\_\+rs\+\_\+8}} (\mbox{\hyperlink{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}{data\+\_\+t}} $\ast$data, \mbox{\hyperlink{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}{data\+\_\+t}} $\ast$\mbox{\hyperlink{fec_8h_a1b4b877dd9c858c9c0d6c4d7492fa443}{parity}}, int \mbox{\hyperlink{init__rs_8h_a270356b7bc46be2aef3f93d1b50334cf}{pad}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static enum  \{ ... \}  \mbox{\hyperlink{encode__rs__8_8c_a681291241ad7abcda555582868809bbb}{cpu\+\_\+mode}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55b}\label{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55b}} 
+\doxysubsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN@{UNKNOWN}!encode\_rs\_8.c@{encode\_rs\_8.c}}\index{encode\_rs\_8.c@{encode\_rs\_8.c}!UNKNOWN@{UNKNOWN}}}\mbox{\Hypertarget{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba6ce26a62afab55d7606ad4e92428b30c}\label{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba6ce26a62afab55d7606ad4e92428b30c}} 
+UNKNOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MMX@{MMX}!encode\_rs\_8.c@{encode\_rs\_8.c}}\index{encode\_rs\_8.c@{encode\_rs\_8.c}!MMX@{MMX}}}\mbox{\Hypertarget{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55baca3af98d4c9f6368a03b5a0e3fc16d92}\label{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55baca3af98d4c9f6368a03b5a0e3fc16d92}} 
+MMX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SSE@{SSE}!encode\_rs\_8.c@{encode\_rs\_8.c}}\index{encode\_rs\_8.c@{encode\_rs\_8.c}!SSE@{SSE}}}\mbox{\Hypertarget{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba403b03371fd04961f31f99b254cf8e57}\label{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba403b03371fd04961f31f99b254cf8e57}} 
+SSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SSE2@{SSE2}!encode\_rs\_8.c@{encode\_rs\_8.c}}\index{encode\_rs\_8.c@{encode\_rs\_8.c}!SSE2@{SSE2}}}\mbox{\Hypertarget{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba8d896e4fb625a47eaa49059a390971df}\label{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba8d896e4fb625a47eaa49059a390971df}} 
+SSE2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ALTIVEC@{ALTIVEC}!encode\_rs\_8.c@{encode\_rs\_8.c}}\index{encode\_rs\_8.c@{encode\_rs\_8.c}!ALTIVEC@{ALTIVEC}}}\mbox{\Hypertarget{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55baeea66ae42c678f5f715cab106ddcd1cc}\label{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55baeea66ae42c678f5f715cab106ddcd1cc}} 
+ALTIVEC&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PORT@{PORT}!encode\_rs\_8.c@{encode\_rs\_8.c}}\index{encode\_rs\_8.c@{encode\_rs\_8.c}!PORT@{PORT}}}\mbox{\Hypertarget{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba8268527d969e4ef493d3f35844a0b841}\label{encode__rs__8_8c_a06fc87d81c62e9abb8790b6e5713c55ba8268527d969e4ef493d3f35844a0b841}} 
+PORT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{encode__rs__8_8c_a888ab25ac1f787cba08bfbf06b0cc22f}\label{encode__rs__8_8c_a888ab25ac1f787cba08bfbf06b0cc22f}} 
+\index{encode\_rs\_8.c@{encode\_rs\_8.c}!encode\_rs\_8@{encode\_rs\_8}}
+\index{encode\_rs\_8@{encode\_rs\_8}!encode\_rs\_8.c@{encode\_rs\_8.c}}
+\doxysubsubsection{\texorpdfstring{encode\_rs\_8()}{encode\_rs\_8()}}
+{\footnotesize\ttfamily void encode\+\_\+rs\+\_\+8 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}{data\+\_\+t}} $\ast$}]{data,  }\item[{\mbox{\hyperlink{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}{data\+\_\+t}} $\ast$}]{parity,  }\item[{int}]{pad }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{encode__rs__8_8c_a179ac6d4a995336caee4c90296bf6be6}\label{encode__rs__8_8c_a179ac6d4a995336caee4c90296bf6be6}} 
+\index{encode\_rs\_8.c@{encode\_rs\_8.c}!encode\_rs\_8\_c@{encode\_rs\_8\_c}}
+\index{encode\_rs\_8\_c@{encode\_rs\_8\_c}!encode\_rs\_8.c@{encode\_rs\_8.c}}
+\doxysubsubsection{\texorpdfstring{encode\_rs\_8\_c()}{encode\_rs\_8\_c()}}
+{\footnotesize\ttfamily static void encode\+\_\+rs\+\_\+8\+\_\+c (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}{data\+\_\+t}} $\ast$}]{data,  }\item[{\mbox{\hyperlink{ccsds_8h_ae91c9d70e1e2c8b657e51de1fff60ada}{data\+\_\+t}} $\ast$}]{parity,  }\item[{int}]{pad }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{encode__rs__8_8c_a681291241ad7abcda555582868809bbb}\label{encode__rs__8_8c_a681291241ad7abcda555582868809bbb}} 
+\index{encode\_rs\_8.c@{encode\_rs\_8.c}!cpu\_mode@{cpu\_mode}}
+\index{cpu\_mode@{cpu\_mode}!encode\_rs\_8.c@{encode\_rs\_8.c}}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily enum \{ ... \}  \mbox{\hyperlink{fec_8h_aa1fc3805dac6f71f457fbbc263105bf6}{cpu\+\_\+mode}}\hspace{0.3cm}{\ttfamily [static]}}
+

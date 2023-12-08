@@ -1,0 +1,96 @@
+\hypertarget{viterbi615__mmx_8c}{}\doxysection{libfec-\/master/viterbi615\+\_\+mmx.c File Reference}
+\label{viterbi615__mmx_8c}\index{libfec-\/master/viterbi615\_mmx.c@{libfec-\/master/viterbi615\_mmx.c}}
+{\ttfamily \#include $<$mmintrin.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fec.\+h\char`\"{}}\newline
+Include dependency graph for viterbi615\+\_\+mmx.\+c\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{uniondecision__t}{decision\+\_\+t}}
+\item 
+union \mbox{\hyperlink{unionmetric__t}{metric\+\_\+t}}
+\item 
+union \mbox{\hyperlink{unionbranchtab615}{branchtab615}}
+\item 
+struct \mbox{\hyperlink{structv615}{v615}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{viterbi615__mmx_8c_ac76b4614aa4f81a37b6d6023cc0ad0a6}{init\+\_\+viterbi615\+\_\+mmx}} (void $\ast$p, int starting\+\_\+state)
+\item 
+void $\ast$ \mbox{\hyperlink{viterbi615__mmx_8c_a70803a430b2862494a02eec88499cf20}{create\+\_\+viterbi615\+\_\+mmx}} (int len)
+\item 
+void \mbox{\hyperlink{viterbi615__mmx_8c_a65fb55730142dd8c422cb3aa39cb0bdd}{set\+\_\+viterbi615\+\_\+polynomial\+\_\+mmx}} (int polys\mbox{[}6\mbox{]})
+\item 
+int \mbox{\hyperlink{viterbi615__mmx_8c_a56441a7d6899280e7f9dd1fa7722baf3}{chainback\+\_\+viterbi615\+\_\+mmx}} (void $\ast$p, unsigned char $\ast$data, unsigned int nbits, unsigned int endstate)
+\item 
+void \mbox{\hyperlink{viterbi615__mmx_8c_a0f0bdb103751bb37d4a1789a8fa5ec19}{delete\+\_\+viterbi615\+\_\+mmx}} (void $\ast$p)
+\item 
+int \mbox{\hyperlink{viterbi615__mmx_8c_a7efec405820e2f6364bbe3d67581b2d6}{update\+\_\+viterbi615\+\_\+blk\+\_\+mmx}} (void $\ast$p, unsigned char $\ast$syms, int nbits)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static union \mbox{\hyperlink{unionbranchtab615}{branchtab615}} \mbox{\hyperlink{viterbi615__mmx_8c_ad3cb238c47f0fd7af6a3bebeaa44b3eb}{Branchtab615}} \mbox{[}6\mbox{]}
+\item 
+static int \mbox{\hyperlink{viterbi615__mmx_8c_a53784da1eac04d4534802b28233ab7d7}{Init}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{viterbi615__mmx_8c_a56441a7d6899280e7f9dd1fa7722baf3}\label{viterbi615__mmx_8c_a56441a7d6899280e7f9dd1fa7722baf3}} 
+\index{viterbi615\_mmx.c@{viterbi615\_mmx.c}!chainback\_viterbi615\_mmx@{chainback\_viterbi615\_mmx}}
+\index{chainback\_viterbi615\_mmx@{chainback\_viterbi615\_mmx}!viterbi615\_mmx.c@{viterbi615\_mmx.c}}
+\doxysubsubsection{\texorpdfstring{chainback\_viterbi615\_mmx()}{chainback\_viterbi615\_mmx()}}
+{\footnotesize\ttfamily int chainback\+\_\+viterbi615\+\_\+mmx (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{unsigned char $\ast$}]{data,  }\item[{unsigned int}]{nbits,  }\item[{unsigned int}]{endstate }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi615__mmx_8c_a70803a430b2862494a02eec88499cf20}\label{viterbi615__mmx_8c_a70803a430b2862494a02eec88499cf20}} 
+\index{viterbi615\_mmx.c@{viterbi615\_mmx.c}!create\_viterbi615\_mmx@{create\_viterbi615\_mmx}}
+\index{create\_viterbi615\_mmx@{create\_viterbi615\_mmx}!viterbi615\_mmx.c@{viterbi615\_mmx.c}}
+\doxysubsubsection{\texorpdfstring{create\_viterbi615\_mmx()}{create\_viterbi615\_mmx()}}
+{\footnotesize\ttfamily void$\ast$ create\+\_\+viterbi615\+\_\+mmx (\begin{DoxyParamCaption}\item[{int}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi615__mmx_8c_a0f0bdb103751bb37d4a1789a8fa5ec19}\label{viterbi615__mmx_8c_a0f0bdb103751bb37d4a1789a8fa5ec19}} 
+\index{viterbi615\_mmx.c@{viterbi615\_mmx.c}!delete\_viterbi615\_mmx@{delete\_viterbi615\_mmx}}
+\index{delete\_viterbi615\_mmx@{delete\_viterbi615\_mmx}!viterbi615\_mmx.c@{viterbi615\_mmx.c}}
+\doxysubsubsection{\texorpdfstring{delete\_viterbi615\_mmx()}{delete\_viterbi615\_mmx()}}
+{\footnotesize\ttfamily void delete\+\_\+viterbi615\+\_\+mmx (\begin{DoxyParamCaption}\item[{void $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi615__mmx_8c_ac76b4614aa4f81a37b6d6023cc0ad0a6}\label{viterbi615__mmx_8c_ac76b4614aa4f81a37b6d6023cc0ad0a6}} 
+\index{viterbi615\_mmx.c@{viterbi615\_mmx.c}!init\_viterbi615\_mmx@{init\_viterbi615\_mmx}}
+\index{init\_viterbi615\_mmx@{init\_viterbi615\_mmx}!viterbi615\_mmx.c@{viterbi615\_mmx.c}}
+\doxysubsubsection{\texorpdfstring{init\_viterbi615\_mmx()}{init\_viterbi615\_mmx()}}
+{\footnotesize\ttfamily int init\+\_\+viterbi615\+\_\+mmx (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{int}]{starting\+\_\+state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi615__mmx_8c_a65fb55730142dd8c422cb3aa39cb0bdd}\label{viterbi615__mmx_8c_a65fb55730142dd8c422cb3aa39cb0bdd}} 
+\index{viterbi615\_mmx.c@{viterbi615\_mmx.c}!set\_viterbi615\_polynomial\_mmx@{set\_viterbi615\_polynomial\_mmx}}
+\index{set\_viterbi615\_polynomial\_mmx@{set\_viterbi615\_polynomial\_mmx}!viterbi615\_mmx.c@{viterbi615\_mmx.c}}
+\doxysubsubsection{\texorpdfstring{set\_viterbi615\_polynomial\_mmx()}{set\_viterbi615\_polynomial\_mmx()}}
+{\footnotesize\ttfamily void set\+\_\+viterbi615\+\_\+polynomial\+\_\+mmx (\begin{DoxyParamCaption}\item[{int}]{polys\mbox{[}6\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi615__mmx_8c_a7efec405820e2f6364bbe3d67581b2d6}\label{viterbi615__mmx_8c_a7efec405820e2f6364bbe3d67581b2d6}} 
+\index{viterbi615\_mmx.c@{viterbi615\_mmx.c}!update\_viterbi615\_blk\_mmx@{update\_viterbi615\_blk\_mmx}}
+\index{update\_viterbi615\_blk\_mmx@{update\_viterbi615\_blk\_mmx}!viterbi615\_mmx.c@{viterbi615\_mmx.c}}
+\doxysubsubsection{\texorpdfstring{update\_viterbi615\_blk\_mmx()}{update\_viterbi615\_blk\_mmx()}}
+{\footnotesize\ttfamily int update\+\_\+viterbi615\+\_\+blk\+\_\+mmx (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{unsigned char $\ast$}]{syms,  }\item[{int}]{nbits }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{viterbi615__mmx_8c_ad3cb238c47f0fd7af6a3bebeaa44b3eb}\label{viterbi615__mmx_8c_ad3cb238c47f0fd7af6a3bebeaa44b3eb}} 
+\index{viterbi615\_mmx.c@{viterbi615\_mmx.c}!Branchtab615@{Branchtab615}}
+\index{Branchtab615@{Branchtab615}!viterbi615\_mmx.c@{viterbi615\_mmx.c}}
+\doxysubsubsection{\texorpdfstring{Branchtab615}{Branchtab615}}
+{\footnotesize\ttfamily union \mbox{\hyperlink{unionbranchtab615}{branchtab615}} Branchtab615\mbox{[}6\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{viterbi615__mmx_8c_a53784da1eac04d4534802b28233ab7d7}\label{viterbi615__mmx_8c_a53784da1eac04d4534802b28233ab7d7}} 
+\index{viterbi615\_mmx.c@{viterbi615\_mmx.c}!Init@{Init}}
+\index{Init@{Init}!viterbi615\_mmx.c@{viterbi615\_mmx.c}}
+\doxysubsubsection{\texorpdfstring{Init}{Init}}
+{\footnotesize\ttfamily int Init = 0\hspace{0.3cm}{\ttfamily [static]}}
+

@@ -1,0 +1,89 @@
+\hypertarget{io_8hpp}{}\doxysection{include/io.hpp File Reference}
+\label{io_8hpp}\index{include/io.hpp@{include/io.hpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+Include dependency graph for io.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ifstream \mbox{\hyperlink{io_8hpp_a9ca5c5d0a6838821384fafed3621f0b1}{open\+\_\+file}} (const char $\ast$filename, std\+::streampos \&file\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Opens a file and gets its size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{io_8hpp_a8eee8aa68328a69f780cf2a28b14eb4f}{process\+\_\+regular\+\_\+file}} (const std\+::vector$<$ char $>$ \&buffer)
+\begin{DoxyCompactList}\small\item\em Processes the content of a regular file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{io_8hpp_ae59d9c474db815ab6372ff2b4565f112}{process\+\_\+gzipped\+\_\+file}} (const std\+::vector$<$ char $>$ \&buffer)
+\begin{DoxyCompactList}\small\item\em Processes the content of a gzipped file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{io_8hpp_aad01c48f2df78a5d786e18947ec3b093}{process\+\_\+file}} (const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Processes a file by opening it, reading its content, and handling .gz files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{io_8hpp_a9ca5c5d0a6838821384fafed3621f0b1}\label{io_8hpp_a9ca5c5d0a6838821384fafed3621f0b1}} 
+\index{io.hpp@{io.hpp}!open\_file@{open\_file}}
+\index{open\_file@{open\_file}!io.hpp@{io.hpp}}
+\doxysubsubsection{\texorpdfstring{open\_file()}{open\_file()}}
+{\footnotesize\ttfamily std\+::ifstream open\+\_\+file (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{std\+::streampos \&}]{file\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Opens a file and gets its size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to open. \\
+\hline
+{\em file\+\_\+size} & The size of the file (output parameter). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An input file stream. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{io_8hpp_aad01c48f2df78a5d786e18947ec3b093}\label{io_8hpp_aad01c48f2df78a5d786e18947ec3b093}} 
+\index{io.hpp@{io.hpp}!process\_file@{process\_file}}
+\index{process\_file@{process\_file}!io.hpp@{io.hpp}}
+\doxysubsubsection{\texorpdfstring{process\_file()}{process\_file()}}
+{\footnotesize\ttfamily void process\+\_\+file (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Processes a file by opening it, reading its content, and handling .gz files. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file to process. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{io_8hpp_ae59d9c474db815ab6372ff2b4565f112}\label{io_8hpp_ae59d9c474db815ab6372ff2b4565f112}} 
+\index{io.hpp@{io.hpp}!process\_gzipped\_file@{process\_gzipped\_file}}
+\index{process\_gzipped\_file@{process\_gzipped\_file}!io.hpp@{io.hpp}}
+\doxysubsubsection{\texorpdfstring{process\_gzipped\_file()}{process\_gzipped\_file()}}
+{\footnotesize\ttfamily void process\+\_\+gzipped\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ char $>$ \&}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Processes the content of a gzipped file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The buffer containing the gzipped file content. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{io_8hpp_a8eee8aa68328a69f780cf2a28b14eb4f}\label{io_8hpp_a8eee8aa68328a69f780cf2a28b14eb4f}} 
+\index{io.hpp@{io.hpp}!process\_regular\_file@{process\_regular\_file}}
+\index{process\_regular\_file@{process\_regular\_file}!io.hpp@{io.hpp}}
+\doxysubsubsection{\texorpdfstring{process\_regular\_file()}{process\_regular\_file()}}
+{\footnotesize\ttfamily void process\+\_\+regular\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ char $>$ \&}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Processes the content of a regular file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The buffer containing the file content. \\
+\hline
+\end{DoxyParams}

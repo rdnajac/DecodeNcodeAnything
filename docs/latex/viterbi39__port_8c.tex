@@ -1,0 +1,137 @@
+\hypertarget{viterbi39__port_8c}{}\doxysection{libfec-\/master/viterbi39\+\_\+port.c File Reference}
+\label{viterbi39__port_8c}\index{libfec-\/master/viterbi39\_port.c@{libfec-\/master/viterbi39\_port.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fec.\+h\char`\"{}}\newline
+Include dependency graph for viterbi39\+\_\+port.\+c\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionmetric__t}{metric\+\_\+t}}
+\item 
+union \mbox{\hyperlink{uniondecision__t}{decision\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structv39}{v39}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{viterbi39__port_8c_a3b8fb51a62c0f1c230d09dafd16a3cfe}{BFLY}}(\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{viterbi39__port_8c_afeeee2632aa5aa7251706003dd744bc6}{init\+\_\+viterbi39\+\_\+port}} (void $\ast$p, int starting\+\_\+state)
+\item 
+void \mbox{\hyperlink{viterbi39__port_8c_a8711f8bb399a0ff3e7ddeca076844fe4}{set\+\_\+viterbi39\+\_\+polynomial\+\_\+port}} (int polys\mbox{[}3\mbox{]})
+\item 
+void $\ast$ \mbox{\hyperlink{viterbi39__port_8c_afd583e542eef8bf1f4d733efc8581d8a}{create\+\_\+viterbi39\+\_\+port}} (int len)
+\item 
+int \mbox{\hyperlink{viterbi39__port_8c_ac7828b11aa37790d1c95a572f3cd2c71}{chainback\+\_\+viterbi39\+\_\+port}} (void $\ast$p, unsigned char $\ast$data, unsigned int nbits, unsigned int endstate)
+\item 
+void \mbox{\hyperlink{viterbi39__port_8c_a63290db888b94e1f87ec1c2f16b33785}{delete\+\_\+viterbi39\+\_\+port}} (void $\ast$p)
+\item 
+int \mbox{\hyperlink{viterbi39__port_8c_a9b8a1e50e6286a88ea9b4b99ff80d584}{update\+\_\+viterbi39\+\_\+blk\+\_\+port}} (void $\ast$p, unsigned char $\ast$syms, int nbits)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>unsigned char \mbox{\hyperlink{viterbi39__port_8c_afbc555e863e9d383a35734631d56e033}{c}} \mbox{[}128\mbox{]}\\
+\} \mbox{\hyperlink{viterbi39__port_8c_a677514a67c56cd8746ad0618734d4eb5}{Branchtab39}} \mbox{[}3\mbox{]}\\
+
+\end{tabbing}\item 
+static int \mbox{\hyperlink{viterbi39__port_8c_a53784da1eac04d4534802b28233ab7d7}{Init}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{viterbi39__port_8c_a3b8fb51a62c0f1c230d09dafd16a3cfe}\label{viterbi39__port_8c_a3b8fb51a62c0f1c230d09dafd16a3cfe}} 
+\index{viterbi39\_port.c@{viterbi39\_port.c}!BFLY@{BFLY}}
+\index{BFLY@{BFLY}!viterbi39\_port.c@{viterbi39\_port.c}}
+\doxysubsubsection{\texorpdfstring{BFLY}{BFLY}}
+{\footnotesize\ttfamily \#define BFLY(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\(\backslash\)}
+\DoxyCodeLine{unsigned \textcolor{keywordtype}{int} metric,m0,m1,decision;\(\backslash\)}
+\DoxyCodeLine{    metric = (\mbox{\hyperlink{viterbi39__port_8c_a677514a67c56cd8746ad0618734d4eb5}{Branchtab39}}[0].c[\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}}] \string^ sym0) + (\mbox{\hyperlink{viterbi39__port_8c_a677514a67c56cd8746ad0618734d4eb5}{Branchtab39}}[1].\mbox{\hyperlink{viterbi39__port_8c_afbc555e863e9d383a35734631d56e033}{c}}[\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}}] \string^ sym1) + \(\backslash\)}
+\DoxyCodeLine{     (\mbox{\hyperlink{viterbi39__port_8c_a677514a67c56cd8746ad0618734d4eb5}{Branchtab39}}[2].c[\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}}] \string^ sym2);\(\backslash\)}
+\DoxyCodeLine{    m0 = vp-\/>old\_metrics-\/>w[\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}}] + metric;\(\backslash\)}
+\DoxyCodeLine{    m1 = vp-\/>old\_metrics-\/>w[\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}}+128] + (765 -\/ metric);\(\backslash\)}
+\DoxyCodeLine{    decision = (\textcolor{keywordtype}{signed} int)(m0-\/m1) > 0;\(\backslash\)}
+\DoxyCodeLine{    vp-\/>new\_metrics-\/>w[2*\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}}] = decision ? m1 : m0;\(\backslash\)}
+\DoxyCodeLine{    d-\/>w[\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}}/16] |= decision << ((2*\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}})\&31);\(\backslash\)}
+\DoxyCodeLine{    m0 -\/= (metric+metric-\/765);\(\backslash\)}
+\DoxyCodeLine{    m1 += (metric+metric-\/765);\(\backslash\)}
+\DoxyCodeLine{    decision = (\textcolor{keywordtype}{signed} int)(m0-\/m1) > 0;\(\backslash\)}
+\DoxyCodeLine{    vp-\/>new\_metrics-\/>w[2*\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}}+1] = decision ? m1 : m0;\(\backslash\)}
+\DoxyCodeLine{    d-\/>w[\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}}/16] |= decision << ((2*\mbox{\hyperlink{decode__rs_8h_acb559820d9ca11295b4500f179ef6392}{i}}+1)\&31);\(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{viterbi39__port_8c_ac7828b11aa37790d1c95a572f3cd2c71}\label{viterbi39__port_8c_ac7828b11aa37790d1c95a572f3cd2c71}} 
+\index{viterbi39\_port.c@{viterbi39\_port.c}!chainback\_viterbi39\_port@{chainback\_viterbi39\_port}}
+\index{chainback\_viterbi39\_port@{chainback\_viterbi39\_port}!viterbi39\_port.c@{viterbi39\_port.c}}
+\doxysubsubsection{\texorpdfstring{chainback\_viterbi39\_port()}{chainback\_viterbi39\_port()}}
+{\footnotesize\ttfamily int chainback\+\_\+viterbi39\+\_\+port (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{unsigned char $\ast$}]{data,  }\item[{unsigned int}]{nbits,  }\item[{unsigned int}]{endstate }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi39__port_8c_afd583e542eef8bf1f4d733efc8581d8a}\label{viterbi39__port_8c_afd583e542eef8bf1f4d733efc8581d8a}} 
+\index{viterbi39\_port.c@{viterbi39\_port.c}!create\_viterbi39\_port@{create\_viterbi39\_port}}
+\index{create\_viterbi39\_port@{create\_viterbi39\_port}!viterbi39\_port.c@{viterbi39\_port.c}}
+\doxysubsubsection{\texorpdfstring{create\_viterbi39\_port()}{create\_viterbi39\_port()}}
+{\footnotesize\ttfamily void$\ast$ create\+\_\+viterbi39\+\_\+port (\begin{DoxyParamCaption}\item[{int}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi39__port_8c_a63290db888b94e1f87ec1c2f16b33785}\label{viterbi39__port_8c_a63290db888b94e1f87ec1c2f16b33785}} 
+\index{viterbi39\_port.c@{viterbi39\_port.c}!delete\_viterbi39\_port@{delete\_viterbi39\_port}}
+\index{delete\_viterbi39\_port@{delete\_viterbi39\_port}!viterbi39\_port.c@{viterbi39\_port.c}}
+\doxysubsubsection{\texorpdfstring{delete\_viterbi39\_port()}{delete\_viterbi39\_port()}}
+{\footnotesize\ttfamily void delete\+\_\+viterbi39\+\_\+port (\begin{DoxyParamCaption}\item[{void $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi39__port_8c_afeeee2632aa5aa7251706003dd744bc6}\label{viterbi39__port_8c_afeeee2632aa5aa7251706003dd744bc6}} 
+\index{viterbi39\_port.c@{viterbi39\_port.c}!init\_viterbi39\_port@{init\_viterbi39\_port}}
+\index{init\_viterbi39\_port@{init\_viterbi39\_port}!viterbi39\_port.c@{viterbi39\_port.c}}
+\doxysubsubsection{\texorpdfstring{init\_viterbi39\_port()}{init\_viterbi39\_port()}}
+{\footnotesize\ttfamily int init\+\_\+viterbi39\+\_\+port (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{int}]{starting\+\_\+state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi39__port_8c_a8711f8bb399a0ff3e7ddeca076844fe4}\label{viterbi39__port_8c_a8711f8bb399a0ff3e7ddeca076844fe4}} 
+\index{viterbi39\_port.c@{viterbi39\_port.c}!set\_viterbi39\_polynomial\_port@{set\_viterbi39\_polynomial\_port}}
+\index{set\_viterbi39\_polynomial\_port@{set\_viterbi39\_polynomial\_port}!viterbi39\_port.c@{viterbi39\_port.c}}
+\doxysubsubsection{\texorpdfstring{set\_viterbi39\_polynomial\_port()}{set\_viterbi39\_polynomial\_port()}}
+{\footnotesize\ttfamily void set\+\_\+viterbi39\+\_\+polynomial\+\_\+port (\begin{DoxyParamCaption}\item[{int}]{polys\mbox{[}3\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi39__port_8c_a9b8a1e50e6286a88ea9b4b99ff80d584}\label{viterbi39__port_8c_a9b8a1e50e6286a88ea9b4b99ff80d584}} 
+\index{viterbi39\_port.c@{viterbi39\_port.c}!update\_viterbi39\_blk\_port@{update\_viterbi39\_blk\_port}}
+\index{update\_viterbi39\_blk\_port@{update\_viterbi39\_blk\_port}!viterbi39\_port.c@{viterbi39\_port.c}}
+\doxysubsubsection{\texorpdfstring{update\_viterbi39\_blk\_port()}{update\_viterbi39\_blk\_port()}}
+{\footnotesize\ttfamily int update\+\_\+viterbi39\+\_\+blk\+\_\+port (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{unsigned char $\ast$}]{syms,  }\item[{int}]{nbits }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{viterbi39__port_8c_a677514a67c56cd8746ad0618734d4eb5}\label{viterbi39__port_8c_a677514a67c56cd8746ad0618734d4eb5}} 
+\index{viterbi39\_port.c@{viterbi39\_port.c}!Branchtab39@{Branchtab39}}
+\index{Branchtab39@{Branchtab39}!viterbi39\_port.c@{viterbi39\_port.c}}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily union \{ ... \}  Branchtab39\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{viterbi39__port_8c_afbc555e863e9d383a35734631d56e033}\label{viterbi39__port_8c_afbc555e863e9d383a35734631d56e033}} 
+\index{viterbi39\_port.c@{viterbi39\_port.c}!c@{c}}
+\index{c@{c}!viterbi39\_port.c@{viterbi39\_port.c}}
+\doxysubsubsection{\texorpdfstring{c}{c}}
+{\footnotesize\ttfamily unsigned char c\mbox{[}128\mbox{]}}
+
+\mbox{\Hypertarget{viterbi39__port_8c_a53784da1eac04d4534802b28233ab7d7}\label{viterbi39__port_8c_a53784da1eac04d4534802b28233ab7d7}} 
+\index{viterbi39\_port.c@{viterbi39\_port.c}!Init@{Init}}
+\index{Init@{Init}!viterbi39\_port.c@{viterbi39\_port.c}}
+\doxysubsubsection{\texorpdfstring{Init}{Init}}
+{\footnotesize\ttfamily int Init = 0\hspace{0.3cm}{\ttfamily [static]}}
+

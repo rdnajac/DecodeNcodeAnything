@@ -10,7 +10,11 @@
 #include <vector>
 #include <algorithm>
 #include <string>
-
+#include <span>
+#include<optional>
+#include <unordered_map>
+#include<ranges>
+#include<numeric>
 /**
  * @brief Enum representing nucleotide types.
  */
@@ -38,7 +42,7 @@ std::string nt2string(int nt);
  * @param nt Character representation of a nucleotide.
  * @return Numeric value of the nucleotide, or -1 if not recognized.
  */
-int char2nt(char nt);
+std::optional<int> char2nt(char nt);
 
 /**
  * @brief Convert string value of a nucleotide (nt) to its numeric value.

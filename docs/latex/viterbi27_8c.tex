@@ -1,0 +1,62 @@
+\hypertarget{viterbi27_8c}{}\doxysection{libfec-\/master/viterbi27.c File Reference}
+\label{viterbi27_8c}\index{libfec-\/master/viterbi27.c@{libfec-\/master/viterbi27.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$memory.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fec.\+h\char`\"{}}\newline
+Include dependency graph for viterbi27.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{viterbi27_8c_a7f7a123501da03eb24bc830b143ff58f}{create\+\_\+viterbi27}} (int len)
+\item 
+void \mbox{\hyperlink{viterbi27_8c_a0d4492fb5eb045ca5f7ab8cb640fe5e1}{set\+\_\+viterbi27\+\_\+polynomial}} (int polys\mbox{[}2\mbox{]})
+\item 
+int \mbox{\hyperlink{viterbi27_8c_abdf534ed25c39e77dd7acea60b469c17}{init\+\_\+viterbi27}} (void $\ast$p, int starting\+\_\+state)
+\item 
+int \mbox{\hyperlink{viterbi27_8c_a638125cbd7ff0b3c4484728a2df9daad}{chainback\+\_\+viterbi27}} (void $\ast$p, unsigned char $\ast$data, unsigned int nbits, unsigned int endstate)
+\item 
+void \mbox{\hyperlink{viterbi27_8c_a1b30fcaf529fed10303f5c719e47b3b1}{delete\+\_\+viterbi27}} (void $\ast$p)
+\item 
+int \mbox{\hyperlink{viterbi27_8c_a0db4754d5757c747ca1ed0e6a49b413f}{update\+\_\+viterbi27\+\_\+blk}} (void $\ast$p, unsigned char syms\mbox{[}$\,$\mbox{]}, int nbits)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{viterbi27_8c_a638125cbd7ff0b3c4484728a2df9daad}\label{viterbi27_8c_a638125cbd7ff0b3c4484728a2df9daad}} 
+\index{viterbi27.c@{viterbi27.c}!chainback\_viterbi27@{chainback\_viterbi27}}
+\index{chainback\_viterbi27@{chainback\_viterbi27}!viterbi27.c@{viterbi27.c}}
+\doxysubsubsection{\texorpdfstring{chainback\_viterbi27()}{chainback\_viterbi27()}}
+{\footnotesize\ttfamily int chainback\+\_\+viterbi27 (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{unsigned char $\ast$}]{data,  }\item[{unsigned int}]{nbits,  }\item[{unsigned int}]{endstate }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi27_8c_a7f7a123501da03eb24bc830b143ff58f}\label{viterbi27_8c_a7f7a123501da03eb24bc830b143ff58f}} 
+\index{viterbi27.c@{viterbi27.c}!create\_viterbi27@{create\_viterbi27}}
+\index{create\_viterbi27@{create\_viterbi27}!viterbi27.c@{viterbi27.c}}
+\doxysubsubsection{\texorpdfstring{create\_viterbi27()}{create\_viterbi27()}}
+{\footnotesize\ttfamily void$\ast$ create\+\_\+viterbi27 (\begin{DoxyParamCaption}\item[{int}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi27_8c_a1b30fcaf529fed10303f5c719e47b3b1}\label{viterbi27_8c_a1b30fcaf529fed10303f5c719e47b3b1}} 
+\index{viterbi27.c@{viterbi27.c}!delete\_viterbi27@{delete\_viterbi27}}
+\index{delete\_viterbi27@{delete\_viterbi27}!viterbi27.c@{viterbi27.c}}
+\doxysubsubsection{\texorpdfstring{delete\_viterbi27()}{delete\_viterbi27()}}
+{\footnotesize\ttfamily void delete\+\_\+viterbi27 (\begin{DoxyParamCaption}\item[{void $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi27_8c_abdf534ed25c39e77dd7acea60b469c17}\label{viterbi27_8c_abdf534ed25c39e77dd7acea60b469c17}} 
+\index{viterbi27.c@{viterbi27.c}!init\_viterbi27@{init\_viterbi27}}
+\index{init\_viterbi27@{init\_viterbi27}!viterbi27.c@{viterbi27.c}}
+\doxysubsubsection{\texorpdfstring{init\_viterbi27()}{init\_viterbi27()}}
+{\footnotesize\ttfamily int init\+\_\+viterbi27 (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{int}]{starting\+\_\+state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi27_8c_a0d4492fb5eb045ca5f7ab8cb640fe5e1}\label{viterbi27_8c_a0d4492fb5eb045ca5f7ab8cb640fe5e1}} 
+\index{viterbi27.c@{viterbi27.c}!set\_viterbi27\_polynomial@{set\_viterbi27\_polynomial}}
+\index{set\_viterbi27\_polynomial@{set\_viterbi27\_polynomial}!viterbi27.c@{viterbi27.c}}
+\doxysubsubsection{\texorpdfstring{set\_viterbi27\_polynomial()}{set\_viterbi27\_polynomial()}}
+{\footnotesize\ttfamily void set\+\_\+viterbi27\+\_\+polynomial (\begin{DoxyParamCaption}\item[{int}]{polys\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{viterbi27_8c_a0db4754d5757c747ca1ed0e6a49b413f}\label{viterbi27_8c_a0db4754d5757c747ca1ed0e6a49b413f}} 
+\index{viterbi27.c@{viterbi27.c}!update\_viterbi27\_blk@{update\_viterbi27\_blk}}
+\index{update\_viterbi27\_blk@{update\_viterbi27\_blk}!viterbi27.c@{viterbi27.c}}
+\doxysubsubsection{\texorpdfstring{update\_viterbi27\_blk()}{update\_viterbi27\_blk()}}
+{\footnotesize\ttfamily int update\+\_\+viterbi27\+\_\+blk (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{unsigned char}]{syms\mbox{[}$\,$\mbox{]},  }\item[{int}]{nbits }\end{DoxyParamCaption})}
+
