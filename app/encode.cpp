@@ -11,7 +11,6 @@ int main(int argc, char* argv[]) {
 
     codec.print_info();
     codec.encode();
-    //codec.oligodump();
     codec.dump_duplex();
 
     return 0;

@@ -152,6 +152,18 @@ public:
             std::cout << oligo_duplex[i].first.seq() << oligo_duplex[i].second->seq() << std::endl;
         }
     }
+    /**
+     * @brief Function to convert and return oligo_duplex as a vetor of strings
+     */
+    std::vector<std::string> get_duplex_vec() {
+        std::vector<std::string> nt_vec;
+        nt_vec.reserve(oligo_duplex.size());
+
+        for (const auto& [first, second] : oligo_duplex)
+            nt_vec.emplace_back(first.seq() + second->seq());
+
+        return nt_vec;
+    }
 
     /**
      * @brief Function to dump Oligo information from duplex to a file.
@@ -200,20 +212,15 @@ public:
             decode_duplex.clear();
             return;
         }
+
         for (auto &o : decode_duplex)
             o.second.write_bin(output_file);
 
         output_file.close();
     }
+
     // Uncomment the following lines when Criteria class is finished
-    /*
-    // Function to get criteria
-    Criteria get_criteria() const;
-
-    // Function to set criteria
-    void set_criteria(const Criteria& new_criteria);
-    */
+    //Criteria get_criteria() const;
+    //void set_criteria(const Criteria& new_criteria);
 };
-
-// Implementation of other member functions
 

@@ -41,3 +41,4 @@
 .*
 
 /extern/libfec
+/utils/gzip_processor

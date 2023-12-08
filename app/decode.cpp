@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
     Codec codec(filename);
     codec.print_info();
     codec.decode();
-    //codec.oligodump();
+    codec.oligodump();
 
     return 0;
 }
