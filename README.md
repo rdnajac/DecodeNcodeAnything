@@ -1,5 +1,5 @@
 # DecodeNcodeAnything
-###  Utilizing synthetic DNA 🧬 as a digital storage 💾 medium
+###  Utilizing synthetic DNA 🧬 as a data storage 💾 medium
 A refactoring of the [Adaptive DNA Storage Codec (ADS Codex)](https://github.com/lanl/adscodex) in "modern" C++.
 
 ## Table of Contents
