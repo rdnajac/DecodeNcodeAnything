@@ -16,10 +16,9 @@ int main(int argc, char* argv[]) {
     auto start_time = std::chrono::high_resolution_clock::now();
     codec.encode();
     auto end_time = std::chrono::high_resolution_clock::now();
-    codec.oligodump();
-    //codec.print_oligos();
+    //codec.oligodump();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
-    std::cout << "Filesize (bytes): " << codec.get_filesize() <<  "Elapsed Time" << duration.count() << " milliseconds" << std::endl;
+    std::cout <<  "Elapsed Time " << duration.count() << " ms" << std::endl;
 
     return 0;
 }

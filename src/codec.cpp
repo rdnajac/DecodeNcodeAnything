@@ -42,10 +42,7 @@ public:
      */
     ~Codec() {
         if (file.is_open())
-        {
             file.close();
-            std::cout << "File closed in the destructor." << std::endl;
-        }
     }
 
     /**
