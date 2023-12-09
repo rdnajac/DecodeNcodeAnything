@@ -1,9 +1,13 @@
-#pragma once
+#ifndef GALOIS_HPP
+#define GALOIS_HPP
 
 #include <cassert>
 #include <cmath>
-
 #include "poly.cpp"
+
+template <typename T>
+concept UnsignedInteger = std::is_unsigned_v<T> &&
+                         (sizeof(T) == 1 || sizeof(T) == 2 || sizeof(T) == 4 || sizeof(T) == 8);
 
 /**
  * @brief Class representing a Galois Field of order 2^fieldPower.
@@ -12,13 +16,14 @@
 template <typename T>
 class GaloisField {
 private:
-    const int fieldPower;   ///< Power of the field (2^fieldPower).
+    const unsigned int fieldPower;   ///< Power of the field (2^fieldPower).
     const T characteristic; ///< Characteristic of the field (2^fieldPower).
     const T primitivePoly;  ///< Primitive polynomial for the field.
                             ///
 public:
     T* powTable;            ///< Table for exponentiation.
     T* logTable;            ///< Table for logarithms.
+                            ///
     /**
      * @brief Constructor for GaloisField.
      * @param fieldPower The power of the field (2^fieldPower).
@@ -125,3 +130,4 @@ public:
     }
 };
 
+#endif
