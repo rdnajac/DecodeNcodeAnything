@@ -1,2 +1,2 @@
 export module ReedSolomonModule;
-#include "ReedSolomon.h"
+#include "myRS.cpp"

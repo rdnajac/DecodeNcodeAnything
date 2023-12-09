@@ -3,15 +3,11 @@
 # Module source files
 set(MODULE_SOURCES
     myRS.cpp
-    myRSmodule.cpp
-    poly.cpp
-    galois.cpp
     ReedSolomon_module.cpp
 )
 
 # Module header file
 set(MODULE_HEADERS
-    myRS.hpp
     primes.hpp
 )
 
