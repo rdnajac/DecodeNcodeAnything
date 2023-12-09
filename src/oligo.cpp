@@ -4,7 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include "utils.hpp"
-#include "../extern/libfec/fec.h"
+
+import ReedSolomonModule;
+
 /**
  * @brief Maximum number of base pairs allowed for an oligonucleotide.
  */

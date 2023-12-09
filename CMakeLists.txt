@@ -15,18 +15,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 add_subdirectory(app)
 add_subdirectory(src)
 add_subdirectory(tests)
+add_subdirectory(extern)
 
-include_directories(extern/libfec/)
-
-# ===================================
-# Installation Configuration
-# ===================================
-
-# Specify the installation directory for executables
-#install(TARGETS test_oligo test_utils test_io DESTINATION bin/tests)
-
-# Create separate directories for libraries and binaries
-#set_target_properties(mylib PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
-#set_target_properties(main PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-#set_target_properties(test_oligo test_utils test_io PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/tests")
+# Import the ReedSolomon module
+#target_link_libraries(encode PRIVATE ReedSolomon::ReedSolomon)
+#target_link_libraries(decode PRIVATE ReedSolomon::ReedSolomon)
 

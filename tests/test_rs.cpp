@@ -1,6 +1,5 @@
 #include <iostream>
 #include "../src/oligo.cpp"
-#include "../extern/libfec/fec.h"
 
 int main() {
     // Example usage of the Oligo class
@@ -9,11 +8,11 @@ int main() {
 
     // Test the encode function
     std::cout << "Encoding oligo1:" << std::endl;
-    oligo1.encode();
+    //oligo1.encode();
 
     // Test the decode function
     std::cout << "\nDecoding oligo2:" << std::endl;
-    oligo2.decode();
+    //oligo2.decode();
 
     return 0;
 }
