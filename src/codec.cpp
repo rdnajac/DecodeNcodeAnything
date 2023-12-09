@@ -16,7 +16,7 @@ private:
     std::string filename; ///< Name of the file.
     std::streampos filesize; ///< Size of the file.
     std::ifstream file; ///< Input file stream.
-    std::vector<std::pair<Oligo, Oligo*>> oligo_duplex;
+    std::vector<std::pair<Oligo, Oligo*>> oligo_duplex; // Oligo* points to an entry in oligo_vec
     std::vector<std::pair<Oligo, Oligo>> decode_duplex;
     std::vector<Oligo*> decode_vec; ///< Vector to store Oligo objects.
 
