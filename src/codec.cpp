@@ -16,7 +16,7 @@ private:
     std::string filename; ///< Name of the file.
     std::streampos filesize; ///< Size of the file.
     std::ifstream file; ///< Input file stream.
-    std::vector<std::pair<Oligo, Oligo*>> oligo_duplex;
+    std::vector<std::pair<Oligo, Oligo*>> oligo_duplex; // Oligo* points to an entry in oligo_vec
     std::vector<std::pair<Oligo, Oligo>> decode_duplex;
     std::vector<Oligo*> decode_vec; ///< Vector to store Oligo objects.
 
@@ -113,7 +113,7 @@ public:
     void encode()
     {
         size_t num_blocks = filesize / sizeof(uint64_t);
-        size_t remaining_bytes = filesize % 64;
+        size_t remaining_bytes = filesize % 8;
         oligo_vec.reserve(num_blocks + (remaining_bytes ? 1 : 0));
         oligo_duplex.reserve(num_blocks + (remaining_bytes ? 1 : 0));
 
@@ -129,19 +129,18 @@ public:
             oligo_duplex.emplace_back(Oligo(64, i), &oligo_vec.back());
         }
 
-        //TODO FIX BUG!
         // Handle the remaining bytes using a single buffer
-        //if (remaining_bytes > 0) {
-        //    uint64_t data_block;
-        //    if (!file.read(reinterpret_cast<char*>(&data_block), remaining_bytes 1)) {
-        //        std::cerr << "Error reading remaining bytes from file: " << filename << std::endl;
-        //        oligo_vec.clear(); // Clear the vector in case of an error
-        //        oligo_duplex.clear();
-        //        return; // Exit the constructor if there was an error reading the remaining bytes
-        //    }
-        //    oligo_vec.emplace_back(remaining_bytes * 8, data_block);  // Adjust the bit count
-        //    oligo_duplex.emplace_back(Oligo(remaining_bytes * 8, num_blocks), &oligo_vec.back());
-        //}
+        if (remaining_bytes > 0) {
+            uint64_t data_block;
+            if (!file.read(reinterpret_cast<char*>(&data_block), remaining_bytes 1)) {
+                std::cerr << "Error reading remaining bytes from file: " << filename << std::endl;
+                oligo_vec.clear(); // Clear the vector in case of an error
+                oligo_duplex.clear();
+                return; // Exit the constructor if there was an error reading the remaining bytes
+            }
+            oligo_vec.emplace_back(remaining_bytes * 8, data_block);  // Adjust the bit count
+            oligo_duplex.emplace_back(Oligo(remaining_bytes * 8, num_blocks), &oligo_vec.back());
+        }
     }
 
     /**
