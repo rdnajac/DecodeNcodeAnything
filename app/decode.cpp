@@ -1,17 +1,19 @@
-// main.cpp
 #include "../src/codec.cpp"
+#include <chrono>
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
         return 1;
     }
-
     const std::string filename = argv[1];
     Codec codec(filename);
     codec.print_info();
-    codec.decode();
-    codec.oligodump();
+    auto start_time = std::chrono::high_resolution_clock::now();
+    codec.decode(); // also writes
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+    std::cout <<  "Elapsed Time " << duration.count() << " ms" << std::endl;
 
     return 0;
 }

@@ -85,13 +85,11 @@ public:
      */
     void oligodump() const {
         for (size_t i = 0; i < oligo_vec.size(); ++i) {
-            // Print index
+
             std::cout << std::setw(8) << std::setfill('0') << i << " | ";
 
-            // Print sequence
             std::cout << oligo_vec[i].seq() << " | ";
 
-            // Get the uint64_t value
             uint64_t uint64Value = oligo_vec[i].data();
 
             // Print original characters (if printable)
@@ -184,26 +182,21 @@ public:
      */
     void decode() {
 
-        if (get_filetype() != ".fastq") {
-            std::cerr << "Invalid file format!" << std::endl;
-            return;
-        }
-
         oligo_vec.clear();
         oligo_duplex.clear();
+        decode_duplex.clear();
         size_t line_number = 0;
 
         for (std::string line; std::getline(file, line); line_number++) {
-            if (line_number % 4 == 1 && line.size() == 64) {
-                Oligo index_oligo(line.substr(0, 32));
-                Oligo data_oligo(line.substr(32, 32));
-                decode_duplex.emplace_back(index_oligo, data_oligo);
-            }
+            if ((get_filetype() == ".fastq") && (line_number % 4 != 1) || line.size() != 64)
+                continue;
+            Oligo index_oligo(line.substr(0, MAX_BP));
+            Oligo data_oligo(line.substr(32, MAX_BP));
+            decode_duplex.emplace_back(index_oligo, data_oligo);
         }
 
-        //Sort the decode_duplex based on the index_oligo.data()
         std::sort(decode_duplex.begin(), decode_duplex.end(), [](const auto& a, const auto& b) {
-                return a.first.data() < b.first.data(); 
+                return a.first.data() < b.first.data();
                 });
 
         std::ofstream output_file(get_filename() + ".decoded", std::ios::binary);
