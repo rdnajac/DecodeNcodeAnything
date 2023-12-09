@@ -18,5 +18,5 @@ target_include_directories(my_library PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../incl
 target_sources(my_library PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/oligo.cpp)
 
 # Define a compile-time flag for oligo.cpp
-target_compile_definitions(my_library PRIVATE OLIGO_NEEDS_REEDSOLOMON)
+#target_compile_definitions(my_library PRIVATE OLIGO_NEEDS_REEDSOLOMON)
 

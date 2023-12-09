@@ -5,7 +5,6 @@
 #include <fstream>
 #include "utils.hpp"
 
-import ReedSolomonModule;
 
 /**
  * @brief Maximum number of base pairs allowed for an oligonucleotide.
@@ -170,6 +169,7 @@ public:
         of.write(arr, sizeof(uint64_t));
     }
 
+#ifdef HAVE_RS_MODULE
     /**
      * @brief Function to encode an Oligo using libfec Reed-Solomon Error Corretion
      * @param oligo The oligo to be encoded
@@ -224,5 +224,6 @@ public:
             std::cout << "Decoding failed." << std::endl;
         }
     }
+#endif
 };
 

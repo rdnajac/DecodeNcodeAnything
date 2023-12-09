@@ -125,21 +125,21 @@ public:
                 oligo_vec.clear(); // Clear the vector in case of an error
                 return; // Exit the constructor if there was an error reading the file
             }
-            oligo_vec.emplace_back(64, data_block);
-            oligo_duplex.emplace_back(Oligo(64, i), &oligo_vec.back());
+            oligo_vec.emplace_back(MAX_BP, data_block);
+            oligo_duplex.emplace_back(Oligo(MAX_BP, i), &oligo_vec.back());
         }
 
         // Handle the remaining bytes using a single buffer
         if (remaining_bytes > 0) {
-            uint64_t data_block;
-            if (!file.read(reinterpret_cast<char*>(&data_block), remaining_bytes 1)) {
+            uint64_t data_block = 0;;
+            if (!file.read(reinterpret_cast<char*>(&data_block), remaining_bytes)) {
                 std::cerr << "Error reading remaining bytes from file: " << filename << std::endl;
                 oligo_vec.clear(); // Clear the vector in case of an error
                 oligo_duplex.clear();
                 return; // Exit the constructor if there was an error reading the remaining bytes
             }
             oligo_vec.emplace_back(remaining_bytes * 8, data_block);  // Adjust the bit count
-            oligo_duplex.emplace_back(Oligo(remaining_bytes * 8, num_blocks), &oligo_vec.back());
+            oligo_duplex.emplace_back(Oligo(MAX_BP, num_blocks), &oligo_vec.back());
         }
     }
 
@@ -149,7 +149,7 @@ public:
     void dump_duplex() const {
         for (size_t i = 0; i < oligo_duplex.size(); ++i) {
             std::cout << std::setw(8) << std::setfill('0') << i << " | ";
-            std::cout << oligo_duplex[i].first.seq() << oligo_duplex[i].second->seq() << std::endl;
+            std::cout << oligo_duplex[i].first.seq() << "-" << oligo_duplex[i].second->seq() << std::endl;
         }
     }
     /**

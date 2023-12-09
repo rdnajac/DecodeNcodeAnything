@@ -25,7 +25,6 @@ int main() {
     #endif
 
     std::cout << "Processing regular file:\n";
-    process_file(regular_file);
 
     #ifdef ZLIB_FOUND
     std::cout << "\nProcessing gzipped file:\n";
