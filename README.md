@@ -38,13 +38,21 @@ A refactoring of the [Adaptive DNA Storage Codec (ADS Codex)](https://github.com
 
 3. **Configure the project with CMake:**
 
-    ```bash
+    On Debian-based systems:
+
+    ```
     cmake ..
+    ```
+
+    On Windows (Make sure your MinGW-x64 version is newer than 11.0.0):
+
+    ```bash
+    cmake -G "MinGW Makefiles" ..
     ```
 
 4. **Build the project:**
 
-    ```bash
+    ```
     make
     ```
 
@@ -56,11 +64,19 @@ To generate documentation using Doxygen, follow these steps:
 
 1. **Install Doxygen:**
 
-    Ensure that Doxygen is installed on your system. If it's not installed, you can typically install it using your package manager. For example, on Debian-based systems:
+    Ensure that Doxygen is installed on your system. If it's not installed, you can typically install it using your package manager. 
+
+    For example, on Debian-based systems:
 
     ```bash
     sudo apt-get install doxygen
     ```
+    On Windows system:
+
+    ```
+    git clone https://github.com/doxygen/doxygen.git
+    ```
+
     Refer to the [Doxygen installation guide](https://www.doxygen.nl/manual/install.html) for more details.
 
 2. **Navigate to the project root:**
@@ -71,11 +87,17 @@ To generate documentation using Doxygen, follow these steps:
 
 3. **Run the documentation generation script:**
 
+    On Debian-based systems
+
     ```bash
     scripts/gen_docs.sh
     ```
 
     This script generates a new Doxyfile, configures it, and runs Doxygen to generate documentation in the `./docs` folder.
+
+    On Windows system:
+
+    Just use Visual Studio to construct the project. Then it will generate a doxygen.exe.
 
 4. **Access the documentation:**
 
