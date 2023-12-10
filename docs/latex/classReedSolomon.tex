@@ -1,0 +1,651 @@
+\hypertarget{classReedSolomon}{}\doxysection{Reed\+Solomon\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classReedSolomon}\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+
+
+Template class representing the Reed-\/\+Solomon error correction code.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classReedSolomon_a14fd1ce4e16d6b2dabc0607ef9ad15ca}{Reed\+Solomon}} (int field\+Power)
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classReedSolomon_a522402136b9e06bea447c714cc471aa6}{create\+Generator}} (\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&out, int nsym)
+\begin{DoxyCompactList}\small\item\em Generate the generator polynomial for Reed-\/\+Solomon codes. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_ab5aba69552e8b32aa518b34688559326}{encode}} (std\+::vector$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&data, int nsym)
+\begin{DoxyCompactList}\small\item\em Encode a message vector using Reed-\/\+Solomon error correction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classReedSolomon_abb7439ef0a15517c3f65e7ea7d6a362d}{calc\+Syndromes}} (\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&out, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&msg, int nsym)
+\begin{DoxyCompactList}\small\item\em Calculate syndromes for error detection. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_aed7826979c2e9f891ca9b01dabfe82f0}{check\+Syndromes}} (const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&synd)
+\begin{DoxyCompactList}\small\item\em Check if syndromes indicate errors in the received message. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_a2c5b21e229f5656c37bb5dd10c3decd5}{find\+Errata\+Locator}} (\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&out, const std\+::vector$<$ unsigned int $>$ \&err\+Pos)
+\begin{DoxyCompactList}\small\item\em Find the errata locator polynomial based on error positions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \mbox{\hyperlink{classReedSolomon_ad0292108d160f271d4e683907e5207bf}{find\+Error\+Evaluator}} (const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&synd, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&err\+Loc, int nsym)
+\begin{DoxyCompactList}\small\item\em Find the error evaluator polynomial. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_a3f5f678efa4fe28c80e0e129131ed4ba}{correct\+Errata}} (\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&msg, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&synd, const std\+::vector$<$ unsigned int $>$ \&err\+Pos)
+\begin{DoxyCompactList}\small\item\em Correct errors in the received message based on syndromes and error positions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_a78677fa1eb1ac78195bb931544b9ee3c}{find\+Error\+Locator}} (\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&out, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&synd, int nsym, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ $\ast$erase\+Loc, int erase\+Count)
+\begin{DoxyCompactList}\small\item\em Find the error locator polynomial. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_a5749d73b386547071eac553388ba04f9}{find\+Errors}} (std\+::vector$<$ unsigned int $>$ \&out, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ err\+Loc, int n)
+\begin{DoxyCompactList}\small\item\em Find the positions of errors in the received message. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \mbox{\hyperlink{classReedSolomon_aa0aeb9eb2f61205bda7904d099492722}{forney\+Syndromes}} (const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&synd, const std\+::vector$<$ unsigned int $>$ \&pos, int n)
+\begin{DoxyCompactList}\small\item\em Forney algorithm to calculate syndromes at error positions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_ab7f5d3a847371067ce15b74b6add25f0}{decode}} (\mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$whole\+Out, \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$out, \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$data, int k, int nsym, std\+::vector$<$ unsigned int $>$ erase\+Pos, bool debug)
+\begin{DoxyCompactList}\small\item\em Decode a Reed-\/\+Solomon encoded message. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classReedSolomon_a14fd1ce4e16d6b2dabc0607ef9ad15ca}{Reed\+Solomon}} (int field\+Power)
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classReedSolomon_a522402136b9e06bea447c714cc471aa6}{create\+Generator}} (\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&out, int nsym)
+\begin{DoxyCompactList}\small\item\em Generate the generator polynomial for Reed-\/\+Solomon codes. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_ab5aba69552e8b32aa518b34688559326}{encode}} (std\+::vector$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&data, int nsym)
+\begin{DoxyCompactList}\small\item\em Encode a message vector using Reed-\/\+Solomon error correction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classReedSolomon_abb7439ef0a15517c3f65e7ea7d6a362d}{calc\+Syndromes}} (\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&out, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&msg, int nsym)
+\begin{DoxyCompactList}\small\item\em Calculate syndromes for error detection. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_aed7826979c2e9f891ca9b01dabfe82f0}{check\+Syndromes}} (const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&synd)
+\begin{DoxyCompactList}\small\item\em Check if syndromes indicate errors in the received message. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_a2c5b21e229f5656c37bb5dd10c3decd5}{find\+Errata\+Locator}} (\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&out, const std\+::vector$<$ unsigned int $>$ \&err\+Pos)
+\begin{DoxyCompactList}\small\item\em Find the errata locator polynomial based on error positions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \mbox{\hyperlink{classReedSolomon_ad0292108d160f271d4e683907e5207bf}{find\+Error\+Evaluator}} (const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&synd, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&err\+Loc, int nsym)
+\begin{DoxyCompactList}\small\item\em Find the error evaluator polynomial. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_a3f5f678efa4fe28c80e0e129131ed4ba}{correct\+Errata}} (\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&msg, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&synd, const std\+::vector$<$ unsigned int $>$ \&err\+Pos)
+\begin{DoxyCompactList}\small\item\em Correct errors in the received message based on syndromes and error positions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_a78677fa1eb1ac78195bb931544b9ee3c}{find\+Error\+Locator}} (\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&out, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&synd, int nsym, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ $\ast$erase\+Loc, int erase\+Count)
+\begin{DoxyCompactList}\small\item\em Find the error locator polynomial. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_a5749d73b386547071eac553388ba04f9}{find\+Errors}} (std\+::vector$<$ unsigned int $>$ \&out, const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ err\+Loc, int n)
+\begin{DoxyCompactList}\small\item\em Find the positions of errors in the received message. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \mbox{\hyperlink{classReedSolomon_aa0aeb9eb2f61205bda7904d099492722}{forney\+Syndromes}} (const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&synd, const std\+::vector$<$ unsigned int $>$ \&pos, int n)
+\begin{DoxyCompactList}\small\item\em Forney algorithm to calculate syndromes at error positions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classReedSolomon_ab7f5d3a847371067ce15b74b6add25f0}{decode}} (\mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$whole\+Out, \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$out, \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$data, int k, int nsym, std\+::vector$<$ unsigned int $>$ erase\+Pos, bool debug)
+\begin{DoxyCompactList}\small\item\em Decode a Reed-\/\+Solomon encoded message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGaloisField}{Galois\+Field}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \mbox{\hyperlink{classReedSolomon_a0013a75e19b062d7da24a07ef5da374e}{gf}}
+\begin{DoxyCompactList}\small\item\em Galois Field used for Reed-\/\+Solomon operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$\newline
+class Reed\+Solomon$<$ T $>$}
+Template class representing the Reed-\/\+Solomon error correction code. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of elements in the Reed-\/\+Solomon code. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classReedSolomon_a14fd1ce4e16d6b2dabc0607ef9ad15ca}\label{classReedSolomon_a14fd1ce4e16d6b2dabc0607ef9ad15ca}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!ReedSolomon@{ReedSolomon}}
+\index{ReedSolomon@{ReedSolomon}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ReedSolomon()}{ReedSolomon()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+\mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\mbox{\hyperlink{classReedSolomon}{\+::\+Reed\+Solomon}} (\begin{DoxyParamCaption}\item[{int}]{field\+Power }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for the \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field\+Power} & Power of the Galois Field. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classReedSolomon_a14fd1ce4e16d6b2dabc0607ef9ad15ca}\label{classReedSolomon_a14fd1ce4e16d6b2dabc0607ef9ad15ca}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!ReedSolomon@{ReedSolomon}}
+\index{ReedSolomon@{ReedSolomon}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ReedSolomon()}{ReedSolomon()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+\mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\mbox{\hyperlink{classReedSolomon}{\+::\+Reed\+Solomon}} (\begin{DoxyParamCaption}\item[{int}]{field\+Power }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for the \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field\+Power} & Power of the Galois Field. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classReedSolomon_abb7439ef0a15517c3f65e7ea7d6a362d}\label{classReedSolomon_abb7439ef0a15517c3f65e7ea7d6a362d}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!calcSyndromes@{calcSyndromes}}
+\index{calcSyndromes@{calcSyndromes}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{calcSyndromes()}{calcSyndromes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+void \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::calc\+Syndromes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{out,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{msg,  }\item[{int}]{nsym }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate syndromes for error detection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output polynomial containing syndromes. \\
+\hline
+{\em msg} & Input polynomial representing the received message. \\
+\hline
+{\em nsym} & Number of symbols in the error-\/correction code. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classReedSolomon_abb7439ef0a15517c3f65e7ea7d6a362d}\label{classReedSolomon_abb7439ef0a15517c3f65e7ea7d6a362d}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!calcSyndromes@{calcSyndromes}}
+\index{calcSyndromes@{calcSyndromes}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{calcSyndromes()}{calcSyndromes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+void \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::calc\+Syndromes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{out,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{msg,  }\item[{int}]{nsym }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculate syndromes for error detection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output polynomial containing syndromes. \\
+\hline
+{\em msg} & Input polynomial representing the received message. \\
+\hline
+{\em nsym} & Number of symbols in the error-\/correction code. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classReedSolomon_aed7826979c2e9f891ca9b01dabfe82f0}\label{classReedSolomon_aed7826979c2e9f891ca9b01dabfe82f0}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!checkSyndromes@{checkSyndromes}}
+\index{checkSyndromes@{checkSyndromes}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{checkSyndromes()}{checkSyndromes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::check\+Syndromes (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{synd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if syndromes indicate errors in the received message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em synd} & Input polynomial containing syndromes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if errors are detected, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_aed7826979c2e9f891ca9b01dabfe82f0}\label{classReedSolomon_aed7826979c2e9f891ca9b01dabfe82f0}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!checkSyndromes@{checkSyndromes}}
+\index{checkSyndromes@{checkSyndromes}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{checkSyndromes()}{checkSyndromes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::check\+Syndromes (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{synd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if syndromes indicate errors in the received message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em synd} & Input polynomial containing syndromes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if errors are detected, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_a3f5f678efa4fe28c80e0e129131ed4ba}\label{classReedSolomon_a3f5f678efa4fe28c80e0e129131ed4ba}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!correctErrata@{correctErrata}}
+\index{correctErrata@{correctErrata}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{correctErrata()}{correctErrata()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::correct\+Errata (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{msg,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{synd,  }\item[{const std\+::vector$<$ unsigned int $>$ \&}]{err\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Correct errors in the received message based on syndromes and error positions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & Received message polynomial. \\
+\hline
+{\em synd} & Syndromes of the received message. \\
+\hline
+{\em err\+Pos} & Positions of errors in the received message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successful, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_a3f5f678efa4fe28c80e0e129131ed4ba}\label{classReedSolomon_a3f5f678efa4fe28c80e0e129131ed4ba}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!correctErrata@{correctErrata}}
+\index{correctErrata@{correctErrata}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{correctErrata()}{correctErrata()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::correct\+Errata (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{msg,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{synd,  }\item[{const std\+::vector$<$ unsigned int $>$ \&}]{err\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Correct errors in the received message based on syndromes and error positions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & Received message polynomial. \\
+\hline
+{\em synd} & Syndromes of the received message. \\
+\hline
+{\em err\+Pos} & Positions of errors in the received message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successful, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_a522402136b9e06bea447c714cc471aa6}\label{classReedSolomon_a522402136b9e06bea447c714cc471aa6}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!createGenerator@{createGenerator}}
+\index{createGenerator@{createGenerator}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{createGenerator()}{createGenerator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+void \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::create\+Generator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{out,  }\item[{int}]{nsym }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generate the generator polynomial for Reed-\/\+Solomon codes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output polynomial representing the generator. \\
+\hline
+{\em nsym} & Number of symbols in the error-\/correction code. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classReedSolomon_a522402136b9e06bea447c714cc471aa6}\label{classReedSolomon_a522402136b9e06bea447c714cc471aa6}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!createGenerator@{createGenerator}}
+\index{createGenerator@{createGenerator}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{createGenerator()}{createGenerator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+void \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::create\+Generator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{out,  }\item[{int}]{nsym }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generate the generator polynomial for Reed-\/\+Solomon codes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output polynomial representing the generator. \\
+\hline
+{\em nsym} & Number of symbols in the error-\/correction code. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classReedSolomon_ab7f5d3a847371067ce15b74b6add25f0}\label{classReedSolomon_ab7f5d3a847371067ce15b74b6add25f0}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!decode@{decode}}
+\index{decode@{decode}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{decode()}{decode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$}]{whole\+Out,  }\item[{\mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$}]{out,  }\item[{\mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$}]{data,  }\item[{int}]{k,  }\item[{int}]{nsym,  }\item[{std\+::vector$<$ unsigned int $>$}]{erase\+Pos,  }\item[{bool}]{debug }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Decode a Reed-\/\+Solomon encoded message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em whole\+Out} & Output array for the fully decoded message. \\
+\hline
+{\em out} & Output array for the partially decoded message. \\
+\hline
+{\em data} & Input array containing the received message. \\
+\hline
+{\em k} & Number of symbols in the original message. \\
+\hline
+{\em nsym} & Number of symbols in the error-\/correction code. \\
+\hline
+{\em erase\+Pos} & Vector of erasure positions. \\
+\hline
+{\em debug} & Enable debug mode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if decoding is successful, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_ab7f5d3a847371067ce15b74b6add25f0}\label{classReedSolomon_ab7f5d3a847371067ce15b74b6add25f0}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!decode@{decode}}
+\index{decode@{decode}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{decode()}{decode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$}]{whole\+Out,  }\item[{\mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$}]{out,  }\item[{\mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $\ast$}]{data,  }\item[{int}]{k,  }\item[{int}]{nsym,  }\item[{std\+::vector$<$ unsigned int $>$}]{erase\+Pos,  }\item[{bool}]{debug }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Decode a Reed-\/\+Solomon encoded message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em whole\+Out} & Output array for the fully decoded message. \\
+\hline
+{\em out} & Output array for the partially decoded message. \\
+\hline
+{\em data} & Input array containing the received message. \\
+\hline
+{\em k} & Number of symbols in the original message. \\
+\hline
+{\em nsym} & Number of symbols in the error-\/correction code. \\
+\hline
+{\em erase\+Pos} & Vector of erasure positions. \\
+\hline
+{\em debug} & Enable debug mode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if decoding is successful, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_ab5aba69552e8b32aa518b34688559326}\label{classReedSolomon_ab5aba69552e8b32aa518b34688559326}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!encode@{encode}}
+\index{encode@{encode}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{encode()}{encode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::encode (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{data,  }\item[{int}]{nsym }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Encode a message vector using Reed-\/\+Solomon error correction. 
+
+This function encodes the input message vector by appending Reed-\/\+Solomon error correction codes. It modifies the input vector in-\/place.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of elements in the vector. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Vector containing the original message. The encoded message will be appended to this vector. \\
+\hline
+{\em nsym} & Number of error correction symbols to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the encoding is successful, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The input vector {\ttfamily data} will be modified to contain the encoded message. 
+\end{DoxyNote}
+\mbox{\Hypertarget{classReedSolomon_ab5aba69552e8b32aa518b34688559326}\label{classReedSolomon_ab5aba69552e8b32aa518b34688559326}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!encode@{encode}}
+\index{encode@{encode}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{encode()}{encode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::encode (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{data,  }\item[{int}]{nsym }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Encode a message vector using Reed-\/\+Solomon error correction. 
+
+This function encodes the input message vector by appending Reed-\/\+Solomon error correction codes. It modifies the input vector in-\/place.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of elements in the vector. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Vector containing the original message. The encoded message will be appended to this vector. \\
+\hline
+{\em nsym} & Number of error correction symbols to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the encoding is successful, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The input vector {\ttfamily data} will be modified to contain the encoded message. 
+\end{DoxyNote}
+\mbox{\Hypertarget{classReedSolomon_a2c5b21e229f5656c37bb5dd10c3decd5}\label{classReedSolomon_a2c5b21e229f5656c37bb5dd10c3decd5}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!findErrataLocator@{findErrataLocator}}
+\index{findErrataLocator@{findErrataLocator}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{findErrataLocator()}{findErrataLocator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::find\+Errata\+Locator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{out,  }\item[{const std\+::vector$<$ unsigned int $>$ \&}]{err\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find the errata locator polynomial based on error positions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output errata locator polynomial. \\
+\hline
+{\em err\+Pos} & Positions of errors in the received message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successful, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_a2c5b21e229f5656c37bb5dd10c3decd5}\label{classReedSolomon_a2c5b21e229f5656c37bb5dd10c3decd5}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!findErrataLocator@{findErrataLocator}}
+\index{findErrataLocator@{findErrataLocator}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{findErrataLocator()}{findErrataLocator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::find\+Errata\+Locator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{out,  }\item[{const std\+::vector$<$ unsigned int $>$ \&}]{err\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find the errata locator polynomial based on error positions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output errata locator polynomial. \\
+\hline
+{\em err\+Pos} & Positions of errors in the received message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successful, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_ad0292108d160f271d4e683907e5207bf}\label{classReedSolomon_ad0292108d160f271d4e683907e5207bf}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!findErrorEvaluator@{findErrorEvaluator}}
+\index{findErrorEvaluator@{findErrorEvaluator}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{findErrorEvaluator()}{findErrorEvaluator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::find\+Error\+Evaluator (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{synd,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{err\+Loc,  }\item[{int}]{nsym }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find the error evaluator polynomial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em synd} & Syndrome polynomial. \\
+\hline
+{\em err\+Loc} & Error locator polynomial. \\
+\hline
+{\em nsym} & Number of symbols in the codeword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resultant error evaluator polynomial. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_ad0292108d160f271d4e683907e5207bf}\label{classReedSolomon_ad0292108d160f271d4e683907e5207bf}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!findErrorEvaluator@{findErrorEvaluator}}
+\index{findErrorEvaluator@{findErrorEvaluator}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{findErrorEvaluator()}{findErrorEvaluator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::find\+Error\+Evaluator (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{synd,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{err\+Loc,  }\item[{int}]{nsym }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find the error evaluator polynomial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em synd} & Syndrome polynomial. \\
+\hline
+{\em err\+Loc} & Error locator polynomial. \\
+\hline
+{\em nsym} & Number of symbols in the codeword. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resultant error evaluator polynomial. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_a78677fa1eb1ac78195bb931544b9ee3c}\label{classReedSolomon_a78677fa1eb1ac78195bb931544b9ee3c}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!findErrorLocator@{findErrorLocator}}
+\index{findErrorLocator@{findErrorLocator}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{findErrorLocator()}{findErrorLocator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::find\+Error\+Locator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{out,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{synd,  }\item[{int}]{nsym,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ $\ast$}]{erase\+Loc,  }\item[{int}]{erase\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find the error locator polynomial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output polynomial representing the error locator. \\
+\hline
+{\em synd} & Input polynomial containing syndromes. \\
+\hline
+{\em nsym} & Number of symbols in the error-\/correction code. \\
+\hline
+{\em erase\+Loc} & Array of erasure positions. \\
+\hline
+{\em erase\+Count} & Number of erasures. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the error locator is found, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_a78677fa1eb1ac78195bb931544b9ee3c}\label{classReedSolomon_a78677fa1eb1ac78195bb931544b9ee3c}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!findErrorLocator@{findErrorLocator}}
+\index{findErrorLocator@{findErrorLocator}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{findErrorLocator()}{findErrorLocator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::find\+Error\+Locator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{out,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{synd,  }\item[{int}]{nsym,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ $\ast$}]{erase\+Loc,  }\item[{int}]{erase\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find the error locator polynomial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output polynomial representing the error locator. \\
+\hline
+{\em synd} & Input polynomial containing syndromes. \\
+\hline
+{\em nsym} & Number of symbols in the error-\/correction code. \\
+\hline
+{\em erase\+Loc} & Array of erasure positions. \\
+\hline
+{\em erase\+Count} & Number of erasures. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the error locator is found, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_a5749d73b386547071eac553388ba04f9}\label{classReedSolomon_a5749d73b386547071eac553388ba04f9}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!findErrors@{findErrors}}
+\index{findErrors@{findErrors}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{findErrors()}{findErrors()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::find\+Errors (\begin{DoxyParamCaption}\item[{std\+::vector$<$ unsigned int $>$ \&}]{out,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$}]{err\+Loc,  }\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find the positions of errors in the received message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output vector containing error positions. \\
+\hline
+{\em err\+Loc} & Input polynomial representing the error locator. \\
+\hline
+{\em n} & Number of symbols in the error-\/correction code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if errors are found, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_a5749d73b386547071eac553388ba04f9}\label{classReedSolomon_a5749d73b386547071eac553388ba04f9}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!findErrors@{findErrors}}
+\index{findErrors@{findErrors}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{findErrors()}{findErrors()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+bool \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::find\+Errors (\begin{DoxyParamCaption}\item[{std\+::vector$<$ unsigned int $>$ \&}]{out,  }\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$}]{err\+Loc,  }\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find the positions of errors in the received message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output vector containing error positions. \\
+\hline
+{\em err\+Loc} & Input polynomial representing the error locator. \\
+\hline
+{\em n} & Number of symbols in the error-\/correction code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if errors are found, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_aa0aeb9eb2f61205bda7904d099492722}\label{classReedSolomon_aa0aeb9eb2f61205bda7904d099492722}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!forneySyndromes@{forneySyndromes}}
+\index{forneySyndromes@{forneySyndromes}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{forneySyndromes()}{forneySyndromes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::forney\+Syndromes (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{synd,  }\item[{const std\+::vector$<$ unsigned int $>$ \&}]{pos,  }\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Forney algorithm to calculate syndromes at error positions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em synd} & Input polynomial containing syndromes. \\
+\hline
+{\em pos} & Vector of error positions. \\
+\hline
+{\em n} & Number of symbols in the error-\/correction code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Output polynomial containing syndromes at error positions. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReedSolomon_aa0aeb9eb2f61205bda7904d099492722}\label{classReedSolomon_aa0aeb9eb2f61205bda7904d099492722}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!forneySyndromes@{forneySyndromes}}
+\index{forneySyndromes@{forneySyndromes}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{forneySyndromes()}{forneySyndromes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+\mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::forney\+Syndromes (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPoly}{Poly}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \&}]{synd,  }\item[{const std\+::vector$<$ unsigned int $>$ \&}]{pos,  }\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Forney algorithm to calculate syndromes at error positions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em synd} & Input polynomial containing syndromes. \\
+\hline
+{\em pos} & Vector of error positions. \\
+\hline
+{\em n} & Number of symbols in the error-\/correction code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Output polynomial containing syndromes at error positions. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classReedSolomon_a0013a75e19b062d7da24a07ef5da374e}\label{classReedSolomon_a0013a75e19b062d7da24a07ef5da374e}} 
+\index{ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}!gf@{gf}}
+\index{gf@{gf}!ReedSolomon$<$ T $>$@{ReedSolomon$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{gf}{gf}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptUnsignedInteger}{Unsigned\+Integer}} T$>$ \\
+\mbox{\hyperlink{classGaloisField}{Galois\+Field}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$ \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}$<$ \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} $>$\+::gf}
+
+
+
+Galois Field used for Reed-\/\+Solomon operations. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+modules/\mbox{\hyperlink{modules_2myRSmodule_8cpp}{my\+RSmodule.\+cpp}}\item 
+utils/my\+RS/\mbox{\hyperlink{utils_2myRS_2myRSmodule_8cpp}{my\+RSmodule.\+cpp}}\end{DoxyCompactItemize}

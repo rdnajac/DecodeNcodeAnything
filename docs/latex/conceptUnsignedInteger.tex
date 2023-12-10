@@ -1,0 +1,10 @@
+\hypertarget{conceptUnsignedInteger}{}\doxysection{Unsigned\+Integer Concept Reference}
+\label{conceptUnsignedInteger}\index{UnsignedInteger@{UnsignedInteger}}
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{\textcolor{keyword}{concept }\mbox{\hyperlink{conceptUnsignedInteger}{UnsignedInteger}} =  std::is\_unsigned\_v<T> \&\&}
+\DoxyCodeLine{                         (\textcolor{keyword}{sizeof}(\mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}}) == 1 || \textcolor{keyword}{sizeof}(T) == 2 || \textcolor{keyword}{sizeof}(\mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}}) == 4 || \textcolor{keyword}{sizeof}(T) == 8)}
+
+\end{DoxyCode}

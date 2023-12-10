@@ -1,0 +1,57 @@
+\hypertarget{simulate__encoded__fastq_8cpp}{}\doxysection{tests/simulate\+\_\+encoded\+\_\+fastq.cpp File Reference}
+\label{simulate__encoded__fastq_8cpp}\index{tests/simulate\_encoded\_fastq.cpp@{tests/simulate\_encoded\_fastq.cpp}}
+{\ttfamily \#include \char`\"{}../src/codec.\+cpp\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+Include dependency graph for simulate\+\_\+encoded\+\_\+fastq.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simulate__encoded__fastq_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{simulate__encoded__fastq_8cpp_a59a015578a0a869c69156e9bdfb23efc}{fisher\+\_\+yates\+\_\+shuffle}} (std\+::vector$<$ T $>$ \&vec)
+\item 
+char \mbox{\hyperlink{simulate__encoded__fastq_8cpp_a6f9898e426da36b1b40194ab96045761}{generate\+\_\+random\+\_\+quality}} ()
+\item 
+void \mbox{\hyperlink{simulate__encoded__fastq_8cpp_a8768714e10e5d3304a44bb9f96a529c7}{convert\+\_\+to\+\_\+fastq}} (const std\+::vector$<$ std\+::string $>$ \&sequences, const std\+::string \&output\+\_\+filename)
+\item 
+int \mbox{\hyperlink{simulate__encoded__fastq_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{simulate__encoded__fastq_8cpp_a8768714e10e5d3304a44bb9f96a529c7}\label{simulate__encoded__fastq_8cpp_a8768714e10e5d3304a44bb9f96a529c7}} 
+\index{simulate\_encoded\_fastq.cpp@{simulate\_encoded\_fastq.cpp}!convert\_to\_fastq@{convert\_to\_fastq}}
+\index{convert\_to\_fastq@{convert\_to\_fastq}!simulate\_encoded\_fastq.cpp@{simulate\_encoded\_fastq.cpp}}
+\doxysubsubsection{\texorpdfstring{convert\_to\_fastq()}{convert\_to\_fastq()}}
+{\footnotesize\ttfamily void convert\+\_\+to\+\_\+fastq (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{sequences,  }\item[{const std\+::string \&}]{output\+\_\+filename }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{simulate__encoded__fastq_8cpp_a59a015578a0a869c69156e9bdfb23efc}\label{simulate__encoded__fastq_8cpp_a59a015578a0a869c69156e9bdfb23efc}} 
+\index{simulate\_encoded\_fastq.cpp@{simulate\_encoded\_fastq.cpp}!fisher\_yates\_shuffle@{fisher\_yates\_shuffle}}
+\index{fisher\_yates\_shuffle@{fisher\_yates\_shuffle}!simulate\_encoded\_fastq.cpp@{simulate\_encoded\_fastq.cpp}}
+\doxysubsubsection{\texorpdfstring{fisher\_yates\_shuffle()}{fisher\_yates\_shuffle()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void fisher\+\_\+yates\+\_\+shuffle (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{simulate__encoded__fastq_8cpp_a6f9898e426da36b1b40194ab96045761}\label{simulate__encoded__fastq_8cpp_a6f9898e426da36b1b40194ab96045761}} 
+\index{simulate\_encoded\_fastq.cpp@{simulate\_encoded\_fastq.cpp}!generate\_random\_quality@{generate\_random\_quality}}
+\index{generate\_random\_quality@{generate\_random\_quality}!simulate\_encoded\_fastq.cpp@{simulate\_encoded\_fastq.cpp}}
+\doxysubsubsection{\texorpdfstring{generate\_random\_quality()}{generate\_random\_quality()}}
+{\footnotesize\ttfamily char generate\+\_\+random\+\_\+quality (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{simulate__encoded__fastq_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{simulate__encoded__fastq_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{simulate\_encoded\_fastq.cpp@{simulate\_encoded\_fastq.cpp}!main@{main}}
+\index{main@{main}!simulate\_encoded\_fastq.cpp@{simulate\_encoded\_fastq.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+

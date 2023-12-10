@@ -1,0 +1,58 @@
+\hypertarget{utils_8hpp_source}{}\doxysection{utils.\+hpp}
+\label{utils_8hpp_source}\index{include/utils.hpp@{include/utils.hpp}}
+\mbox{\hyperlink{utils_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef UTILS\_HPP}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define UTILS\_HPP}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <span>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include<optional>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include<ranges>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include<numeric>}}
+\DoxyCodeLine{21 \textcolor{keyword}{enum class} \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8}{Nucleotide}} \{}
+\DoxyCodeLine{22     \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8a7fc56270e7a70fa81a5935b72eacbe29}{A}} = 0, }
+\DoxyCodeLine{23     \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8a0d61f8370cad1d412f80b84d143e1257}{C}} = 1, }
+\DoxyCodeLine{24     \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8adfcf28d0734569a6a693bc8194de62bf}{G}} = 2, }
+\DoxyCodeLine{25     \mbox{\hyperlink{utils_8hpp_a740430e75d8122a0073f041c1ce640c8ab9ece18c950afbfa6b0fdbfa4ff731d3}{T}} = 3  }
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{31 \textcolor{keyword}{const} std::string \mbox{\hyperlink{utils_8hpp_af566e739a18920fe309de3ff9fc7dacc}{nucleotideStr}} = \textcolor{stringliteral}{"{}ACGT"{}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{38 std::string \mbox{\hyperlink{utils_8hpp_aa8de115c798ffb4d626a4310bc62b0df}{nt2string}}(\textcolor{keywordtype}{int} nt);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{45 std::optional<int> \mbox{\hyperlink{utils_8hpp_a152c558d933f83e56a9ca2d82754d0aa}{char2nt}}(\textcolor{keywordtype}{char} nt);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{52 \textcolor{keywordtype}{int} \mbox{\hyperlink{utils_8hpp_a0db5f1142b03a3af9aeab691b4029241}{string2nt}}(\textcolor{keyword}{const} std::string\& nt);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{59 \textcolor{keywordtype}{double} \mbox{\hyperlink{utils_8hpp_a0d5c950f9c62ba632045c809b198a68c}{calculateGCContent}}(\textcolor{keyword}{const} std::string\& sequence);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{66 \textcolor{keywordtype}{int} \mbox{\hyperlink{utils_8hpp_a9f349195b5ab5efd979d8abb8f027037}{calculateMaxHomopolymerLen}}(\textcolor{keyword}{const} std::string\& sequence);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{73 std::string \mbox{\hyperlink{utils_8hpp_ad9aac51481fd9db20a6425862d65a5b2}{revcom}}(\textcolor{keyword}{const} std::string\& dna);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{81 \textcolor{keywordtype}{int} \mbox{\hyperlink{utils_8hpp_ad71e8e45dda7fd45274849aee84b286a}{levenshtein\_distance}}(\textcolor{keyword}{const} std::string\& str1, \textcolor{keyword}{const} std::string\& str2);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{90 \textcolor{keywordtype}{bool} \mbox{\hyperlink{utils_8hpp_a730572d786ff0adadd53a4e7643d4a84}{Match}}(\textcolor{keyword}{const} std::string\& p, \textcolor{keyword}{const} std::string\& q, \textcolor{keywordtype}{int} maxdist);}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{100 std::pair<int, int> \mbox{\hyperlink{utils_8hpp_af679ed1bde86768ae0285fbf545175b4}{min2}}(\textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} b, \textcolor{keywordtype}{int} aa, \textcolor{keywordtype}{int} bb);}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{111 \textcolor{keywordtype}{void} \mbox{\hyperlink{utils_8hpp_a464587c5147b58e395c651dd3a902963}{update\_distances}}(\textcolor{keywordtype}{int}\& fj1, \textcolor{keywordtype}{int}\& lj1, \textcolor{keywordtype}{int} cbMismatch, \textcolor{keywordtype}{int}\& mdist, \textcolor{keywordtype}{int}\& mn, \textcolor{keywordtype}{int}\& ln);}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{122 \textcolor{keywordtype}{bool} \mbox{\hyperlink{utils_8hpp_ab76f1fa2fedc765fcf37e5da78c7d7ec}{Find}}(\textcolor{keyword}{const} std::string\& s, \textcolor{keyword}{const} std::string\& subseq, \textcolor{keywordtype}{int} maxdist, \textcolor{keywordtype}{int}\& pos, \textcolor{keywordtype}{int}\& length);}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{131 std::pair<int, int> \mbox{\hyperlink{utils_8hpp_ae1274f73f1eeeb5cd2f698756cfcdeff}{FindPrefix}}(\textcolor{keyword}{const} std::string\& s, \textcolor{keyword}{const} std::string\& prefix, \textcolor{keywordtype}{int} maxdist);}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{140 std::pair<int, int> \mbox{\hyperlink{utils_8hpp_ad65b3228ff31a450579320b94f7aa068}{FindSuffix}}(\textcolor{keyword}{const} std::string\& s, \textcolor{keyword}{const} std::string\& suffix, \textcolor{keywordtype}{int} maxdist);}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{148 std::pair<int, std::string> \mbox{\hyperlink{utils_8hpp_a171f340b7ef4d6794b65e3228aa85bec}{Diff}}(\textcolor{keyword}{const} std::string\& from, \textcolor{keyword}{const} std::string\& to);}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

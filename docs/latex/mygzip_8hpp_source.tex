@@ -1,0 +1,167 @@
+\hypertarget{mygzip_8hpp_source}{}\doxysection{mygzip.\+hpp}
+\label{mygzip_8hpp_source}\index{utils/mygzip/mygzip.hpp@{utils/mygzip/mygzip.hpp}}
+\mbox{\hyperlink{mygzip_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef MYGZIP\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define MYGZIP\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <zlib.h>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{classGzipper}{Gzipper}} \{}
+\DoxyCodeLine{11 \textcolor{keyword}{public}:}
+\DoxyCodeLine{12     \mbox{\hyperlink{classGzipper_aba4d71aa2b775419ffa6b4c702dd6c5b}{Gzipper}}(\textcolor{keyword}{const} std::string\& input\_file)}
+\DoxyCodeLine{13         : \mbox{\hyperlink{classGzipper_a4b31b5e1e0a574bb2fb068050748e862}{input\_file\_}}(input\_file),}
+\DoxyCodeLine{14           \mbox{\hyperlink{classGzipper_a20ea79ab1699adc3c3506d7c2bdc4733}{output\_file\_}}(\mbox{\hyperlink{classGzipper_ab14804b23f43136f4e0c65bd39b3ac19}{determine\_output\_filename}}()),}
+\DoxyCodeLine{15           \mbox{\hyperlink{classGzipper_a4d4ada8b836b3a703fe149e86b2db33e}{input\_file\_stream\_}}(input\_file, std::ios::binary),}
+\DoxyCodeLine{16           \mbox{\hyperlink{classGzipper_a1eef98451cacb0f1b9722b635fe6117f}{output\_file\_stream\_}}(\mbox{\hyperlink{classGzipper_a20ea79ab1699adc3c3506d7c2bdc4733}{output\_file\_}}, std::ios::binary | std::ios::trunc) \{\}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classGzipper_a8f7f57209c65d26ef6015893cf5d8429}{process}}() \{}
+\DoxyCodeLine{19         std::cerr << \textcolor{stringliteral}{"{}Processing file: "{}} << \mbox{\hyperlink{classGzipper_a4b31b5e1e0a574bb2fb068050748e862}{input\_file\_}} << std::endl;}
+\DoxyCodeLine{20         \textcolor{keywordflow}{return} \mbox{\hyperlink{classGzipper_aa0fe56fafb01681603db9234e610f119}{is\_gz}}() ? \mbox{\hyperlink{classGzipper_a960be0d058ffde39ea888a3ab699595a}{decompress}}() : \mbox{\hyperlink{classGzipper_aca5aaf0dad3eb515df5d41481572d6bb}{compress}}();}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keyword}{private}:}
+\DoxyCodeLine{24     \textcolor{keyword}{static} \textcolor{keyword}{const} std::size\_t \mbox{\hyperlink{classGzipper_a64d2344d9777c1e833297b2d6bd949a9}{BUFFER\_SIZE}} = 1024;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     std::string \mbox{\hyperlink{classGzipper_a4b31b5e1e0a574bb2fb068050748e862}{input\_file\_}};}
+\DoxyCodeLine{27     std::string \mbox{\hyperlink{classGzipper_a20ea79ab1699adc3c3506d7c2bdc4733}{output\_file\_}};}
+\DoxyCodeLine{28     std::ifstream \mbox{\hyperlink{classGzipper_a4d4ada8b836b3a703fe149e86b2db33e}{input\_file\_stream\_}};}
+\DoxyCodeLine{29     std::ofstream \mbox{\hyperlink{classGzipper_a1eef98451cacb0f1b9722b635fe6117f}{output\_file\_stream\_}};}
+\DoxyCodeLine{30     z\_stream \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     std::string \mbox{\hyperlink{classGzipper_ab14804b23f43136f4e0c65bd39b3ac19}{determine\_output\_filename}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{33         \textcolor{keywordflow}{return} \mbox{\hyperlink{classGzipper_aa0fe56fafb01681603db9234e610f119}{is\_gz}}() ? \mbox{\hyperlink{classGzipper_a4b31b5e1e0a574bb2fb068050748e862}{input\_file\_}}.substr(0, \mbox{\hyperlink{classGzipper_a4b31b5e1e0a574bb2fb068050748e862}{input\_file\_}}.find\_last\_of(\textcolor{stringliteral}{"{}."{}})) : \mbox{\hyperlink{classGzipper_a4b31b5e1e0a574bb2fb068050748e862}{input\_file\_}} + \textcolor{stringliteral}{"{}.gz"{}};}
+\DoxyCodeLine{34     \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classGzipper_aa0fe56fafb01681603db9234e610f119}{is\_gz}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{37         \textcolor{keywordflow}{return} \mbox{\hyperlink{classGzipper_a4b31b5e1e0a574bb2fb068050748e862}{input\_file\_}}.substr(\mbox{\hyperlink{classGzipper_a4b31b5e1e0a574bb2fb068050748e862}{input\_file\_}}.find\_last\_of(\textcolor{stringliteral}{"{}."{}})) == \textcolor{stringliteral}{"{}.gz"{}};}
+\DoxyCodeLine{38     \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classGzipper_a0726c06851ddf4225c70541ed69477bc}{open\_files}}() \{}
+\DoxyCodeLine{41         \mbox{\hyperlink{classGzipper_a4d4ada8b836b3a703fe149e86b2db33e}{input\_file\_stream\_}}.open(\mbox{\hyperlink{classGzipper_a4b31b5e1e0a574bb2fb068050748e862}{input\_file\_}}, std::ios::binary);}
+\DoxyCodeLine{42         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classGzipper_a4d4ada8b836b3a703fe149e86b2db33e}{input\_file\_stream\_}}.is\_open()) \{}
+\DoxyCodeLine{43             \mbox{\hyperlink{classGzipper_a7eac173fe824f88bb5d4e06255b46aa9}{log\_error}}(\textcolor{stringliteral}{"{}Error opening input file: "{}} + \mbox{\hyperlink{classGzipper_a4b31b5e1e0a574bb2fb068050748e862}{input\_file\_}});}
+\DoxyCodeLine{44             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{45         \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         \mbox{\hyperlink{classGzipper_a1eef98451cacb0f1b9722b635fe6117f}{output\_file\_stream\_}}.open(\mbox{\hyperlink{classGzipper_a20ea79ab1699adc3c3506d7c2bdc4733}{output\_file\_}}, std::ios::binary | std::ios::trunc);}
+\DoxyCodeLine{48         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classGzipper_a1eef98451cacb0f1b9722b635fe6117f}{output\_file\_stream\_}}.is\_open()) \{}
+\DoxyCodeLine{49             \mbox{\hyperlink{classGzipper_a7eac173fe824f88bb5d4e06255b46aa9}{log\_error}}(\textcolor{stringliteral}{"{}Error opening output file: "{}} + \mbox{\hyperlink{classGzipper_a20ea79ab1699adc3c3506d7c2bdc4733}{output\_file\_}});}
+\DoxyCodeLine{50             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{51         \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{54     \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     \textcolor{keywordtype}{int} \mbox{\hyperlink{classGzipper_a583c55dbc33f969fd0e88b1f6f7e0ad6}{initialize\_zlib}}(\textcolor{keywordtype}{int} window\_bits) \{}
+\DoxyCodeLine{57         std::cerr << \textcolor{stringliteral}{"{}Initializing zlib with window\_bits: "{}} << window\_bits << std::endl;}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.zalloc = Z\_NULL;}
+\DoxyCodeLine{60         \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.zfree = Z\_NULL;}
+\DoxyCodeLine{61         \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.opaque = Z\_NULL;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63         \textcolor{keywordflow}{if} (window\_bits < 0)}
+\DoxyCodeLine{64             window\_bits = -\/window\_bits;}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66         \textcolor{keywordflow}{return} inflateInit2(\&\mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}, window\_bits) != Z\_OK ? Z\_ERRNO : Z\_OK;}
+\DoxyCodeLine{67     \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{keywordtype}{int} \mbox{\hyperlink{classGzipper_aaa5dc7f2d6aa2d84cf92a341577d8595}{finalize\_processing}}() \{}
+\DoxyCodeLine{70         std::cerr << \textcolor{stringliteral}{"{}Finalizing processing..."{}} << std::endl;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72         \textcolor{keywordflow}{return} \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.avail\_out == 0 ? (\mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.avail\_in == 0 ? Z\_OK : Z\_BUF\_ERROR) : Z\_STREAM\_END;}
+\DoxyCodeLine{73     \}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     \textcolor{keywordtype}{void} \mbox{\hyperlink{classGzipper_a7eac173fe824f88bb5d4e06255b46aa9}{log\_error}}(\textcolor{keyword}{const} std::string\& message) \{}
+\DoxyCodeLine{76         std::cerr << \textcolor{stringliteral}{"{}Error: "{}} << message << std::endl;}
+\DoxyCodeLine{77     \}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classGzipper_aca5aaf0dad3eb515df5d41481572d6bb}{compress}}() \{}
+\DoxyCodeLine{80         \textcolor{keywordflow}{if} (\mbox{\hyperlink{classGzipper_a0726c06851ddf4225c70541ed69477bc}{open\_files}}() \&\& \mbox{\hyperlink{classGzipper_a583c55dbc33f969fd0e88b1f6f7e0ad6}{initialize\_zlib}}(Z\_DEFAULT\_COMPRESSION) == Z\_OK) \{}
+\DoxyCodeLine{81             std::vector<char> buffer(\mbox{\hyperlink{classGzipper_a64d2344d9777c1e833297b2d6bd949a9}{BUFFER\_SIZE}}, \textcolor{charliteral}{'\(\backslash\)0'});}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83             \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{84                 \mbox{\hyperlink{classGzipper_a4d4ada8b836b3a703fe149e86b2db33e}{input\_file\_stream\_}}.read(buffer.data(), buffer.size());}
+\DoxyCodeLine{85                 \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.avail\_in = \textcolor{keyword}{static\_cast<}uInt\textcolor{keyword}{>}(\mbox{\hyperlink{classGzipper_a4d4ada8b836b3a703fe149e86b2db33e}{input\_file\_stream\_}}.gcount());}
+\DoxyCodeLine{86                 \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.next\_in = \textcolor{keyword}{reinterpret\_cast<}Bytef*\textcolor{keyword}{>}(buffer.data());}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88                 \textcolor{keywordtype}{int} flush = Z\_FINISH;}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90                 \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{91                     \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.avail\_out = buffer.size();}
+\DoxyCodeLine{92                     \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.next\_out = \textcolor{keyword}{reinterpret\_cast<}Bytef*\textcolor{keyword}{>}(buffer.data());}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94                     \textcolor{keywordtype}{int} result = deflate(\&\mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}, flush);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96                     \textcolor{keywordflow}{if} (result == Z\_STREAM\_ERROR) \{}
+\DoxyCodeLine{97                         \mbox{\hyperlink{classGzipper_a7eac173fe824f88bb5d4e06255b46aa9}{log\_error}}(\textcolor{stringliteral}{"{}Error processing data with zlib"{}});}
+\DoxyCodeLine{98                         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{99                     \}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101                     \mbox{\hyperlink{classGzipper_a1eef98451cacb0f1b9722b635fe6117f}{output\_file\_stream\_}}.write(buffer.data(), buffer.size() -\/ \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.avail\_out);}
+\DoxyCodeLine{102                 \} \textcolor{keywordflow}{while} (\mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.avail\_out == 0);}
+\DoxyCodeLine{103             \} \textcolor{keywordflow}{while} (\mbox{\hyperlink{classGzipper_a4d4ada8b836b3a703fe149e86b2db33e}{input\_file\_stream\_}});}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105             \textcolor{keywordtype}{int} deflateEndResult = deflateEnd(\&\mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}});}
+\DoxyCodeLine{106             \textcolor{keywordflow}{if} (deflateEndResult == Z\_OK) \{}
+\DoxyCodeLine{107                 std::cerr << \textcolor{stringliteral}{"{}Compression successful."{}} << std::endl;}
+\DoxyCodeLine{108                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{109             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{110                 \mbox{\hyperlink{classGzipper_a7eac173fe824f88bb5d4e06255b46aa9}{log\_error}}(\textcolor{stringliteral}{"{}deflateEnd failed: "{}} + std::string(zError(deflateEndResult)));}
+\DoxyCodeLine{111             \}}
+\DoxyCodeLine{112         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{113             \mbox{\hyperlink{classGzipper_a7eac173fe824f88bb5d4e06255b46aa9}{log\_error}}(\textcolor{stringliteral}{"{}Initialization failed."{}});}
+\DoxyCodeLine{114         \}}
+\DoxyCodeLine{115         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{116     \}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classGzipper_a960be0d058ffde39ea888a3ab699595a}{decompress}}() \{}
+\DoxyCodeLine{119         std::cerr << \textcolor{stringliteral}{"{}Decompression..."{}} << std::endl;}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121         \textcolor{keywordflow}{if} (\mbox{\hyperlink{classGzipper_a0726c06851ddf4225c70541ed69477bc}{open\_files}}() \&\& \mbox{\hyperlink{classGzipper_a583c55dbc33f969fd0e88b1f6f7e0ad6}{initialize\_zlib}}(-\/MAX\_WBITS) == Z\_OK) \{}
+\DoxyCodeLine{122             std::vector<char> buffer(\mbox{\hyperlink{classGzipper_a64d2344d9777c1e833297b2d6bd949a9}{BUFFER\_SIZE}}, \textcolor{charliteral}{'\(\backslash\)0'});}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124             \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{125                 \mbox{\hyperlink{classGzipper_a4d4ada8b836b3a703fe149e86b2db33e}{input\_file\_stream\_}}.read(buffer.data(), buffer.size());}
+\DoxyCodeLine{126                 \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.avail\_in = \textcolor{keyword}{static\_cast<}uInt\textcolor{keyword}{>}(\mbox{\hyperlink{classGzipper_a4d4ada8b836b3a703fe149e86b2db33e}{input\_file\_stream\_}}.gcount());}
+\DoxyCodeLine{127                 \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.next\_in = \textcolor{keyword}{reinterpret\_cast<}Bytef*\textcolor{keyword}{>}(buffer.data());}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129                 \textcolor{keywordtype}{int} flush = Z\_FINISH;}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131                 \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{132                     \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.avail\_out = buffer.size();}
+\DoxyCodeLine{133                     \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.next\_out = \textcolor{keyword}{reinterpret\_cast<}Bytef*\textcolor{keyword}{>}(buffer.data());}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135                     \textcolor{keywordtype}{int} result = inflate(\&\mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}, flush);}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137                     \textcolor{keywordflow}{if} (result == Z\_STREAM\_ERROR) \{}
+\DoxyCodeLine{138                         \mbox{\hyperlink{classGzipper_a7eac173fe824f88bb5d4e06255b46aa9}{log\_error}}(\textcolor{stringliteral}{"{}Error processing data with zlib"{}});}
+\DoxyCodeLine{139                         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{140                     \}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142                     \mbox{\hyperlink{classGzipper_a1eef98451cacb0f1b9722b635fe6117f}{output\_file\_stream\_}}.write(buffer.data(), buffer.size() -\/ \mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.avail\_out);}
+\DoxyCodeLine{143                 \} \textcolor{keywordflow}{while} (\mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}}.avail\_out == 0);}
+\DoxyCodeLine{144             \} \textcolor{keywordflow}{while} (\mbox{\hyperlink{classGzipper_a4d4ada8b836b3a703fe149e86b2db33e}{input\_file\_stream\_}});}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146             \textcolor{keywordtype}{int} inflateEndResult = inflateEnd(\&\mbox{\hyperlink{classGzipper_aacc1daf78d9d34ca868a60728f6ee133}{stream\_}});}
+\DoxyCodeLine{147             \textcolor{keywordflow}{if} (inflateEndResult == Z\_OK) \{}
+\DoxyCodeLine{148                 std::cerr << \textcolor{stringliteral}{"{}Decompression successful."{}} << std::endl;}
+\DoxyCodeLine{149                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{150             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{151                 \mbox{\hyperlink{classGzipper_a7eac173fe824f88bb5d4e06255b46aa9}{log\_error}}(\textcolor{stringliteral}{"{}inflateEnd failed: "{}} + std::string(zError(inflateEndResult)));}
+\DoxyCodeLine{152             \}}
+\DoxyCodeLine{153         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{154             \mbox{\hyperlink{classGzipper_a7eac173fe824f88bb5d4e06255b46aa9}{log\_error}}(\textcolor{stringliteral}{"{}Initialization failed."{}});}
+\DoxyCodeLine{155         \}}
+\DoxyCodeLine{156         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{157     \}}
+\DoxyCodeLine{158 \};}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// MYGZIP\_HPP}}
+\DoxyCodeLine{161 }
+
+\end{DoxyCode}

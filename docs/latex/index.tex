@@ -1,0 +1,121 @@
+\label{index_md_docs_design}%
+\Hypertarget{index_md_docs_design}%
+ \hypertarget{index_autotoc_md1}{}\doxysection{Decode Ncode Anything}\label{index_autotoc_md1}
+{\itshape Caroline Leighton, Xinjin (Synthia) Li, Ryan Najac} {\itshape COMS 4995 Design using C++} {\itshape Fall 2023}\hypertarget{index_autotoc_md2}{}\doxysubsection{Introduction}\label{index_autotoc_md2}
+\hypertarget{index_autotoc_md3}{}\doxysubsubsection{Problems Addressed}\label{index_autotoc_md3}
+The exponential growth of the global datasphere necessitates a paradigm shift in storage solutions. Traditional methods like HDDs and SSDs are inadequate for the anticipated surge from 100 to 175 Zettabytes by 2025. This project aims to design an efficient and durable DNA storage system to meet the evolving demands of data preservation.\hypertarget{index_autotoc_md4}{}\doxysubsection{Project Overview}\label{index_autotoc_md4}
+\hypertarget{index_autotoc_md5}{}\doxysubsubsection{Final Design Overview}\label{index_autotoc_md5}
+Our approach involves opening, reading binary data, constructing sequences, and decoding. Key components include the {\ttfamily Oligos} class, {\ttfamily \mbox{\hyperlink{classCodec}{Codec}}} class, a vector for efficient data manipulation, and the {\ttfamily \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}} template class for error correction.
+
+The proposed DNA storage design addresses current limitations, offering a robust, efficient, and reliable solution for the impending surge in global data. By combining innovative algorithms, well-\/designed classes, compatibility considerations, and strategic tooling choices, our project aims to contribute to the evolution of data storage technology.\hypertarget{index_autotoc_md6}{}\doxysubsubsection{Advantages of Our Algorithm}\label{index_autotoc_md6}
+
+\begin{DoxyItemize}
+\item {\bfseries{Efficient Storage and Retrieval\+:}} Leveraging the {\ttfamily Oligos} class ensures faster bitwise operations.
+\item {\bfseries{Error Correction and Data Reliability\+:}} Integration of Reed-\/\+Solomon enhances data reliability.
+\item {\bfseries{Flexibility and Compatibility\+:}} Our design utilizes standard C++ libraries, ensuring compatibility.
+\end{DoxyItemize}\hypertarget{index_autotoc_md7}{}\doxysubsubsection{Tooling Choices for Efficient Development}\label{index_autotoc_md7}
+
+\begin{DoxyItemize}
+\item {\bfseries{CMake\+:}} Used for building the project, providing a platform-\/independent and efficient way to manage dependencies and compile the project seamlessly.
+\item {\bfseries{Doxygen\+:}} Used for generating documentation from source code comments, promoting clarity and understanding for developers.
+\item {\bfseries{zlib\+:}} Important for handling .gz compressed files, providing efficient and reliable compression and decompression algorithms, essential for working with large genomic datasets.
+\end{DoxyItemize}\hypertarget{index_autotoc_md8}{}\doxysubsection{Project Structure}\label{index_autotoc_md8}
+\hypertarget{index_autotoc_md9}{}\doxysubsubsection{app}\label{index_autotoc_md9}
+Source code files for the main encoding and decoding applications.\hypertarget{index_autotoc_md10}{}\doxysubsubsection{build}\label{index_autotoc_md10}
+Generated with {\ttfamily cmake}
+\begin{DoxyItemize}
+\item {\bfseries{app\+:}} Directory where compiled executable files for the \textquotesingle{}app\textquotesingle{} directory are stored.
+\item {\bfseries{CMake\+Cache.\+txt\+:}} CMake cache file storing configuration settings.
+\item {\bfseries{CMake\+Files\+:}} Directory containing CMake-\/generated files.
+\item {\bfseries{cmake\+\_\+install.\+cmake\+:}} CMake installation file.
+\item {\bfseries{Makefile\+:}} Makefile for building the project.
+\item {\bfseries{src\+:}} Directory where compiled object files for the \textquotesingle{}src\textquotesingle{} directory are stored.
+\item {\bfseries{tests\+:}} Directory where compiled object files for the \textquotesingle{}tests\textquotesingle{} directory are stored.
+\end{DoxyItemize}\hypertarget{index_autotoc_md11}{}\doxysubsubsection{incl}\label{index_autotoc_md11}
+
+\begin{DoxyItemize}
+\item Conversion
+\item Sequence Analysis
+\item Sequence Matching and Alignment
+\item Sequence Prefix and Suffix Matching
+\item Sequence Difference Calculationude\+: DNA Sequence Utilities
+\item {\bfseries{\mbox{\hyperlink{io_8hpp}{io.\+hpp}}\+:}} Header file containing declarations for input/output functions.
+\item {\bfseries{\mbox{\hyperlink{utils_8hpp}{utils.\+hpp}}\+:}} Header file containing declarations for utility functions.
+\end{DoxyItemize}
+
+Leverages modern C++20 features\+: Unordered Map, Optionals, Range-\/\+Based Loops, Algorithm Functions, contributing to improved readability, conciseness, and maintainability.
+
+\DoxyHorRuler{0}
+ \hypertarget{index_autotoc_md13}{}\doxyparagraph{Oligonucleotide Class}\label{index_autotoc_md13}
+\doxysubparagraph*{Oligos Class\+: Efficient Storage and Retrieval}
+
+Efficiently stores DNA sequences using an unsigned 64-\/bit data block, minimizing overhead by performing operations, such as slicing and conversion to a string representation, only upon request.
+
+{\itshape C++ Class Representation\+:} Utilizes a C++ class aligning with efficiency and encapsulation principles. The use of an unsigned 64-\/bit data block allows for bitwise operations, enhancing speed and reducing memory footprint.
+
+\doxysubparagraph*{Class Overview}
+
+Defines an {\ttfamily \mbox{\hyperlink{classOligo}{Oligo}}} class to represent oligonucleotides (DNA sequences) with constructors, comparison operators, and various member functions for oligo manipulation.
+
+\doxysubparagraph*{Class Members}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily size\+\_\+t basepairs}\+: Number of base pairs in the oligonucleotide (limited to {\ttfamily MAX\+\_\+\+BP}).
+\item {\ttfamily uint64\+\_\+t data\+\_\+block}\+: Data block storing the binary representation of the oligonucleotide. \doxysubparagraph*{File I/O}
+\end{DoxyItemize}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily write\+\_\+bin(std\+::ofstream \&of)}\+: Write binary data to a file.
+\end{DoxyItemize}
+
+Modern C++ Features include Constructors Initialization List, Range-\/\+Based For Loop, std\+::optional, std\+::min, Operator Overloading, Conditional Compilation ({\ttfamily \#ifdef}), TODO for Spaceship Operator (\texorpdfstring{$<$}{<}=\texorpdfstring{$>$}{>}).
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md15}{}\doxyparagraph{Codec Class}\label{index_autotoc_md15}
+\doxysubparagraph*{\mbox{\hyperlink{classCodec}{Codec}} Class\+: Managing File Stream and Operations}
+
+Crucial in managing file-\/related operations, including opening, closing, and obtaining the filesize. Encapsulates the complexities of interacting with the file stream, providing a streamlined interface for the rest of the system.
+
+{\itshape C++ Class Representation\+:} A C++ class for the \mbox{\hyperlink{classCodec}{Codec}} concept offers a modular and organized approach to file handling. The class encapsulates file-\/related functionalities, promoting code readability and maintainability. The ability to easily open, close, and obtain file size enhances the overall robustness of the system.
+
+\doxysubparagraph*{Class Overview}
+
+Defines a {\ttfamily \mbox{\hyperlink{classCodec}{Codec}}} class for handling files and \mbox{\hyperlink{classOligo}{Oligo}} data, including file I/O operations, encoding and decoding functions, and vector manipulation for \mbox{\hyperlink{classOligo}{Oligo}} objects.
+
+\doxysubparagraph*{Class Members}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily std\+::vector\texorpdfstring{$<$}{<}\mbox{\hyperlink{classOligo}{Oligo}}\texorpdfstring{$>$}{>} oligo\+\_\+vec}\+: Vector to store \mbox{\hyperlink{classOligo}{Oligo}} objects.
+\item {\ttfamily std\+::string filename}\+: Name of the file.
+\item {\ttfamily std\+::streampos filesize}\+: Size of the file.
+\item {\ttfamily std\+::vector\texorpdfstring{$<$}{<}Oligo$\ast$\texorpdfstring{$>$}{>} decode\+\_\+vec}\+: Vector to store \mbox{\hyperlink{classOligo}{Oligo}} objects for decoding.
+\end{DoxyItemize}
+
+The {\ttfamily \mbox{\hyperlink{classCodec}{Codec}}} class exhibits the use of modern C++ features, enhancing code readability, expressiveness, and efficiency.
+\begin{DoxyItemize}
+\item Initialization List, Smart Pointers, Range-\/\+Based For Loop, Lambda Expressions, Filesystem Library, Sort Algorithm, Binary File Output, Type Aliases (auto).
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md17}{}\doxysubsubsection{utils\+: Modern C++ Utility Libraries Retooled}\label{index_autotoc_md17}
+
+\begin{DoxyItemize}
+\item {\bfseries{Seamless Integration\+:}} Utills seamlessly integrates with existing C++ code, enhancing organization and maintainability while eliminating the need for external processes. This promotes overall application cohesiveness.
+\item {\bfseries{Dynamic Linking\+:}} Utills supports dynamic linking, enabling updates without modifying the source code. This adaptability is particularly beneficial for evolving compression standards or library improvements.
+\item {\bfseries{Consistent Interface\+:}} With a uniform interface, Utills encourages a standardized approach to file compression and decompression within the codebase. This consistency enhances code readability and facilitates collaboration among developers.
+\item {\bfseries{Tailored Error Handling\+:}} The C++ Reed-\/\+Solomon library allows developers to implement specific error-\/handling strategies, ensuring robust and resilient data processing.
+\item {\bfseries{Enhanced Control\+:}} Combining Reed-\/\+Solomon error correction with compression provides advanced control over data integrity. Developers can manage error correction parameters and strategies to meet reliability requirements consistently.
+\item {\bfseries{Performance Optimization}} Updated and improved with modern C++
+\end{DoxyItemize}\hypertarget{index_autotoc_md18}{}\doxyparagraph{Efficient Handling of Compressed Files}\label{index_autotoc_md18}
+Ufficiently manages file processing and compression by leveraging the zlib library. It can distinguish between regular and gzipped files, providing versatility in handling different file types.\hypertarget{index_autotoc_md19}{}\doxyparagraph{Reed-\/\+Solomon Error Correction Implementation with C++ Classes and Concepts}\label{index_autotoc_md19}
+Seamlessly incorporates Reed-\/\+Solomon error correction using the {\ttfamily \mbox{\hyperlink{classReedSolomon}{Reed\+Solomon}}} template class, representing the Reed-\/\+Solomon error correction code.
+\begin{DoxyItemize}
+\item {\bfseries{Galois Field\+:}} Incorporates a {\ttfamily \mbox{\hyperlink{classGaloisField}{Galois\+Field}}} attribute, fundamental to Reed-\/\+Solomon operations.
+\end{DoxyItemize}\hypertarget{index_autotoc_md20}{}\doxysubsection{scripts}\label{index_autotoc_md20}
+
+\begin{DoxyItemize}
+\item An assortment of shell scripts to aid in building and testing the project 
+\end{DoxyItemize}
