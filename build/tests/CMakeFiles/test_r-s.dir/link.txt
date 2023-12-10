@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall "CMakeFiles/test_r-s.dir/test_r-s.cpp.o" -o test_r-s  ../src/libmy_library.a 

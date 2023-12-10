@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['basepairs_0',['basepairs',['../classOligo.html#a861c72a641bc6f6af57725d90dfcaf22',1,'Oligo']]]
+  ['avg_5ftuples_0',['avg_tuples',['../namespaceplot__data.html#aeb186d3054992775f116fc00012d1284',1,'plot_data']]]
 ];

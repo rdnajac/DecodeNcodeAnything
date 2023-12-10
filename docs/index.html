@@ -65,58 +65,127 @@ $(function() {
   <div class="headertitle"><div class="title">Designing DNA Storage in C++ </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_docs_design"></a><b>Decode Ncode Anything</b> <br  />
- <em>Caroline Leighton, Xinjin (Synthia) Li, Ryan Najac</em> <br  />
- <em>COMS 4995 Design using C++</em> <br  />
- <em>Fall 2023</em></p>
-<h2><a class="anchor" id="autotoc_md1"></a>
-1. Problems Addressed</h2>
-<p >The exponential growth of the global datasphere necessitates a paradigm shift in storage solutions. Traditional methods like HDDs and SSDs are inadequate for the anticipated surge from 100 to 175 Zettabytes by 2025. This project aims to design an efficient and durable DNA storage system to meet the evolving demands of data preservation.</p>
+<div class="textblock"><p ><a class="anchor" id="md_docs_design"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Decode Ncode Anything</h1>
+<p ><em>Caroline Leighton, Xinjin (Synthia) Li, Ryan Najac</em> <em>COMS 4995 Design using C++</em> <em>Fall 2023</em></p>
 <h2><a class="anchor" id="autotoc_md2"></a>
-2. Alternatives Considered</h2>
-<p >Current DNA storage technologies face challenges in short reads, long reads, and nanopore sequencing. Our design integrates Reed-Solomon error correction to enhance data reliability, addressing these challenges.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
-3. Final Design Overview</h2>
-<p >Our approach involves opening, reading binary data, constructing sequences, and decoding. Key components include the Oligos class, <a class="el" href="classCodec.html" title="Codec class for handling files and Oligo data.">Codec</a> class, a vector for efficient data manipulation, and the <a class="el" href="classReedSolomon.html" title="Template class representing the Reed-Solomon error correction code.">ReedSolomon</a> template class for error correction.</p>
-<h3><a class="anchor" id="autotoc_md4"></a>
-Oligos Class: Efficient Storage and Retrieval</h3>
-<p >The Oligos class efficiently stores DNA sequences using an unsigned 64-bit data block. It minimizes overhead by performing operations, such as slicing and conversion to a string representation, only upon request. This design choice optimizes for performance and resource usage.</p>
-<p ><em>C++ Class Representation:</em> Utilizing a C++ class for Oligos aligns with the principles of efficiency and encapsulation. The use of an unsigned 64-bit data block allows for bitwise operations, enhancing speed and reducing memory footprint.</p>
+Introduction</h2>
+<h3><a class="anchor" id="autotoc_md3"></a>
+Problems Addressed</h3>
+<p >The exponential growth of the global datasphere necessitates a paradigm shift in storage solutions. Traditional methods like HDDs and SSDs are inadequate for the anticipated surge from 100 to 175 Zettabytes by 2025. This project aims to design an efficient and durable DNA storage system to meet the evolving demands of data preservation.</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Project Overview</h2>
 <h3><a class="anchor" id="autotoc_md5"></a>
-Codec Class: Managing File Stream and Operations</h3>
-<p >The <a class="el" href="classCodec.html" title="Codec class for handling files and Oligo data.">Codec</a> class plays a crucial role in managing file-related operations, including opening, closing, and obtaining the filesize. This class encapsulates the complexities of interacting with the file stream, providing a streamlined interface for the rest of the system. The default constructor initializes the <a class="el" href="classCodec.html" title="Codec class for handling files and Oligo data.">Codec</a> object, while the constructor with a filename allows for easy instantiation with a specific file. The destructor ensures the proper closing of the file, enhancing resource management.</p>
-<p ><em>C++ Class Representation:</em> Choosing a C++ class for the <a class="el" href="classCodec.html" title="Codec class for handling files and Oligo data.">Codec</a> concept offers a modular and organized approach to file handling. The class encapsulates file-related functionalities, promoting code readability and maintainability. The ability to easily open, close, and obtain file size through dedicated member functions enhances the overall robustness of the system. The class acts as a cohesive unit, abstracting away the intricacies of file stream management.</p>
+Final Design Overview</h3>
+<p >Our approach involves opening, reading binary data, constructing sequences, and decoding. Key components include the <code>Oligos</code> class, <code><a class="el" href="classCodec.html" title="Codec class for handling files and Oligo data.">Codec</a></code> class, a vector for efficient data manipulation, and the <code><a class="el" href="classReedSolomon.html" title="Template class representing the Reed-Solomon error correction code.">ReedSolomon</a></code> template class for error correction.</p>
+<p >The proposed DNA storage design addresses current limitations, offering a robust, efficient, and reliable solution for the impending surge in global data. By combining innovative algorithms, well-designed classes, compatibility considerations, and strategic tooling choices, our project aims to contribute to the evolution of data storage technology.</p>
 <h3><a class="anchor" id="autotoc_md6"></a>
-Reed-Solomon Error Correction: Ensuring Data Reliability</h3>
-<p >In data transmission and storage, error correction is vital for data integrity. Reed-Solomon error correction involves adding redundant bits during encoding for error detection and correction during decoding.</p>
-<h3><a class="anchor" id="autotoc_md7"></a>
-Reed-Solomon Implementation with C++ Classes</h3>
-<p >Our project seamlessly incorporates Reed-Solomon error correction using the <code><a class="el" href="classReedSolomon.html" title="Template class representing the Reed-Solomon error correction code.">ReedSolomon</a></code> template class. This class represents the Reed-Solomon error correction code, providing functions for encoding, decoding, and error correction.</p>
+Advantages of Our Algorithm</h3>
 <ul>
-<li><b>Galois Field:</b> The class incorporates a <code><a class="el" href="classGaloisField.html" title="Class representing a Galois Field of order 2^fieldPower.">GaloisField</a></code> attribute, fundamental to Reed-Solomon operations.</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
-4. Advantages of Our Algorithm</h2>
-<ul>
-<li><b>Efficient Storage and Retrieval:</b> Leveraging the Oligos class ensures faster bitwise operations.</li>
+<li><b>Efficient Storage and Retrieval:</b> Leveraging the <code>Oligos</code> class ensures faster bitwise operations.</li>
 <li><b>Error Correction and Data Reliability:</b> Integration of Reed-Solomon enhances data reliability.</li>
 <li><b>Flexibility and Compatibility:</b> Our design utilizes standard C++ libraries, ensuring compatibility.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
-5. Tooling Choices for Efficient Development</h2>
+<h3><a class="anchor" id="autotoc_md7"></a>
+Tooling Choices for Efficient Development</h3>
 <ul>
-<li><b>CMake:</b> Used for building the project. CMake simplifies the build process, providing a platform-independent and efficient way to manage dependencies and compile the project seamlessly.</li>
-<li><b>Doxygen:</b> Used for generating documentation from source code comments. Doxygen automates the documentation process, ensuring that code documentation remains up-to-date and accessible. This choice promotes clarity and understanding for developers interacting with the codebase.</li>
-<li><b>zlib:</b> Important for handling .gz compressed files, especially since FASTQ sequencing files are generally compressed due to their size. zlib provides efficient and reliable compression and decompression algorithms, essential for working with large genomic datasets.</li>
+<li><b>CMake:</b> Used for building the project, providing a platform-independent and efficient way to manage dependencies and compile the project seamlessly.</li>
+<li><b>Doxygen:</b> Used for generating documentation from source code comments, promoting clarity and understanding for developers.</li>
+<li><b>zlib:</b> Important for handling .gz compressed files, providing efficient and reliable compression and decompression algorithms, essential for working with large genomic datasets.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md10"></a>
-6. Future Considerations</h2>
-<p >Asynchronous Reading/Writing, a C++20 feature, could enhance performance. Given the directional nature of real-world data flows, it wasn't a primary focus.</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
-7. Conclusion</h2>
-<p >The proposed DNA storage design addresses current limitations, offering a robust, efficient, and reliable solution for the impending surge in global data. By combining innovative algorithms, well-designed classes, compatibility considerations, and strategic tooling choices, our project aims to contribute to the evolution of data storage technology.</p>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Project Structure</h2>
+<h3><a class="anchor" id="autotoc_md9"></a>
+app</h3>
+<p >Source code files for the main encoding and decoding applications.</p>
+<h3><a class="anchor" id="autotoc_md10"></a>
+build</h3>
+<p >Generated with <code>cmake</code></p><ul>
+<li><b>app:</b> Directory where compiled executable files for the 'app' directory are stored.</li>
+<li><b>CMakeCache.txt:</b> CMake cache file storing configuration settings.</li>
+<li><b>CMakeFiles:</b> Directory containing CMake-generated files.</li>
+<li><b>cmake_install.cmake:</b> CMake installation file.</li>
+<li><b>Makefile:</b> Makefile for building the project.</li>
+<li><b>src:</b> Directory where compiled object files for the 'src' directory are stored.</li>
+<li><b>tests:</b> Directory where compiled object files for the 'tests' directory are stored.</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md11"></a>
+include: DNA Sequence Utilities</h3>
+<ul>
+<li><b><a class="el" href="io_8hpp.html">io.hpp</a>:</b> Header file containing declarations for input/output functions.</li>
+<li><b><a class="el" href="utils_8hpp.html" title="A collection of helper functions.">utils.hpp</a>:</b> Header file containing declarations for utility functions.</li>
+</ul>
+<h4><a class="anchor" id="autotoc_md12"></a>
+Nucleotide Conversion</h4>
+<h4><a class="anchor" id="autotoc_md13"></a>
+Sequence Analysis</h4>
+<h4><a class="anchor" id="autotoc_md14"></a>
+Sequence Matching and Alignment</h4>
+<h4><a class="anchor" id="autotoc_md15"></a>
+Sequence Prefix and Suffix Matching</h4>
+<h4><a class="anchor" id="autotoc_md16"></a>
+Sequence Difference Calculation</h4>
+<p >Leverages modern C++20 features: Unordered Map, Optionals, Range-Based Loops, Algorithm Functions, contributing to improved readability, conciseness, and maintainability.</p>
+<h3><a class="anchor" id="autotoc_md17"></a>
+scripts</h3>
+<h1><a class="anchor" id="autotoc_md18"></a>
+An assortment of shell scripts to aid in building and testing the project</h1>
+<h4><a class="anchor" id="autotoc_md19"></a>
+Oligonucleotide Class</h4>
+<h5>Oligos Class: Efficient Storage and Retrieval</h5>
+<p >Efficiently stores DNA sequences using an unsigned 64-bit data block, minimizing overhead by performing operations, such as slicing and conversion to a string representation, only upon request.</p>
+<p ><em>C++ Class Representation:</em> Utilizes a C++ class aligning with efficiency and encapsulation principles. The use of an unsigned 64-bit data block allows for bitwise operations, enhancing speed and reducing memory footprint.</p>
+<h5>Class Overview</h5>
+<p >Defines an <code><a class="el" href="classOligo.html" title="Represents an oligonucleotide (DNA sequence).">Oligo</a></code> class to represent oligonucleotides (DNA sequences) with constructors, comparison operators, and various member functions for oligo manipulation.</p>
+<h5>Class Members</h5>
+<ul>
+<li><code>size_t basepairs</code>: Number of base pairs in the oligonucleotide (limited to <code>MAX_BP</code>).</li>
+<li><code>uint64_t data_block</code>: Data block storing the binary representation of the oligonucleotide. <h5>File I/O</h5>
+</li>
+</ul>
+<ul>
+<li><code>write_bin(std::ofstream &amp;of)</code>: Write binary data to a file.</li>
+</ul>
+<p >Modern C++ Features include Constructors Initialization List, Range-Based For Loop, std::optional, std::min, Operator Overloading, Conditional Compilation (<code>#ifdef</code>), TODO for Spaceship Operator (&lt;=&gt;).</p>
 <hr  />
- </div></div><!-- PageDoc -->
+<h4><a class="anchor" id="autotoc_md21"></a>
+Codec Class</h4>
+<h5><a class="el" href="classCodec.html" title="Codec class for handling files and Oligo data.">Codec</a> Class: Managing File Stream and Operations</h5>
+<p >Crucial in managing file-related operations, including opening, closing, and obtaining the filesize. Encapsulates the complexities of interacting with the file stream, providing a streamlined interface for the rest of the system.</p>
+<p ><em>C++ Class Representation:</em> A C++ class for the <a class="el" href="classCodec.html" title="Codec class for handling files and Oligo data.">Codec</a> concept offers a modular and organized approach to file handling. The class encapsulates file-related functionalities, promoting code readability and maintainability. The ability to easily open, close, and obtain file size enhances the overall robustness of the system.</p>
+<h5>Class Overview</h5>
+<p >Defines a <code><a class="el" href="classCodec.html" title="Codec class for handling files and Oligo data.">Codec</a></code> class for handling files and <a class="el" href="classOligo.html" title="Represents an oligonucleotide (DNA sequence).">Oligo</a> data, including file I/O operations, encoding and decoding functions, and vector manipulation for <a class="el" href="classOligo.html" title="Represents an oligonucleotide (DNA sequence).">Oligo</a> objects.</p>
+<h5>Class Members</h5>
+<ul>
+<li><code>std::vector&lt;<a class="el" href="classOligo.html" title="Represents an oligonucleotide (DNA sequence).">Oligo</a>&gt; oligo_vec</code>: Vector to store <a class="el" href="classOligo.html" title="Represents an oligonucleotide (DNA sequence).">Oligo</a> objects.</li>
+<li><code>std::string filename</code>: Name of the file.</li>
+<li><code>std::streampos filesize</code>: Size of the file.</li>
+<li><code>std::vector&lt;Oligo*&gt; decode_vec</code>: Vector to store <a class="el" href="classOligo.html" title="Represents an oligonucleotide (DNA sequence).">Oligo</a> objects for decoding.</li>
+</ul>
+<p >The <code><a class="el" href="classCodec.html" title="Codec class for handling files and Oligo data.">Codec</a></code> class exhibits the use of modern C++ features, enhancing code readability, expressiveness, and efficiency.</p><ul>
+<li>Initialization List, Smart Pointers, Range-Based For Loop, Lambda Expressions, Filesystem Library, Sort Algorithm, Binary File Output, Type Aliases (auto).</li>
+</ul>
+<hr  />
+<h3><a class="anchor" id="autotoc_md23"></a>
+utils: Modern C++ Utility Libraries Retooled</h3>
+<ul>
+<li><b>Seamless Integration:</b> Utills seamlessly integrates with existing C++ code, enhancing organization and maintainability while eliminating the need for external processes. This promotes overall application cohesiveness.</li>
+<li><b>Dynamic Linking:</b> Utills supports dynamic linking, enabling updates without modifying the source code. This adaptability is particularly beneficial for evolving compression standards or library improvements.</li>
+<li><b>Consistent Interface:</b> With a uniform interface, Utills encourages a standardized approach to file compression and decompression within the codebase. This consistency enhances code readability and facilitates collaboration among developers.</li>
+<li><b>Tailored Error Handling:</b> The C++ Reed-Solomon library allows developers to implement specific error-handling strategies, ensuring robust and resilient data processing.</li>
+<li><b>Enhanced Control:</b> Combining Reed-Solomon error correction with compression provides advanced control over data integrity. Developers can manage error correction parameters and strategies to meet reliability requirements consistently.</li>
+<li><b>Performance Optimization</b> Updated and improved with modern C++</li>
+</ul>
+<h4><a class="anchor" id="autotoc_md24"></a>
+Efficient Handling of Compressed Files</h4>
+<p >Ufficiently manages file processing and compression by leveraging the zlib library. It can distinguish between regular and gzipped files, providing versatility in handling different file types.</p>
+<h4><a class="anchor" id="autotoc_md25"></a>
+Reed-Solomon Error Correction Implementation with C++ Classes and Concepts</h4>
+<p >Seamlessly incorporates Reed-Solomon error correction using the <code><a class="el" href="classReedSolomon.html" title="Template class representing the Reed-Solomon error correction code.">ReedSolomon</a></code> template class, representing the Reed-Solomon error correction code.</p><ul>
+<li><b>Galois Field:</b> Incorporates a <code><a class="el" href="classGaloisField.html" title="Class representing a Galois Field of order 2^fieldPower.">GaloisField</a></code> attribute, fundamental to Reed-Solomon operations. </li>
+</ul>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

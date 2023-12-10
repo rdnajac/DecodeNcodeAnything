@@ -1,0 +1,1 @@
+clang++ -fPIC  -Wall -fmodules-ts -shared  -o libReedSolomon.so CMakeFiles/ReedSolomon.dir/myRSmodule.cpp.o 

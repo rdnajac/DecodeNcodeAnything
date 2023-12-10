@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['characteristic_0',['characteristic',['../classGaloisField.html#a844f3f0eab441f7a18d800c2b111292d',1,'GaloisField']]],
-  ['coef_1',['coef',['../classPoly.html#ac066b942e0d9b0443a4626bceb94b791',1,'Poly']]]
+  ['basepairs_0',['basepairs',['../classOligo.html#a861c72a641bc6f6af57725d90dfcaf22',1,'Oligo']]],
+  ['buffer_5fsize_1',['BUFFER_SIZE',['../classGzipper.html#a64d2344d9777c1e833297b2d6bd949a9',1,'Gzipper']]]
 ];

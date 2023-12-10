@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -O3 -O2 CMakeFiles/test_oligo.dir/test_oligo.cpp.o -o test_oligo  ../src/libmy_library.a 

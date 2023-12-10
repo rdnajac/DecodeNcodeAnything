@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['encode_5ftime_0',['encode_time',['../namespacegraph__data.html#ae72b9384d2c7093da7668ec6bdddd012',1,'graph_data']]],
-  ['entries_1',['entries',['../namespacegraph__data.html#abb2e390a3c458ddc13f7cdb9894d8f58',1,'graph_data']]],
-  ['entry_5ftuple_2',['entry_tuple',['../namespacegraph__data.html#a382f42135310cd14d828ac4cc1b35f45',1,'graph_data']]]
+  ['data_5fblock_0',['data_block',['../classOligo.html#a82c652f4d285ec5e20559615211eadd8',1,'Oligo']]],
+  ['data_5ftuples_1',['data_tuples',['../namespaceplot__data.html#a38fa9a21d304f9092ddf8145945ee37b',1,'plot_data']]],
+  ['decode_5fduplex_2',['decode_duplex',['../classCodec.html#a3915aaf9d35af06b7ed7f52efdc78073',1,'Codec']]],
+  ['decode_5fvec_3',['decode_vec',['../classCodec.html#ac3a8b3d77dcb0121f9851e2d5624b958',1,'Codec']]]
 ];

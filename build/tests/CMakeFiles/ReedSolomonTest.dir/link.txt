@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall CMakeFiles/ReedSolomonTest.dir/ReedSolomonTest.cpp.o -o ReedSolomonTest  ../src/libmy_library.a ../modules/libReedSolomon.so 

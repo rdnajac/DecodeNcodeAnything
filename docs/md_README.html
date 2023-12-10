@@ -65,10 +65,10 @@ $(function() {
   <div class="headertitle"><div class="title">DecodeNcodeAnything </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="autotoc_md14"></a>
+<div class="textblock"><h2><a class="anchor" id="autotoc_md27"></a>
 Utilizing synthetic DNA 🧬 as a data storage 💾 medium</h2>
 <p >A refactoring of the <a href="https://github.com/lanl/adscodex">Adaptive DNA Storage Codec (ADS Codex)</a> in "modern" C++.</p>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md28"></a>
 Table of Contents</h1>
 <ul>
 <li>External Dependencies</li>
@@ -79,7 +79,7 @@ Table of Contents</h1>
 <li>Plans for Future Releases</li>
 <li>Acknowledgments</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md16"></a>
+<h1><a class="anchor" id="autotoc_md29"></a>
 External Dependencies</h1>
 <ul>
 <li><b>zlib for C++:</b> a library for handling .gz files, necessary to support direct reading of compressedFASTQs. More information about zlib <a href="https://www.zlib.net/">here</a>.</li>
@@ -89,7 +89,7 @@ External Dependencies</h1>
 </blockquote>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md30"></a>
 Installation</h1>
 <ol type="1">
 <li><p class="startli"><b>Clone the DecodeNcodeAnything repository:</b></p>
@@ -101,28 +101,37 @@ Installation</h1>
 <div class="line">cd build</div>
 </div><!-- fragment --></li>
 <li><p class="startli"><b>Configure the project with CMake:</b></p>
+<p class="startli">On Debian-based systems:</p>
 <div class="fragment"><div class="line">cmake ..</div>
+</div><!-- fragment --><p class="startli">On Windows (Make sure your MinGW-x64 version is newer than 11.0.0):</p>
+<div class="fragment"><div class="line">cmake -G &quot;MinGW Makefiles&quot; ..</div>
 </div><!-- fragment --></li>
 <li><p class="startli"><b>Build the project:</b></p>
 <div class="fragment"><div class="line">make</div>
 </div><!-- fragment --></li>
 </ol>
 <p >Adjust the build commands based on your specific build system or requirements. Alternatively, you can run the default installation script: <code>scripts/build.sh</code> from the repo's top-level directory.</p>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md31"></a>
 Documentation</h1>
 <p >To generate documentation using Doxygen, follow these steps:</p>
 <ol type="1">
 <li><p class="startli"><b>Install Doxygen:</b></p>
-<p class="startli">Ensure that Doxygen is installed on your system. If it's not installed, you can typically install it using your package manager. For example, on Debian-based systems:</p>
+<p class="startli">Ensure that Doxygen is installed on your system. If it's not installed, you can typically install it using your package manager.</p>
+<p class="startli">For example, on Debian-based systems:</p>
 <div class="fragment"><div class="line">sudo apt-get install doxygen</div>
-</div><!-- fragment --><p> Refer to the <a href="https://www.doxygen.nl/manual/install.html">Doxygen installation guide</a> for more details.</p>
+</div><!-- fragment --><p> On Windows system:</p>
+<div class="fragment"><div class="line">git clone https://github.com/doxygen/doxygen.git</div>
+</div><!-- fragment --><p class="startli">Refer to the <a href="https://www.doxygen.nl/manual/install.html">Doxygen installation guide</a> for more details.</p>
 </li>
 <li><p class="startli"><b>Navigate to the project root:</b></p>
 <div class="fragment"><div class="line">cd /path/to/DecodeNcodeAnything</div>
 </div><!-- fragment --></li>
 <li><p class="startli"><b>Run the documentation generation script:</b></p>
+<p class="startli">On Debian-based systems</p>
 <div class="fragment"><div class="line">scripts/gen_docs.sh</div>
 </div><!-- fragment --><p class="startli">This script generates a new Doxyfile, configures it, and runs Doxygen to generate documentation in the <code>./docs</code> folder.</p>
+<p class="startli">On Windows system:</p>
+<p class="startli">Just use Visual Studio to construct the project. Then it will generate a doxygen.exe.</p>
 </li>
 <li><p class="startli"><b>Access the documentation:</b></p>
 <p class="startli">Open the generated documentation by navigating to the specified output directory:</p>
@@ -130,14 +139,14 @@ Documentation</h1>
 </div><!-- fragment --><p class="startli">Open the <code>index.html</code> file in a web browser to explore the generated documentation.</p>
 </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md32"></a>
 Running the Program</h1>
 <p >After cloning and building the the program, the executables (including test programs) are located in the build directory. Running the program is simple: </p><div class="fragment"><div class="line">./build/app/encode &lt;file-to-be-encoded&gt;</div>
 </div><!-- fragment --><p> or alternatively, </p><div class="fragment"><div class="line">./build/app/encode &lt;file-to-be-decoded&gt;</div>
 </div><!-- fragment --><p> The decoder expects the FASTQ files while the encoder can handle any readable file.</p>
-<h1><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md33"></a>
 Features</h1>
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 Reed–Solomon Error Correction</h2>
 <p >Library written in C++ for module export.</p>
 <blockquote class="doxtable">
@@ -147,7 +156,7 @@ Reed–Solomon Error Correction</h2>
 <li><a href="https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction">Reed–Solomon Codes on Wikipedia</a></li>
 <li><a href="https://www.cs.cmu.edu/~guyb/realworld/reedsolomon/reed_solomon_codes.html">Introduction to Reed–Solomon Codes</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md35"></a>
 TODO: Implement &lt;a href="https://github.com/google/googletest" &gt;Google's testing framework&lt;/a&gt;.</h1>
 <p >Example:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;gtest/gtest.h&gt;</span></div>
@@ -171,7 +180,7 @@ TODO: Implement &lt;a href="https://github.com/google/googletest" &gt;Google's t
 <div class="line">    <span class="keywordflow">return</span> RUN_ALL_TESTS();</div>
 <div class="line">}</div>
 <div class="ttc" id="adecode_8cpp_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="decode_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> decode.cpp:4</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md23"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md36"></a>
 Plans for Future Releases</h1>
 <ol type="1">
 <li><b>Performance Optimization with Lookup Tables:</b><ul>
@@ -189,7 +198,7 @@ Plans for Future Releases</h1>
 </ol>
 <p >These plans are subject to change based on community feedback and project priorities. Stay tuned for updates and announcements related to future releases.</p>
 <p >If you have specific features or improvements you would like to see in future releases, feel free to contribute to the discussion on our <a href="https://github.com/rdnajac/DecodeNcodeAnything">GitHub repository</a> or open a new issue.</p>
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md37"></a>
 Acknowledgments</h1>
 <ul>
 <li><a href="https://github.com/lanl/adscodex">Adaptive DNA Storage Codec (ADS Codex)</a>: The foundation for this project.</li>
