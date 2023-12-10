@@ -174,7 +174,7 @@ public:
         for (size_t i = 0; i < oligo_duplex.size(); ++i)
             outfile << oligo_duplex[i].first.seq() << oligo_duplex[i].second->seq() << std::endl;
 
-        std::cout << "Duplex information written to file: " << get_filename() + ".encode" << std::endl;
+        std::cout << "Input file encoded and written to: " << get_filename() + ".encode" << std::endl;
     }
 
     /**
@@ -188,29 +188,31 @@ public:
         size_t line_number = 0;
 
         for (std::string line; std::getline(file, line); line_number++) {
-            if ((get_filetype() == ".fastq") && (line_number % 4 != 1) || line.size() != 64)
+            if ((get_filetype() == ".fastq") && (line_number % 4 != 1))
                 continue;
-            Oligo index_oligo(line.substr(0, MAX_BP));
-            Oligo data_oligo(line.substr(32, MAX_BP));
-            decode_duplex.emplace_back(index_oligo, data_oligo);
+            if  (line.size() == 64) {
+                Oligo index_oligo(line.substr(0, MAX_BP));
+                Oligo data_oligo(line.substr(32, MAX_BP));
+                decode_duplex.emplace_back(index_oligo, data_oligo);
+            }
         }
 
         std::sort(decode_duplex.begin(), decode_duplex.end(), [](const auto& a, const auto& b) {
                 return a.first.data() < b.first.data();
                 });
 
-        std::ofstream output_file(get_filename() + ".decoded", std::ios::binary);
+        std::ofstream output_file(get_filename() + ".decode", std::ios::binary);
         if (!output_file.is_open()) {
-            std::cerr << "Error opening output file: " << get_filename() + ".decoded" << std::endl;
+            std::cerr << "Error opening output file: " << get_filename() + ".decode" << std::endl;
             oligo_vec.clear();
             decode_duplex.clear();
             return;
         }
-
         for (auto &o : decode_duplex)
             o.second.write_bin(output_file);
 
         output_file.close();
+        std::cout << "Input file decoded and written to: " << get_filename() + ".decode" << std::endl;
     }
 
     //Uncomment the following lines when Criteria class is finished

@@ -1,0 +1,396 @@
+Filename: 1_random_MiB.bin
+Filesize: 1048576 bytes
+Filetype: .bin
+Input file encoded and written to: 1_random_MiB.bin.encode
+Elapsed Time 6 ms
+Lines randomized in 1_random_MiB.bin.encode
+Filename: 1_random_MiB.bin.encode
+Filesize: 8519680 bytes
+Filetype: .encode
+Input file decoded and written to: 1_random_MiB.bin.encode.decode
+Elapsed Time 160 ms
+----------------------
+Filename: 2_random_MiB.bin
+Filesize: 2097152 bytes
+Filetype: .bin
+Input file encoded and written to: 2_random_MiB.bin.encode
+Elapsed Time 7 ms
+Lines randomized in 2_random_MiB.bin.encode
+Filename: 2_random_MiB.bin.encode
+Filesize: 17039360 bytes
+Filetype: .encode
+Input file decoded and written to: 2_random_MiB.bin.encode.decode
+Elapsed Time 314 ms
+----------------------
+Filename: 4_random_MiB.bin
+Filesize: 4194304 bytes
+Filetype: .bin
+Input file encoded and written to: 4_random_MiB.bin.encode
+Elapsed Time 14 ms
+Lines randomized in 4_random_MiB.bin.encode
+Filename: 4_random_MiB.bin.encode
+Filesize: 34078720 bytes
+Filetype: .encode
+Input file decoded and written to: 4_random_MiB.bin.encode.decode
+Elapsed Time 671 ms
+----------------------
+Filename: 8_random_MiB.bin
+Filesize: 8388608 bytes
+Filetype: .bin
+Input file encoded and written to: 8_random_MiB.bin.encode
+Elapsed Time 24 ms
+Lines randomized in 8_random_MiB.bin.encode
+Filename: 8_random_MiB.bin.encode
+Filesize: 68157440 bytes
+Filetype: .encode
+Input file decoded and written to: 8_random_MiB.bin.encode.decode
+Elapsed Time 1279 ms
+----------------------
+Filename: 16_random_MiB.bin
+Filesize: 16777216 bytes
+Filetype: .bin
+Input file encoded and written to: 16_random_MiB.bin.encode
+Elapsed Time 48 ms
+Lines randomized in 16_random_MiB.bin.encode
+Filename: 16_random_MiB.bin.encode
+Filesize: 136314880 bytes
+Filetype: .encode
+Input file decoded and written to: 16_random_MiB.bin.encode.decode
+Elapsed Time 2559 ms
+----------------------
+Filename: 32_random_MiB.bin
+Filesize: 33554432 bytes
+Filetype: .bin
+Input file encoded and written to: 32_random_MiB.bin.encode
+Elapsed Time 97 ms
+Lines randomized in 32_random_MiB.bin.encode
+Filename: 32_random_MiB.bin.encode
+Filesize: 272629760 bytes
+Filetype: .encode
+Input file decoded and written to: 32_random_MiB.bin.encode.decode
+Elapsed Time 5236 ms
+----------------------
+Filename: 64_random_MiB.bin
+Filesize: 67108864 bytes
+Filetype: .bin
+Input file encoded and written to: 64_random_MiB.bin.encode
+Elapsed Time 184 ms
+Lines randomized in 64_random_MiB.bin.encode
+Filename: 64_random_MiB.bin.encode
+Filesize: 545259520 bytes
+Filetype: .encode
+Input file decoded and written to: 64_random_MiB.bin.encode.decode
+Elapsed Time 10402 ms
+----------------------
+Filename: 128_random_MiB.bin
+Filesize: 134217728 bytes
+Filetype: .bin
+Input file encoded and written to: 128_random_MiB.bin.encode
+Elapsed Time 363 ms
+Lines randomized in 128_random_MiB.bin.encode
+Filename: 128_random_MiB.bin.encode
+Filesize: 1090519040 bytes
+Filetype: .encode
+Input file decoded and written to: 128_random_MiB.bin.encode.decode
+Elapsed Time 20836 ms
+----------------------
+Filename: 256_random_MiB.bin
+Filesize: 268435456 bytes
+Filetype: .bin
+Input file encoded and written to: 256_random_MiB.bin.encode
+Elapsed Time 738 ms
+Lines randomized in 256_random_MiB.bin.encode
+Filename: 256_random_MiB.bin.encode
+Filesize: 2181038080 bytes
+Filetype: .encode
+Input file decoded and written to: 256_random_MiB.bin.encode.decode
+Elapsed Time 42226 ms
+----------------------
+Filename: 512_random_MiB.bin
+Filesize: 536870912 bytes
+Filetype: .bin
+Input file encoded and written to: 512_random_MiB.bin.encode
+Elapsed Time 1521 ms
+Lines randomized in 512_random_MiB.bin.encode
+Filename: 512_random_MiB.bin.encode
+Filesize: 4362076160 bytes
+Filetype: .encode
+Input file decoded and written to: 512_random_MiB.bin.encode.decode
+Elapsed Time 84663 ms
+----------------------
+Filename: 1024_random_MiB.bin
+Filesize: 1073741824 bytes
+Filetype: .bin
+Input file encoded and written to: 1024_random_MiB.bin.encode
+Elapsed Time 2952 ms
+Lines randomized in 1024_random_MiB.bin.encode
+Filename: 1024_random_MiB.bin.encode
+Filesize: 8724152320 bytes
+Filetype: .encode
+Input file decoded and written to: 1024_random_MiB.bin.encode.decode
+Elapsed Time 230501 ms
+----------------------
+Filename: 1_random_MiB.bin
+Filesize: 1048576 bytes
+Filetype: .bin
+Input file encoded and written to: 1_random_MiB.bin.encode
+Elapsed Time 4 ms
+Lines randomized in 1_random_MiB.bin.encode
+Filename: 1_random_MiB.bin.encode
+Filesize: 8519680 bytes
+Filetype: .encode
+Input file decoded and written to: 1_random_MiB.bin.encode.decode
+Elapsed Time 165 ms
+----------------------
+Filename: 2_random_MiB.bin
+Filesize: 2097152 bytes
+Filetype: .bin
+Input file encoded and written to: 2_random_MiB.bin.encode
+Elapsed Time 7 ms
+Lines randomized in 2_random_MiB.bin.encode
+Filename: 2_random_MiB.bin.encode
+Filesize: 17039360 bytes
+Filetype: .encode
+Input file decoded and written to: 2_random_MiB.bin.encode.decode
+Elapsed Time 330 ms
+----------------------
+Filename: 4_random_MiB.bin
+Filesize: 4194304 bytes
+Filetype: .bin
+Input file encoded and written to: 4_random_MiB.bin.encode
+Elapsed Time 13 ms
+Lines randomized in 4_random_MiB.bin.encode
+Filename: 4_random_MiB.bin.encode
+Filesize: 34078720 bytes
+Filetype: .encode
+Input file decoded and written to: 4_random_MiB.bin.encode.decode
+Elapsed Time 653 ms
+----------------------
+Filename: 8_random_MiB.bin
+Filesize: 8388608 bytes
+Filetype: .bin
+Input file encoded and written to: 8_random_MiB.bin.encode
+Elapsed Time 25 ms
+Lines randomized in 8_random_MiB.bin.encode
+Filename: 8_random_MiB.bin.encode
+Filesize: 68157440 bytes
+Filetype: .encode
+Input file decoded and written to: 8_random_MiB.bin.encode.decode
+Elapsed Time 1333 ms
+----------------------
+Filename: 16_random_MiB.bin
+Filesize: 16777216 bytes
+Filetype: .bin
+Input file encoded and written to: 16_random_MiB.bin.encode
+Elapsed Time 49 ms
+Lines randomized in 16_random_MiB.bin.encode
+Filename: 16_random_MiB.bin.encode
+Filesize: 136314880 bytes
+Filetype: .encode
+Input file decoded and written to: 16_random_MiB.bin.encode.decode
+Elapsed Time 2641 ms
+----------------------
+Filename: 32_random_MiB.bin
+Filesize: 33554432 bytes
+Filetype: .bin
+Input file encoded and written to: 32_random_MiB.bin.encode
+Elapsed Time 101 ms
+Lines randomized in 32_random_MiB.bin.encode
+Filename: 32_random_MiB.bin.encode
+Filesize: 272629760 bytes
+Filetype: .encode
+Input file decoded and written to: 32_random_MiB.bin.encode.decode
+Elapsed Time 5208 ms
+----------------------
+Filename: 64_random_MiB.bin
+Filesize: 67108864 bytes
+Filetype: .bin
+Input file encoded and written to: 64_random_MiB.bin.encode
+Elapsed Time 193 ms
+Lines randomized in 64_random_MiB.bin.encode
+Filename: 64_random_MiB.bin.encode
+Filesize: 545259520 bytes
+Filetype: .encode
+Input file decoded and written to: 64_random_MiB.bin.encode.decode
+Elapsed Time 10709 ms
+----------------------
+Filename: 128_random_MiB.bin
+Filesize: 134217728 bytes
+Filetype: .bin
+Input file encoded and written to: 128_random_MiB.bin.encode
+Elapsed Time 379 ms
+Lines randomized in 128_random_MiB.bin.encode
+Filename: 128_random_MiB.bin.encode
+Filesize: 1090519040 bytes
+Filetype: .encode
+Input file decoded and written to: 128_random_MiB.bin.encode.decode
+Elapsed Time 21330 ms
+----------------------
+Filename: 256_random_MiB.bin
+Filesize: 268435456 bytes
+Filetype: .bin
+Input file encoded and written to: 256_random_MiB.bin.encode
+Elapsed Time 762 ms
+Lines randomized in 256_random_MiB.bin.encode
+Filename: 256_random_MiB.bin.encode
+Filesize: 2181038080 bytes
+Filetype: .encode
+Input file decoded and written to: 256_random_MiB.bin.encode.decode
+Elapsed Time 42410 ms
+----------------------
+Filename: 512_random_MiB.bin
+Filesize: 536870912 bytes
+Filetype: .bin
+Input file encoded and written to: 512_random_MiB.bin.encode
+Elapsed Time 1510 ms
+Lines randomized in 512_random_MiB.bin.encode
+Filename: 512_random_MiB.bin.encode
+Filesize: 4362076160 bytes
+Filetype: .encode
+Input file decoded and written to: 512_random_MiB.bin.encode.decode
+Elapsed Time 86576 ms
+----------------------
+Filename: 1024_random_MiB.bin
+Filesize: 1073741824 bytes
+Filetype: .bin
+Input file encoded and written to: 1024_random_MiB.bin.encode
+Elapsed Time 3022 ms
+Lines randomized in 1024_random_MiB.bin.encode
+Filename: 1024_random_MiB.bin.encode
+Filesize: 8724152320 bytes
+Filetype: .encode
+Input file decoded and written to: 1024_random_MiB.bin.encode.decode
+Elapsed Time 189872 ms
+----------------------
+Filename: 1_random_MiB.bin
+Filesize: 1048576 bytes
+Filetype: .bin
+Input file encoded and written to: 1_random_MiB.bin.encode
+Elapsed Time 5 ms
+Lines randomized in 1_random_MiB.bin.encode
+Filename: 1_random_MiB.bin.encode
+Filesize: 8519680 bytes
+Filetype: .encode
+Input file decoded and written to: 1_random_MiB.bin.encode.decode
+Elapsed Time 161 ms
+----------------------
+Filename: 2_random_MiB.bin
+Filesize: 2097152 bytes
+Filetype: .bin
+Input file encoded and written to: 2_random_MiB.bin.encode
+Elapsed Time 7 ms
+Lines randomized in 2_random_MiB.bin.encode
+Filename: 2_random_MiB.bin.encode
+Filesize: 17039360 bytes
+Filetype: .encode
+Input file decoded and written to: 2_random_MiB.bin.encode.decode
+Elapsed Time 324 ms
+----------------------
+Filename: 4_random_MiB.bin
+Filesize: 4194304 bytes
+Filetype: .bin
+Input file encoded and written to: 4_random_MiB.bin.encode
+Elapsed Time 13 ms
+Lines randomized in 4_random_MiB.bin.encode
+Filename: 4_random_MiB.bin.encode
+Filesize: 34078720 bytes
+Filetype: .encode
+Input file decoded and written to: 4_random_MiB.bin.encode.decode
+Elapsed Time 658 ms
+----------------------
+Filename: 8_random_MiB.bin
+Filesize: 8388608 bytes
+Filetype: .bin
+Input file encoded and written to: 8_random_MiB.bin.encode
+Elapsed Time 27 ms
+Lines randomized in 8_random_MiB.bin.encode
+Filename: 8_random_MiB.bin.encode
+Filesize: 68157440 bytes
+Filetype: .encode
+Input file decoded and written to: 8_random_MiB.bin.encode.decode
+Elapsed Time 1327 ms
+----------------------
+Filename: 16_random_MiB.bin
+Filesize: 16777216 bytes
+Filetype: .bin
+Input file encoded and written to: 16_random_MiB.bin.encode
+Elapsed Time 52 ms
+Lines randomized in 16_random_MiB.bin.encode
+Filename: 16_random_MiB.bin.encode
+Filesize: 136314880 bytes
+Filetype: .encode
+Input file decoded and written to: 16_random_MiB.bin.encode.decode
+Elapsed Time 2615 ms
+----------------------
+Filename: 32_random_MiB.bin
+Filesize: 33554432 bytes
+Filetype: .bin
+Input file encoded and written to: 32_random_MiB.bin.encode
+Elapsed Time 98 ms
+Lines randomized in 32_random_MiB.bin.encode
+Filename: 32_random_MiB.bin.encode
+Filesize: 272629760 bytes
+Filetype: .encode
+Input file decoded and written to: 32_random_MiB.bin.encode.decode
+Elapsed Time 5130 ms
+----------------------
+Filename: 64_random_MiB.bin
+Filesize: 67108864 bytes
+Filetype: .bin
+Input file encoded and written to: 64_random_MiB.bin.encode
+Elapsed Time 195 ms
+Lines randomized in 64_random_MiB.bin.encode
+Filename: 64_random_MiB.bin.encode
+Filesize: 545259520 bytes
+Filetype: .encode
+Input file decoded and written to: 64_random_MiB.bin.encode.decode
+Elapsed Time 10392 ms
+----------------------
+Filename: 128_random_MiB.bin
+Filesize: 134217728 bytes
+Filetype: .bin
+Input file encoded and written to: 128_random_MiB.bin.encode
+Elapsed Time 414 ms
+Lines randomized in 128_random_MiB.bin.encode
+Filename: 128_random_MiB.bin.encode
+Filesize: 1090519040 bytes
+Filetype: .encode
+Input file decoded and written to: 128_random_MiB.bin.encode.decode
+Elapsed Time 20865 ms
+----------------------
+Filename: 256_random_MiB.bin
+Filesize: 268435456 bytes
+Filetype: .bin
+Input file encoded and written to: 256_random_MiB.bin.encode
+Elapsed Time 740 ms
+Lines randomized in 256_random_MiB.bin.encode
+Filename: 256_random_MiB.bin.encode
+Filesize: 2181038080 bytes
+Filetype: .encode
+Input file decoded and written to: 256_random_MiB.bin.encode.decode
+Elapsed Time 42904 ms
+----------------------
+Filename: 512_random_MiB.bin
+Filesize: 536870912 bytes
+Filetype: .bin
+Input file encoded and written to: 512_random_MiB.bin.encode
+Elapsed Time 1493 ms
+Lines randomized in 512_random_MiB.bin.encode
+Filename: 512_random_MiB.bin.encode
+Filesize: 4362076160 bytes
+Filetype: .encode
+Input file decoded and written to: 512_random_MiB.bin.encode.decode
+Elapsed Time 84379 ms
+----------------------
+Filename: 1024_random_MiB.bin
+Filesize: 1073741824 bytes
+Filetype: .bin
+Input file encoded and written to: 1024_random_MiB.bin.encode
+Elapsed Time 2990 ms
+Lines randomized in 1024_random_MiB.bin.encode
+Filename: 1024_random_MiB.bin.encode
+Filesize: 8724152320 bytes
+Filetype: .encode
+Input file decoded and written to: 1024_random_MiB.bin.encode.decode
+Elapsed Time 189575 ms
+----------------------

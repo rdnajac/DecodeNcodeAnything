@@ -40,5 +40,8 @@
 # Ignore hidden files
 .*
 
-/extern/libfec
 /utils/gzip_processor
+
+Doxyfile*
+docs/html/
+docs/latex/
