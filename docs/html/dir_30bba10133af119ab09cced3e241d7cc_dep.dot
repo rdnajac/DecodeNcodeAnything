@@ -1,0 +1,15 @@
+digraph "build/modules/CMakeFiles"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  compound=true
+  subgraph clusterdir_587cd7e785de0867f5b3392122b4ea11 {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", style="filled,dashed,", label="modules", fontname="Helvetica", fontsize="10", URL="dir_587cd7e785de0867f5b3392122b4ea11.html"]
+  subgraph clusterdir_30bba10133af119ab09cced3e241d7cc {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", style="filled,bold,", label="", fontname="Helvetica", fontsize="10", URL="dir_30bba10133af119ab09cced3e241d7cc.html"]
+    dir_30bba10133af119ab09cced3e241d7cc [shape=plaintext, label="CMakeFiles"];
+  dir_221e4e3784a22dc0f4fa2e9efc39dcc1 [shape=box, label="ReedSolomon.dir", style="filled,", fillcolor="#a2b4d6", color="grey25", URL="dir_221e4e3784a22dc0f4fa2e9efc39dcc1.html"];
+  }
+  }
+}

@@ -1,0 +1,19 @@
+digraph "build/tests/CMakeFiles"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  compound=true
+  subgraph clusterdir_a30fd5000947d323a9f363d528741348 {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", style="filled,dashed,", label="tests", fontname="Helvetica", fontsize="10", URL="dir_a30fd5000947d323a9f363d528741348.html"]
+  subgraph clusterdir_b67b133a83ac3df5d719be61f4ee2417 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", style="filled,bold,", label="", fontname="Helvetica", fontsize="10", URL="dir_b67b133a83ac3df5d719be61f4ee2417.html"]
+    dir_b67b133a83ac3df5d719be61f4ee2417 [shape=plaintext, label="CMakeFiles"];
+  dir_f16944eb4e165c97a09ab60d314f0992 [shape=box, label="simulate_encoded_fastq.dir", style="filled,", fillcolor="#a2b4d6", color="grey25", URL="dir_f16944eb4e165c97a09ab60d314f0992.html"];
+  dir_ef9b85dd1a730da588a2d49d48c281f7 [shape=box, label="test_encode-decode.dir", style="filled,", fillcolor="#a2b4d6", color="grey25", URL="dir_ef9b85dd1a730da588a2d49d48c281f7.html"];
+  dir_aca59775c5e10e1c21fbb76bcd0b4ee4 [shape=box, label="test_io.dir", style="filled,", fillcolor="#a2b4d6", color="grey25", URL="dir_aca59775c5e10e1c21fbb76bcd0b4ee4.html"];
+  dir_24e7b5d66b3a237235bafae23f9dbf12 [shape=box, label="test_oligo.dir", style="filled,", fillcolor="#a2b4d6", color="grey25", URL="dir_24e7b5d66b3a237235bafae23f9dbf12.html"];
+  dir_5eb2a8634b813bb4faedb14a150425c8 [shape=box, label="test_utils.dir", style="filled,", fillcolor="#a2b4d6", color="grey25", URL="dir_5eb2a8634b813bb4faedb14a150425c8.html"];
+  }
+  }
+}
