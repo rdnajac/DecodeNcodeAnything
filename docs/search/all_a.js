@@ -1,14 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.cpp'],['../test__utils_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;test_utils.cpp'],['../test__rs_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;test_rs.cpp'],['../test__oligo_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;test_oligo.cpp'],['../test__io_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;test_io.cpp'],['../simulate__encoded__fastq_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;simulate_encoded_fastq.cpp'],['../modules_2ReedSolomonTest_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;ReedSolomonTest.cpp'],['../encode_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;encode.cpp'],['../decode_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;decode.cpp'],['../test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;test.cpp'],['../utils_2myRS_2ReedSolomonTest_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;ReedSolomonTest.cpp']]],
-  ['main_2ecpp_1',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['match_2',['Match',['../utils_8hpp.html#a730572d786ff0adadd53a4e7643d4a84',1,'Match(const std::string &amp;p, const std::string &amp;q, int maxdist):&#160;utils.cpp'],['../utils_8cpp.html#a730572d786ff0adadd53a4e7643d4a84',1,'Match(const std::string &amp;p, const std::string &amp;q, int maxdist):&#160;utils.cpp']]],
-  ['matrix_3',['Matrix',['../utils_8cpp.html#a1af60de2ab1a4d66ad5a2e9f5d9c788f',1,'utils.cpp']]],
-  ['max_5fbp_4',['MAX_BP',['../oligo_8cpp.html#acd1e188ab1ec217134a38bc1de8a2287',1,'oligo.cpp']]],
-  ['min2_5',['min2',['../utils_8cpp.html#af679ed1bde86768ae0285fbf545175b4',1,'min2(int a, int b, int aa, int bb):&#160;utils.cpp'],['../utils_8hpp.html#af679ed1bde86768ae0285fbf545175b4',1,'min2(int a, int b, int aa, int bb):&#160;utils.cpp']]],
-  ['mult_6',['Mult',['../classPoly.html#ad88893165694b54fe8903a54fdf7ba11',1,'Poly::Mult(const Poly&lt; T &gt; &amp;other, const GaloisField&lt; T &gt; &amp;gf)'],['../classPoly.html#ad88893165694b54fe8903a54fdf7ba11',1,'Poly::Mult(const Poly&lt; T &gt; &amp;other, const GaloisField&lt; T &gt; &amp;gf)']]],
-  ['mult_7',['mult',['../classGaloisField.html#a50c39665371299145efab0912f743352',1,'GaloisField::mult(T a, T b)'],['../classGaloisField.html#a50c39665371299145efab0912f743352',1,'GaloisField::mult(T a, T b)']]],
-  ['multnolut_8',['multNoLUT',['../classGaloisField.html#a2db60778de60216d6b53b7e6555dd995',1,'GaloisField::multNoLUT(T a, T b)'],['../classGaloisField.html#a2db60778de60216d6b53b7e6555dd995',1,'GaloisField::multNoLUT(T a, T b)']]],
-  ['mygzip_2ehpp_9',['mygzip.hpp',['../mygzip_8hpp.html',1,'']]],
-  ['myrsmodule_2ecpp_10',['myRSmodule.cpp',['../utils_2myRS_2myRSmodule_8cpp.html',1,'(Global Namespace)'],['../modules_2myRSmodule_8cpp.html',1,'(Global Namespace)']]]
+  ['nt2string_0',['nt2string',['../utils_8hpp.html#aa8de115c798ffb4d626a4310bc62b0df',1,'nt2string(int nt):&#160;utils.cpp'],['../utils_8cpp.html#aa8de115c798ffb4d626a4310bc62b0df',1,'nt2string(int nt):&#160;utils.cpp']]],
+  ['nucleotide_1',['Nucleotide',['../utils_8hpp.html#a740430e75d8122a0073f041c1ce640c8',1,'utils.hpp']]],
+  ['nucleotidestr_2',['nucleotideStr',['../utils_8hpp.html#af566e739a18920fe309de3ff9fc7dacc',1,'utils.hpp']]]
 ];

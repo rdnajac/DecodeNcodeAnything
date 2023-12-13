@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -O3 -O2 CMakeFiles/simulate_encoded_fastq.dir/simulate_encoded_fastq.cpp.o -o simulate_encoded_fastq  ../src/libmy_library.a 

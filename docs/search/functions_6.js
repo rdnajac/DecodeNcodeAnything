@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['galoisfield_0',['GaloisField',['../classGaloisField.html#ab7b99dd68e4a7ec7362b120cca5da04d',1,'GaloisField::GaloisField(unsigned int fieldPower)'],['../classGaloisField.html#ab7b99dd68e4a7ec7362b120cca5da04d',1,'GaloisField::GaloisField(unsigned int fieldPower)']]],
+  ['galoisfield_0',['GaloisField',['../classGaloisField.html#ab7b99dd68e4a7ec7362b120cca5da04d',1,'GaloisField']]],
   ['generate_5frandom_5fquality_1',['generate_random_quality',['../simulate__encoded__fastq_8cpp.html#a6f9898e426da36b1b40194ab96045761',1,'simulate_encoded_fastq.cpp']]],
   ['generaterandomstring_2',['generateRandomString',['../test__oligo_8cpp.html#a3dfdb9fbf2167f6e5953301986c35205',1,'test_oligo.cpp']]],
   ['generator_3',['generator',['../test__oligo_8cpp.html#a37ee0096cd25793990cb92339ebb35d8',1,'test_oligo.cpp']]],

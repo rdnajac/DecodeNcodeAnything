@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['pad_0',['Pad',['../classPoly.html#ae3ff14d088e82af7dcd5399263f80634',1,'Poly::Pad(int left, int right)'],['../classPoly.html#ae3ff14d088e82af7dcd5399263f80634',1,'Poly::Pad(int left, int right)']]],
+  ['pad_0',['Pad',['../classPoly.html#ae3ff14d088e82af7dcd5399263f80634',1,'Poly']]],
   ['plot_5fdata_1',['plot_data',['../namespaceplot__data.html#ab3111a17b5812e48f06006c6cd46e241',1,'plot_data']]],
-  ['poly_2',['Poly',['../classPoly.html#a5ef3d2324f40e87b3759d5af5746752e',1,'Poly::Poly()=default'],['../classPoly.html#abb856d9ddbc3eef0c1721637e2e1c7ea',1,'Poly::Poly(int n, T initialValue=T{})'],['../classPoly.html#ae86c2f759f29b504e6efdad961b58772',1,'Poly::Poly(const Poly&lt; T &gt; &amp;other)'],['../classPoly.html#a5ef3d2324f40e87b3759d5af5746752e',1,'Poly::Poly()=default'],['../classPoly.html#abb856d9ddbc3eef0c1721637e2e1c7ea',1,'Poly::Poly(int n, T initialValue=T{})'],['../classPoly.html#ae86c2f759f29b504e6efdad961b58772',1,'Poly::Poly(const Poly&lt; T &gt; &amp;other)']]],
-  ['poly_5fchiensearch_3',['Poly_ChienSearch',['../utils_2myRS_2myRSmodule_8cpp.html#abf43e316c19690b19c589fdcc1f4bf14',1,'Poly_ChienSearch(std::vector&lt; unsigned int &gt; &amp;out, const Poly&lt; T &gt; &amp;poly, int max, const GaloisField&lt; T &gt; &amp;gf):&#160;myRSmodule.cpp'],['../modules_2myRSmodule_8cpp.html#abf43e316c19690b19c589fdcc1f4bf14',1,'Poly_ChienSearch(std::vector&lt; unsigned int &gt; &amp;out, const Poly&lt; T &gt; &amp;poly, int max, const GaloisField&lt; T &gt; &amp;gf):&#160;myRSmodule.cpp']]],
-  ['poly_5fdiv_4',['Poly_Div',['../modules_2myRSmodule_8cpp.html#aa283e9644783d5561c502d1a3bfc0f92',1,'Poly_Div(Poly&lt; T &gt; &amp;result, Poly&lt; T &gt; &amp;quotient, Poly&lt; T &gt; &amp;remainder, const Poly&lt; T &gt; &amp;a, const Poly&lt; T &gt; &amp;b, const GaloisField&lt; T &gt; &amp;gf):&#160;myRSmodule.cpp'],['../utils_2myRS_2myRSmodule_8cpp.html#aa283e9644783d5561c502d1a3bfc0f92',1,'Poly_Div(Poly&lt; T &gt; &amp;result, Poly&lt; T &gt; &amp;quotient, Poly&lt; T &gt; &amp;remainder, const Poly&lt; T &gt; &amp;a, const Poly&lt; T &gt; &amp;b, const GaloisField&lt; T &gt; &amp;gf):&#160;myRSmodule.cpp']]],
-  ['pow_5',['pow',['../classGaloisField.html#ad70376d7d06d67d58a24e419aa62c998',1,'GaloisField::pow(T x, T power)'],['../classGaloisField.html#ad70376d7d06d67d58a24e419aa62c998',1,'GaloisField::pow(T x, T power)']]],
-  ['print_6',['print',['../classPoly.html#abd9ab462519bb8477ae3487c411bdd1b',1,'Poly::print() const'],['../classPoly.html#abd9ab462519bb8477ae3487c411bdd1b',1,'Poly::print() const']]],
+  ['poly_2',['Poly',['../classPoly.html#a5ef3d2324f40e87b3759d5af5746752e',1,'Poly::Poly()=default'],['../classPoly.html#ae86c2f759f29b504e6efdad961b58772',1,'Poly::Poly(const Poly&lt; T &gt; &amp;other)'],['../classPoly.html#abb856d9ddbc3eef0c1721637e2e1c7ea',1,'Poly::Poly(int n, T initialValue=T{})']]],
+  ['poly_5fchiensearch_3',['Poly_ChienSearch',['../myRSmodule_8cpp.html#abf43e316c19690b19c589fdcc1f4bf14',1,'myRSmodule.cpp']]],
+  ['poly_5fdiv_4',['Poly_Div',['../myRSmodule_8cpp.html#aa283e9644783d5561c502d1a3bfc0f92',1,'myRSmodule.cpp']]],
+  ['pow_5',['pow',['../classGaloisField.html#ad70376d7d06d67d58a24e419aa62c998',1,'GaloisField']]],
+  ['print_6',['print',['../classPoly.html#abd9ab462519bb8477ae3487c411bdd1b',1,'Poly']]],
   ['print_5finfo_7',['print_info',['../classCodec.html#a35b2dc30531058e641606553a7379762',1,'Codec']]],
   ['print_5foligos_8',['print_oligos',['../classCodec.html#ac7359e595902628efd6c6cdae09ec46c',1,'Codec']]],
   ['process_9',['process',['../classGzipper.html#a8f7f57209c65d26ef6015893cf5d8429',1,'Gzipper']]],

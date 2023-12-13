@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -O3 -O2 CMakeFiles/encode.dir/encode.cpp.o -o encode  ../src/libmy_library.a 

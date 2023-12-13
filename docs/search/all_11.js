@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['unsignedinteger_0',['UnsignedInteger',['../conceptUnsignedInteger.html',1,'']]],
-  ['update_5fdistances_1',['update_distances',['../utils_8hpp.html#a464587c5147b58e395c651dd3a902963',1,'update_distances(int &amp;fj1, int &amp;lj1, int cbMismatch, int &amp;mdist, int &amp;mn, int &amp;ln):&#160;utils.cpp'],['../utils_8cpp.html#a464587c5147b58e395c651dd3a902963',1,'update_distances(int &amp;fj1, int &amp;lj1, int cbMismatch, int &amp;mdist, int &amp;mn, int &amp;ln):&#160;utils.cpp']]],
-  ['utils_2ecpp_2',['utils.cpp',['../utils_8cpp.html',1,'']]],
-  ['utils_2ehpp_3',['utils.hpp',['../utils_8hpp.html',1,'']]]
+  ['write_5fbin_0',['write_bin',['../classOligo.html#a24a9ecb5400cf65d352a6a3126b834b1',1,'Oligo']]],
+  ['write_5fduplex_1',['write_duplex',['../classCodec.html#a782c442b44df4d34080d78d4ba1605bf',1,'Codec']]]
 ];

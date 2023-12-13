@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -O3 -O2 CMakeFiles/test_utils.dir/test_utils.cpp.o -o test_utils  ../src/libmy_library.a 

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['write_5fbin_0',['write_bin',['../classOligo.html#a24a9ecb5400cf65d352a6a3126b834b1',1,'Oligo']]],
-  ['write_5fduplex_1',['write_duplex',['../classCodec.html#a782c442b44df4d34080d78d4ba1605bf',1,'Codec']]]
+  ['_7ecodec_0',['~Codec',['../classCodec.html#ad67c6c6d5fe0b020e1ada7156c611ce0',1,'Codec']]],
+  ['_7egaloisfield_1',['~GaloisField',['../classGaloisField.html#a6e9b8a7b6c564e61d50a6e82ae2f0362',1,'GaloisField']]]
 ];

@@ -111,19 +111,27 @@ build</h3>
 <li><b>tests:</b> Directory where compiled object files for the 'tests' directory are stored.</li>
 </ul>
 <h3><a class="anchor" id="autotoc_md11"></a>
-incl</h3>
+include: DNA Sequence Utilities</h3>
 <ul>
-<li>Conversion</li>
-<li>Sequence Analysis</li>
-<li>Sequence Matching and Alignment</li>
-<li>Sequence Prefix and Suffix Matching</li>
-<li>Sequence Difference Calculationude: DNA Sequence Utilities</li>
 <li><b><a class="el" href="io_8hpp.html">io.hpp</a>:</b> Header file containing declarations for input/output functions.</li>
 <li><b><a class="el" href="utils_8hpp.html" title="A collection of helper functions.">utils.hpp</a>:</b> Header file containing declarations for utility functions.</li>
 </ul>
+<h4><a class="anchor" id="autotoc_md12"></a>
+Nucleotide Conversion</h4>
+<h4><a class="anchor" id="autotoc_md13"></a>
+Sequence Analysis</h4>
+<h4><a class="anchor" id="autotoc_md14"></a>
+Sequence Matching and Alignment</h4>
+<h4><a class="anchor" id="autotoc_md15"></a>
+Sequence Prefix and Suffix Matching</h4>
+<h4><a class="anchor" id="autotoc_md16"></a>
+Sequence Difference Calculation</h4>
 <p >Leverages modern C++20 features: Unordered Map, Optionals, Range-Based Loops, Algorithm Functions, contributing to improved readability, conciseness, and maintainability.</p>
-<hr  />
- <h4><a class="anchor" id="autotoc_md13"></a>
+<h3><a class="anchor" id="autotoc_md17"></a>
+scripts</h3>
+<h1><a class="anchor" id="autotoc_md18"></a>
+An assortment of shell scripts to aid in building and testing the project</h1>
+<h4><a class="anchor" id="autotoc_md19"></a>
 Oligonucleotide Class</h4>
 <h5>Oligos Class: Efficient Storage and Retrieval</h5>
 <p >Efficiently stores DNA sequences using an unsigned 64-bit data block, minimizing overhead by performing operations, such as slicing and conversion to a string representation, only upon request.</p>
@@ -141,7 +149,7 @@ Oligonucleotide Class</h4>
 </ul>
 <p >Modern C++ Features include Constructors Initialization List, Range-Based For Loop, std::optional, std::min, Operator Overloading, Conditional Compilation (<code>#ifdef</code>), TODO for Spaceship Operator (&lt;=&gt;).</p>
 <hr  />
-<h4><a class="anchor" id="autotoc_md15"></a>
+<h4><a class="anchor" id="autotoc_md21"></a>
 Codec Class</h4>
 <h5><a class="el" href="classCodec.html" title="Codec class for handling files and Oligo data.">Codec</a> Class: Managing File Stream and Operations</h5>
 <p >Crucial in managing file-related operations, including opening, closing, and obtaining the filesize. Encapsulates the complexities of interacting with the file stream, providing a streamlined interface for the rest of the system.</p>
@@ -159,7 +167,7 @@ Codec Class</h4>
 <li>Initialization List, Smart Pointers, Range-Based For Loop, Lambda Expressions, Filesystem Library, Sort Algorithm, Binary File Output, Type Aliases (auto).</li>
 </ul>
 <hr  />
-<h3><a class="anchor" id="autotoc_md17"></a>
+<h3><a class="anchor" id="autotoc_md23"></a>
 utils: Modern C++ Utility Libraries Retooled</h3>
 <ul>
 <li><b>Seamless Integration:</b> Utills seamlessly integrates with existing C++ code, enhancing organization and maintainability while eliminating the need for external processes. This promotes overall application cohesiveness.</li>
@@ -169,18 +177,13 @@ utils: Modern C++ Utility Libraries Retooled</h3>
 <li><b>Enhanced Control:</b> Combining Reed-Solomon error correction with compression provides advanced control over data integrity. Developers can manage error correction parameters and strategies to meet reliability requirements consistently.</li>
 <li><b>Performance Optimization</b> Updated and improved with modern C++</li>
 </ul>
-<h4><a class="anchor" id="autotoc_md18"></a>
+<h4><a class="anchor" id="autotoc_md24"></a>
 Efficient Handling of Compressed Files</h4>
 <p >Ufficiently manages file processing and compression by leveraging the zlib library. It can distinguish between regular and gzipped files, providing versatility in handling different file types.</p>
-<h4><a class="anchor" id="autotoc_md19"></a>
+<h4><a class="anchor" id="autotoc_md25"></a>
 Reed-Solomon Error Correction Implementation with C++ Classes and Concepts</h4>
 <p >Seamlessly incorporates Reed-Solomon error correction using the <code><a class="el" href="classReedSolomon.html" title="Template class representing the Reed-Solomon error correction code.">ReedSolomon</a></code> template class, representing the Reed-Solomon error correction code.</p><ul>
-<li><b>Galois Field:</b> Incorporates a <code><a class="el" href="classGaloisField.html" title="Class representing a Galois Field of order 2^fieldPower.">GaloisField</a></code> attribute, fundamental to Reed-Solomon operations.</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md20"></a>
-scripts</h2>
-<ul>
-<li>An assortment of shell scripts to aid in building and testing the project </li>
+<li><b>Galois Field:</b> Incorporates a <code><a class="el" href="classGaloisField.html" title="Class representing a Galois Field of order 2^fieldPower.">GaloisField</a></code> attribute, fundamental to Reed-Solomon operations. </li>
 </ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
